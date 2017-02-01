@@ -1,0 +1,148 @@
+% LaTeX команды
+
+% New theorems
+\theoremseparator{.} % Точка после заголовка теоремы
+\theoremstyle{plain}
+\newtheorem{theorem}{Теорема}[chapter]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{prop}[theorem]{Утверждение}
+\newtheorem{conjecture}[theorem]{Гипотеза}
+\newtheorem{property}[theorem]{Свойство}
+\newtheorem{question}[theorem]{Вопрос}
+
+%\theoremstyle{definition}
+\theorembodyfont{\upshape}
+\newtheorem{definition}{Определение}[chapter]
+\newtheorem{remark}{Замечание}[chapter]
+
+\theoremstyle{nonumberplain}
+%\theoremseparator{}
+\theoremsymbol{\rule{1ex}{1ex}}
+\newtheorem{proof}{Доказательство}
+
+% New commands
+\newcommand{\Sum}{\sum\limits}
+\newcommand{\eps}{\varepsilon}  %epsilon
+\newcommand{\R}{\mathbb{R}}  %Set of real numbers
+\newcommand{\N}{\mathbb{N}}  %Set of natural numbers
+\newcommand{\Z}{\mathbb{Z}}  %Set of integer
+\newcommand{\Q}{\mathbb{Q}}  %Set of rational
+\renewcommand{\emptyset}{\varnothing} %Russian empty set
+\newcommand{\NP}{\textup{NP}} 
+\newcommand{\coNP}{\textup{co-NP}} 
+\newcommand\op[1]{\mathop{\rm #1}\nolimits}
+\renewcommand\vec[1]{\ensuremath{\mathbf{#1}}}
+
+%\renewcommand\dim{\op{dim}}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\cone}{cone}
+\DeclareMathOperator{\aff}{aff}
+\DeclareMathOperator{\len}{len}
+\DeclareMathOperator{\size}{size}
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\ext}{ext}
+\DeclareMathOperator{\pyr}{pyr}
+\DeclareMathOperator{\Size}{Size}  
+\DeclareMathOperator{\Lat}{\mathcal L} % face lattice
+\DeclareMathOperator{\Pert}{Perturb} % perturbation
+\DeclareMathOperator{\xc}{xc} %Extension complexity
+\DeclareMathOperator{\rc}{rc} %Rectangle covering number
+\DeclareMathOperator{\rank}{rank} %Matrix rank
+\DeclareMathOperator{\sgn}{sgn} %Sign
+\DeclareMathOperator{\supp}{supp} %Support
+\DeclareMathOperator{\diam}{diam} %Graph diameter
+\DeclareMathOperator{\vertices}{vert} %The number of vertices
+\DeclareMathOperator{\facet}{facet} %The number of facets
+\DeclareMathOperator{\face}{face} %The number of faces
+\renewcommand{\le}{\leqslant}         
+\renewcommand{\ge}{\geqslant}         
+\renewcommand{\leq}{\le}
+\renewcommand{\geq}{\ge}
+\newcommand{\lea}{\le_A} 
+\newcommand{\nelea}{\not\le_A} 
+\newcommand{\lee}{\le_E} 
+\newcommand{\scalar}[1]{\langle #1\rangle}
+\newcommand{\from}{\colon}
+
+\newcommand{\cC}{{\mathcal C}}  %КНФ
+
+\newcommand{\Cube}{\textup{Cube}} 
+\newcommand{\Cross}{\textup{Cross}} 
+\newcommand{\EP}{\textup{Э}} % Difficult problem
+\newcommand{\CP}{{\mathcal C}} % Cyclic polytope
+\newcommand{\CPO}{\textup{Ц}_{\textup{общ}}} % Cyclic polytope
+\newcommand{\BQP}{P_{\textup{BQP}}} % Boolean quadric polytope (Correlation polytope)
+\newcommand{\RBQP}{P_{\textup{RBQP}}} % Relaxation of Boolean quadric polytope
+%\newcommand{\SSP}{\textup{STAB}} % Stable set polytope
+\newcommand{\Stable}{P_{\textup{stab}}} % Stable set polytope
+\newcommand{\TSP}{P_{\textup{TSP}}} % Travelling salesman polytope
+\newcommand{\ATSP}{P_{\textup{ATSP}}} % Travelling salesman polytope
+\newcommand{\Path}{P_{\textup{path}}} % Path polytope
+\newcommand{\Dipath}{P_{\textup{dipath}}} % DiPath polytope
+\newcommand{\ShortP}{P_{\textup{shortpath}}} % Short Path polyhedron
+\newcommand{\MinCut}{P_{\textup{mincut}}} % Min Cut polyhedron
+\newcommand{\Cycle}{\textup{Cycle}} % Cycles in complete digraph
+\newcommand{\Knap}{P_{\textup{knap}}} % Knapsack polytope
+\newcommand{\PRT}{P_{\textup{numpart}}} % Numbers partitioning polytope
+\newcommand{\KSAT}[1]{P_{\textup{#1-sat}}} % SAT polytope
+\newcommand{\Tree}{P_{\textup{tree}}} % Spanning tree polytope
+\newcommand{\Match}{P_{\textup{match}}} % Matching polytope
+\newcommand{\Cut}{P_{\textup{cut}}} % Cut polytope
+\newcommand{\Cubic}{P_{\textup{3-factor}}} % Cubic subgraph polytope
+\newcommand{\QAP}{P_{\textup{QA}}} % Quadratic assignment polytope
+\newcommand{\TAP}{P_{\textup{3-A}}} % 3-assignment polytope
+\newcommand{\CAP}{P_{\textup{CA}}} % Constrained assignment polytope
+\newcommand{\Pack}{P_{\textup{pack}}} % Set packing polytope
+\newcommand{\Cover}{P_{\textup{cover}}} % Set covering polytope
+\newcommand{\Part}{P_{\textup{part}}} % Set partition polytope
+\newcommand{\DCP}{P_{\textup{2cover}}} % Double covering polytope
+\newcommand{\POP}{P_{\textup{PO}}} % Partial ordering polytope
+\newcommand{\Color}{P_{\textup{color}}} % Graph coloring polytope
+\newcommand{\Clique}{P_{\textup{clique}}} % Clique polytope
+\newcommand{\Perm}{P_{\textup{perm}}} % Permutahedron
+\newcommand{\Birk}{P_{\textup{birk}}} % Birkhoff polytope
+
+%\newcommand{\bigO}{\mathcal{O}}  % Big O 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Заплатка для правильной работы неразрывного дефиса "~ и короткого тире "--
+%% russianb.ldf        begin
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter
+\newcommand*{\glue}{\nobreak\hskip\z@skip}%  NEW!!!
+%\declare@shorthand{russian}{"~}{\textormath{\leavevmode\hbox{-}}{-}}%  OLD!!!
+\declare@shorthand{russian}{"~}{\glue\hbox{-}\glue}%  NEW!!!
+\def\cdash#1#2#3{\def\tempx@{#3}%
+	\def\tempa@{-}\def\tempb@{~}\def\tempc@{*}%
+	\ifx\tempx@\tempa@\@Acdash\else
+	\ifx\tempx@\tempb@\@Bcdash\else
+	\ifx\tempx@\tempc@\@Ccdash\else
+	%\errmessage{Wrong usage of cdash}%  OLD!!!
+	\@Dcdash#3\fi\fi\fi}%  NEW!!!
+%\def\@Acdash{\ifdim\lastskip>\z@\unskip\nobreak\hskip.2em\fi
+%  \cyrdash\hskip.2em\ignorespaces}%
+%\def\@Bcdash{\leavevmode\ifdim\lastskip>\z@\unskip\fi%  OLD!!!
+% \nobreak\cyrdash\penalty\exhyphenpenalty\hskip\z@skip\ignorespaces}%  OLD!!!
+%\def\@Ccdash{\leavevmode
+% \nobreak\cyrdash\nobreak\hskip.35em\ignorespaces}%
+\def\@Bcdash{\,\textendash\,\hskip\z@skip\ignorespaces}%  NEW!!!
+\def\@Dcdash#1{\,\textendash\,\hskip\z@skip\ignorespaces#1}%  NEW!!!
+\makeatother
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% russianb.ldf        end
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\usepackage{mathtools} % Разного рода тюнинг для мат формул
+%\mathtoolsset{showonlyrefs} % Нумеровать только цитируемые уравнения
+% ,showmanualtags} % для нумерации в ручном режиме
+%\RequirePackage{mathtools} % Дополнительные возможности для набора формул
+\providecommand\given{} % Для вертикальной черты, определяющей начало условия
+% Создаем команду для оформления множеств
+\newcommand\SetSymbol[1][]{%
+	\nonscript\:#1\vert
+	\allowbreak \nonscript\:	\mathopen{}}
+\DeclarePairedDelimiterX\Set[1]\{\}{%
+	\renewcommand\given{\SetSymbol[\delimsize]}	#1} 

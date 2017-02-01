@@ -1,0 +1,969 @@
+Handbook of Combinatorics, Volume 2, R.L. Graham, M. Gr\"otschel, L. Lov\'asz, 1995, Elsevier.
+@book{Graham:1996:HC:233228,
+ editor = {Graham, R. L. and Gr\"{o}tschel, M. and Lov\'{a}sz, L.},
+ title = {Handbook of Combinatorics (Vol. 2)},
+ year = {1995},
+ isbn = {0-262-07171-1},
+ publisher = {MIT Press},
+ address = {Cambridge, MA, USA},
+} 
+
+Chapter 28, Combinatorial Optimization, Gr\"{o}tschel, M. and Lov\'{a}sz, L.
+
+Page 1543: Исторические корни комбинаторной оптимизации лежат в экономических задачах:
+планирование и управление операциями и эффективное использование ресурсов.
+Вскоре после этого актуальными стали технические приложения: 
+выбор последовательности действий машин, планирование и проектирование производства.
+Сегодня мы видим, что задачи дискретной оптимизации изобилуют везде. ...
+
+Page 1567: Раздел 8. Методы линейного программирования.
+Очень удачный (успешный) способ (путь) решения задач комбинаторной оптимизации
+заключается в преобразовании их в задачи оптимизации на многогранниках
+и использовании инструментов линейного программирования.
+
+Chapter 29, Computational Complexity, Shmoys, D.B. and Tardos, \'E.
+
+Page 1604: 
+Тезис Чёрча. Любая функция, вычислимая с помощью эффективной процедуры, 
+может быть вычислена с помощью машины Тюринга.
+
+Хотя это лишь тезис, в том смысле, что любые попытки определить нечеткое понятие 
+эффективной процедуры разрушили бы цель этого тезиса, он поддерживается множеством теорем,
+так как для любого известного определения вычислимых функций показано, 
+что они вычислимы на машине Тюринга.
+
+Page 1609: 
+Полиномиальное время доказало свою исключительную полезность как теоретическая модель эффективности
+как в создании глубокой и интересной теории алгоритмов, так и в построении эффективных алгоритмов.
+
+
+
+Сложность максимальной клики O(n 2^{n/4}).
+A. Buchanan, J. L. Walteros, S. Butenko, and P. M. Pardalos. 
+Solving maximum clique in sparse graphs: an O(nm + n2^{d/4}) algorithm for d-degenerate graphs. 
+Optimization Letters, 8(5):1611–1617, 2014.
+
+
+
+Очень много интересного для первой главы (и не только) написано в диссертации Фиорини!!!
+Очень много интересного для первой главы (и не только) написано в диссертации Фиорини!!!
+
+
+Цитата об NP-полных задачах.
+Grotschel, Lovasz, and Schrijver are sympathetic to Fortnow’s viewpoint 
+in Geometric Algorithms and Combinatorial Optimization:
+
+Since we do not want to elaborate on the subtle differences between the various problem classes 
+related to the class NP we shall use the following quite customary convention. 
+In addition to all decision problems that are NP-complete, 
+we call every optimization problem NP-complete for which the associated decision problem is NP-complete.
+
+Заканчивая раздел, заметим, что сводимость по Тьюрингу будет наиболее частым инструментом нашего анализа сложности.
+To close this section we would like to remark that Turing reductions will be the most frequent tools 
+of our complexity analysis. We shall often show that a polynomial algorithm A 
+for one problem implies the existence of a polynomial time algorithm for another problem by using A as an oracle.
+
+
+Computational Complexity, Arora&Barak, 
+Page 26 (и 28),
+Тезис Черча-Тюринга в сильной форме утверждает, 
+что каждая физически реализуемая вычислительная модель может быть реализована
+(просимулирована) машиной Тюринга за счет не более чем полиномиального роста ресурсов.
+Т.е. класс P, определенный иными цивилизациями совпадает с нашим определением.
+Теоретически, существование квантовых компьютеров противоречит этому тезису.
+Тем не менее, возможность их физической реализации (точнее, возможность их масштабирования),
+несмотря на имеющийся оптимизм, пока остается под вопросом.
+
+Более того:
+
+Page 230
+"NP problems require exponential time on quantum computers."
+@article{Bennett:1997:SWQ:264393.264407,
+ author = {Bennett, Charles H. and Bernstein, Ethan and Brassard, Gilles and Vazirani, Umesh},
+ title = {Strengths and Weaknesses of Quantum Computing},
+ journal = {SIAM J. Comput.},
+ issue_date = {Oct. 1997},
+ volume = {26},
+ number = {5},
+ month = oct,
+ year = {1997},
+ issn = {0097-5397},
+ pages = {1510--1523},
+ numpages = {14},
+ url = {http://dx.doi.org/10.1137/S0097539796300933},
+ doi = {10.1137/S0097539796300933},
+ acmid = {264407},
+ publisher = {Society for Industrial and Applied Mathematics},
+ address = {Philadelphia, PA, USA},
+ keywords = {oracle quantum Turing machines, quantum Turing machines, quantum polynomial time},
+} 
+
+
+Page 63
+Aaronson S. The limits of quantum computers //Scientific American. – 2008. – Т. 298. – №. 3. – С. 62-69.
+Научно-популярная статья, написанная специалистом по теории сложности.
+Сказано о том, что для решения NP-полных задач квантовые компьютеры не намного лучше обычных.
+Кроме того, описаны некоторые научно-фантастические способы построения достаточно мощных компьютеров.
+
+Приводятся размышления на тему физической реализуемости устройства, решающего NP-полные задачи быстро. Один из экзотических вариантов предполагает создание машины времени, которая отправляла бы (обычную) ЭВМ в прошлое с тем, чтобы сэкономить время <<настоящее>>.
+Итогом всех этих размышлений является следующая мысль.
+Предполагается, что <<невозможность решения NP-полных задач за полиномиальное время на любом физическом устройстве>>,
+по-видимому, следует рассматривать как один из фундаментальных физических законов (принципов),
+вроде второго закона термодинамики или же <<невозможности передавать информацию быстрее скорости света>>.
+Как любой другой физический закон этот закон подтвержден большим числом экспериментов.
+
+
+
+Page 38
+Изучение NP-полноты включает сводимость,
+основное понятие, используемое для сравнения вычислительной сложности двух различных задач.
+
+Page 41
+P = NP -- центральный вопрос теории сложности.
+
+Page 42
+NP-трудными названы задачи распознавания (языки), к которым полиномиально сводятся все NP-языки.
+
+Page 50
+Если сведение f NP-языка L к языку L' не только удовлетворяет условию
+x \in L <=> f(x) \in L', но и предоставляет эффективное преобразование
+сертификата для x в сертификат для f(x) и обратно,
+то будем называть такую сводимость сводимостью Левина.
+Если же, кроме того, множества сертификатов для x и f(x) находятся во взаимно-однозначном соответствии 
+(связаны биекцией), то такая сводимость называется экономной.
+
+Page 54
+Многое в теории сложности и криптографии сегодня состоит в использовании сведЕния
+чтобы установить связи между несравнимыми теоретико-сложностными гипотезами.
+Почему теоретики сложности преуспевают в сведЕнии, а не в доказательстве нижних оценок для машин Тюринга?
+Возможно, творческие способности человека более приспособлены к созданию приспособлений (гаджетов) и построению алгоритмов
+(в конце концов, сведЕние --- это просто алгоритм преобразования одной задачи в другую), 
+чем к доказательству нижних оценок (сложности) для машин Тюринга.
+
+Page 57
+Вопрос соотношения P и NP можно интерпретировать так:
+1) Проверка правильности ответа обычно намного легче поиска ответа.
+2) Оценить сонату Бетховена намного легче, чем написать.
+3) Проверить доказательство намного легче, чем доказать.
+Проблема в том, что поиск ответа предполагает перебор экспоненциального множества потенциально подходящих вариантов.
+
+Page 59
+Принцип лезвия Оккама: самое простое объяснение --- наиболее верное.
+
+Page 62
+Impagliazzo R., Paturi R., Zane F. Which problems have strongly exponential complexity? 
+//Foundations of Computer Science, 1998. Proceedings. 39th Annual Symposium on. – IEEE, 1998. – С. 653-662.
+Ввели в рассмотрение понятие сводимости, сохраняющее субэкспоненциальную сложность
+и показали, в частности, что задача Клика 
+(+ Независимое множество + вершинное покрытие + k-раскраска графа + k-Выполнимость)
+явяляются полными при такой сводимости. Это означает, что, скорее всего, эта задача
+(как и многие другие) имеет порядок сложности 2^{\Omega(n)}, а не просто сверхполиномиальный.
+It then easily follows by standard strong many-one
+reductions that problems like Independent Set, k-Colorability, k-Set Cover, and
+Vertex Cover are all SERF-equivalent under several natural complexity parameters.
+...
+P. 526 (15) in Impagliazzo R., Paturi R., Zane:
+Independent Set, Vertex Cover and Clique are easily seen to
+be equivalent under strong reductions (in the number of nodes).
+
+
+Page 62
+Рассказано о том, что проблема "перебора" одинаково сильно привлекала внимание исследователей
+с обеих сторон "железного занавеса" начиная с 50-х годов. Советская часть хорошо описана в 
+Trakhtenbrot B. A. A survey of Russian approaches to perebor (brute-force searches) algorithms 
+//Annals of the History of Computing. – 1984. – Т. 6. – №. 4. – С. 384-400.
+
+Page 268
+Неконстантное монотонное свойство f графа на n вершинах означает,
+что добавление ребра к графу не может лишить его этого свойства.
+(Связность, наличие k-клики, ...)
+
+
+
+
+Papadimitriou C. H., Steiglitz K. Combinatorial Optimization: Algorithms and Complexity. New York, Mineola: Dover Publications. – 1998.
+Пападимитриу Х., Стайглиц К. Комбинаторная оптимизация. Алгоритмы и сложность. М.: Мир, 1984.
+С. 409 (Page 398)
+Термин NP-трудность используется в литературе не только для описания задач распознавания,
+про которые не известно, принадлежат ли они NP, но иногда и для описания задач оптимизации,
+варианты распознавания которых NP-полны.
+
+На с. 362 и 363 даны определения полиномиальной сводимости и полиномиального преобразования
+(т.е. все слова первого языка трансформируются в подмножество слов второго -- сводимость по Карпу),
+как частного случая. 
+Опр. полиномиального преобразования.
+Задача распознавания A полиномиально преобразуется в задачу распознавания B, 
+если по произвольной строке x можно за полиномиальное (относительно размера x) время
+построить такую строку y, что x является индивидуальной задачей из A с ответом да тогда и только тогда, 
+когда y является индивидуальной задачей задачи B с ответом да.
+
+Что интересно, понятие NP-полной задачи дано с использованием именно полиномиального преобразования.
+Далее на с. 408 говорится о том, что, "вроде как", преобразования оказалось достаточно.
+И никто не знает, увеличится ли класс NP-полных задач, если заменить полиномиальное преобразование сводимостью.
+
+В Гэри-Джонсон на с. 150 сказано о том, что Карп ввел термины класс P и класс NP и заметил,
+что теорема Кука остается справедливой, если сводимость по Тьюрингу заменить сводимостью по Карпу.
+А на с. 144 приводится определение NP-трудной задачи. Предлагается NP-трудными называть те,
+к которым сводятся по Тьюрингу NP-полные. В целом, класс задач, в которых располагаются NP-трудные,
+называется переборными задачами, которые содержат, в том числе, оптимизационные.
+
+Korte B. et al. Combinatorial optimization. – Berlin : Springer, 2012. – Т. 2.
+NP-трудными называются также и оптимизационные задачи.
+
+
+Papadimitriou C. Polytopes and complexity //Progress in Combinatorial Optimization. – 1984. – С. 295-305.
+https://books.google.ru/books?hl=ru&lr=&id=dLLiBQAAQBAJ&oi=fnd&pg=PA295&dq=papadimitriou+polytopes+and+complexity&ots=EbKQfQ0Kiu&sig=Ao-GLgHj00hDRfu_pyXeLBuNoBU&redir_esc=y#v=onepage&q=papadimitriou%20polytopes%20and%20complexity&f=false
+Хорошо известно, что симплекс алгоритм продвигается (следует, переходит) от одного базисного решения к другому, смежному с ним.
+Дело в том, что в линейной программе смежность легко проверяется
+и, фактически, в пространстве всех смежных с данным базисным решений 
+легко выполнить поиск наиболее подходящего, просто посмотрев верхнюю строку таблицы.
+Но для TSP многогранника задача проверки смежности так же трудна, как и сама задача TSP (ссылка на Пападимитриу).
+
+Section 3. The Complexity of Facets.
+
+Для целей данного раздела, формализуем задачу комбинаторной оптимизации как последовательность {P_n} многогранников
+с 0-1 вершинами, таких, что если нам дан вектор v и номер n,
+мы можем за полиномиальное время проверить, является ли v вершиной многогранника P_n.
+Примером (индивидуальной задачей, отдельным случаем) этой задачи называется тройка (n, c, B),
+где n --- номер, c --- вектор, B --- граница. 
+Цель индивидуальной задачи --- определить, имеет ли максимум линейной функции c^T x на всех вершинах P_n значение, большее, чем B.
+Очевидно, многие классические задачи комбинаторной оптимизации могут быть сформулированы таким образом.
+
+Теорема [Karp R. M., Papadimitriou C. H. On linear characterizations of combinatorial optimization problems 
+//SIAM Journal on Computing. – 1982. – Т. 11. – №. 4. – С. 620-632.]
+Пусть F --- множество гиперграней (их коэффициентов) NP-полной задачи комбинаторной оптимизации.
+Если F \in NP, то NP = co-NP.
+Важно! В этой работе дано очень похожее на мое определение (линейной) задачи комбинаторной оптимизации.
+Там же показано, что для NP-трудных задач задача отсечения NP-полна.
+Задача отсечения: для заданного номера многогранника и некоторого вектора выяснить,
+принадлежит ли вектор многограннику. Если нет -- сгенерировать отсекающую гиперплоскость.
+Т.е. в этой статье сконструирован универсальный полиномиальный алгоритм, 
+при условии, что задача отсечения имеет хорошее решение.
+
+Теорема [Papadimitriou C. H., Yannakakis M. The complexity of facets (and some facets of complexity) 
+//Proceedings of the fourteenth annual ACM symposium on Theory of computing. – ACM, 1982. – С. 255-260.]
+http://www.sciencedirect.com/science/article/pii/0022000084900680
+Задача идентификации опорной гиперплоскости для TSP D^P-полна (т.е. не проще NP-полных и coNP-полных задач).
+В качестве примера: задача точная клика (дан граф и число k, верно ли что k --- кликовое число этого графа) D^P-полна.
+В [Papadimitriou C. H., Wolfe D. The complexity of facets resolved 
+//Journal of Computer and System Sciences. – 1988. – Т. 37. – №. 1. – С. 2-13.]
+показано, что задача идентификации гиперграни для TSP также D^P-полна.
+
+Что интересно, что в [PY1982] доказана D^P-полнота для гиперграней многогранника клик графа G.
+И сказано о том, что то же самое для TSP сделать трудно (потом это было сделано в [PW1988]).
+Возможно, здесь выстрелит аффинная сводимость. Хотя нет, вряд ли, так как при аффинном сведении
+гиперграни переходят в грани "меньшей" размерности.
+
+Задача оптимизации полиномиально (по Тьюрингу) эквивалентна задаче отсечения 
+(обе работы были написаны в феврале 1980г.):
+1. Martin Gr?otschel, L?aszl?o Lov?asz, and Alexander Schrijver. The ellipsoid method and its
+consequences in combinatorial optimization. Combinatorica, 1(2):169–197, 1981.
+2. Karp R. M., Papadimitriou C. H. On linear characterizations of combinatorial optimization problems 
+//SIAM Journal on Computing. – 1982. – Т. 11. – №. 4. – С. 620-632.
+
+Schrijver A. Combinatorial optimization: polyhedra and efficiency. – Springer Science & Business Media, 2002. – Т. 24.
+Очень много исторических экскурсов.
+Page 6-7
+Применение техники линейного программирования к задачам комбинаторной оптимизации пришло вместе 
+с введением концепции линейного программирования в 1940-х и 1950-х гг. Канторовичем и Купманом.
+После разработки Данцигом в 1947 году симплекс метода, появились первые попытки применения
+техники линейного программирования к задачам комбинаторной оптимизации, часто довольно успешные.
+В частности, Данциг, Фалкерсон и Джонсон предложили метод решения задачи коммивояжера,
+основанный на линейном программировании и использующий зачаточную, комбинаторную версию метода отсекающей гиперплоскости.
+Значительное расширение и углубление, а также серьезное обоснование области полиэдральной комбинаторики
+было сделано Джеком Эдмондсом в 1960-х и 1970-х гг.
+Цитата из [Edmonds1965b]:
+Результаты этой статьи предполагают, что, применяя линейное программирование к комбинаторным задачам,
+число соответствующих линейных неравенств неважно, но важна их комбинаторная структура.
+Еще цитата:
+Я не верю, что есть хоть какая-то причина брать в качестве меры алгоритмической сложности
+задачи комбинаторной оптимизации число граней ассоциированного многогранника. 
+Далее он ссылается на многогранник паросочетаний в произвольном графе,
+у которого число гиперграней растет экспоненциально с ростом размерности.
+Сложность задачи он связывает с хорошей характеризацией линейных неравенств, описывающих полиэдр.
+
+Page 51
+Robinson в 1949 году, пытаясь решить задачу коммивояжера, нашла хороший метод решения для задачи о назначениях.
+Откуда она сделала вывод, что число допустимых (возможных, вероятных) решений не является мерой сложности задачи,
+так как у задачи о назначениях оно больше, чем у задачи коммивояжера.
+
+Развитие симплекс метода и его успешное приложение к задачам комбинаторной оптимизации
+вроде задачи о назначениях и транспортной задаче (задаче Монжа-канторовича) привели
+к многочисленным размышлениям о теоретической эффективности симплекс метода.
+
+Page 52-53
+В 1950-х гг. были разработаны эффективные методы для решения задачи о назначениях [Kuhn1955b,1956],
+задачи о кратчайшем пути [много ссылок, в т.ч. Bellman1958, Dijkstra1959, Dantzig1958-1960],
+задачи о максимальном потоке [FordFulkerson1955,1957b],
+а также частично заново открыты способы решения задачи о минимальном остовном дереве [Kruskal1956, Prim1957, Dijkstra1959].
+И даже удалось решить задачу коммивояжера для 49 городов, с использованием полиэдральных методов
+[DantzigFulkersonJohnson1954]. Но в целом многие исследователи пришли к пониманию того,
+что задача коммивояжера значительно более трудна для решения.
+
+Page 56
+Современное понятие эффективного алгоритма сформировалось в 1960-х гг.
+[Edmonds1965-1967, Cobham1965, Rabin1967].
+
+Page 57
+В 1971 г. Кук доказал NP-полноту задач Выполнимость, 3-Выполнимость и Подграф.
+И предположил, что NP \ne P.
+В 1973 г. Левин показал, что переборные задачи сводятся к задаче выполнимости.
+Широкое распространение NP-полных задач было обнаружено Карпом [1972],
+показавшим, что многие известные задачи комб. опт. NP-полны.
+Он же ввел обозначения P, NP, NP-полные в последующей работе [1975].
+
+Page 369
+Канторович, выступая с докладами о предлагаемом им способе оптимизации организации и планирования производства
+весной 1939 г. в Политехническом институте и Доме науки, несколько раз встречал возражения,
+что работа использует математические методы, а на Западе математическая школа в экономике антимарксистская
+и математика в экономике используется апологетами капитализма. 
+Это и послужило основной причиной для непубликации его работ и нераспространения его методов.
+
+
+Schrijver A. On the history of combinatorial optimization (till 1960) 
+// Handbooks in operations research and management science. – 2005. – V. 12. – P. 1--68.
+Discrete Optimization
+
+
+Bayer M. M., Lee C. W. Combinatorial aspects of convex polytopes 
+//Handbook of Convex Geometry (P. Gruber, J. Wills, eds.), North-Holland, Amsterdam. – 1993. – С. 485-534.
+Кратко и емко рассказано о триангуляциях, диаметре и комбинаторике многогранников.
+
+(C.W. Lee. Regular triangulations of convex polytopes. 
+In P. Gritzmann and B. Sturmfels, editors, Applied Geometry and Discrete Mathematics: The Victor Klee Festschrift,
+volume 4 of DIMACS Series in Discrete Math. and Theor. Comput. Sci., pages 443-456. 
+Amer. Math. Soc., Providence, 1991.
+Об этой статье также очень много рассказано в Главе 17 "SUBDIVISIONS AND TRIANGULATIONS OF POLYTOPES" Carl W. Lee
+In~J.E.~Goodman and J.~O'Rourke, editors, Handbook of Discrete and Computational Geometry.
+)
+
+Любой простой d-многогранник с n гипергранями может быть реализован как гипергрань (или ортогональная проекция)
+простого (d+1)-многогранника Q с n+1 гипергранями такого, что диаметр Q не превышает 2n - 2d.
+
+Theorem 5.11 (Lee [1991b]) Every simple d-polytope P with n facets can be
+realized as a facet of a simple (d+1)-polytope Q with n+1 facets such that the
+diameter of Q does not exceed 2n - 2d.
+
+The proof of the theorem implies that, given any linear program with
+bounded feasible region and arbitrary starting vertex, by augmenting the problem
+with one variable and one constraint an optimum vertex can be reached in
+a linear number of pivots.
+
+
+
+Computational complexity. Oded Goldreich, 2008.
+Page xvii.
+В целом, одна вычислительная задача сводится к другой, 
+если можно эффективно решить первую при условии, что имеется эффективный алгоритм решения последней.
+
+Page 3. (сноска)
+В отличие от теории сложности в других дисциплинах решение проблемы может потребовать сбора информации, отсутствующей в постановке проблемы.
+Эта информация может быть доступна из вспомогательных (прошлых) записей или м.б. получена при проведении новых экспериментов.
+Таким образом, теория сложности связана с обработкой информации и ее преобразованием из одного (данного) представления
+в другое (желаемое) представление.
+На самом деле решение вычислительной задачи это всего лишь другое представление данной информации,
+в котором ответ представлен явным, а не неявным образом.
+Таким образом, теория сложности проясняет центральный вопрос, касающийся представления,
+т.е. различие между явным и неявным в представлении.
+Более того, она предлагает способ измерения уровня неявности.
+
+Page 4.
+Теория сложности рассматривает знание (в отличие от информации) как результат трудоемких вычислений.
+Таким образом, все, что м.б. эффективно сделано кем угодно (любым человеком) не рассматривается как знание.
+В частности, результат легких вычислений примененных к публично доступной информации не рассм. как знание.
+Напротив, результат применения трудновычислимой функции к публично доступной информации является знанием,
+и если кто-нибудь сообщает вам этот результат, то он передает вам знания.
+
+Page 12.
+Автор утверждает, что существуют фундаментальное отличие между искусством и наукой,
+и это отличие состоит именно в понимании сути куска (части) работы.
+Наука связана с содержанием (а не с формой) и в поисках правды и/или понимания наука следует философии (а не искусству).
+Автор придерживается мнения, что наиболее важными аспектами научной работы являются: интуитивный вопрос, который она поднимает,
+причина, по которой поднимается этот вопрос, способ, которым формулируется вопрос,
+подход, который лежит в основе ответа и идеи, встроенные в ответ.
+Поэтому важно сообщать (озвучивать) эти аспекты работы.
+Все это становится еще более важным, если речь идет о теории сложности.
+Так как в теории сложности центральную роль играют концептуальные рассмотрения.
+Более того, у нее очень богатое концептуальное содержание.
+
+К несчастью, ее концептуальное содержание редко сообщается явным образом в книгах по этой теме.
+(Видимо, это связано с тем, что такого рода обсуждения включают постановку смелых (крутых) философских утверждений,
+слишком простых для людей, работающих в этой области.)
+
+Page 16.
+Стандартные обозначения.
+
+Page 18.
+В математике принято обсуждать объекты без спецификации их представления.
+В теории вычислений представление объектов играет центральную роль.
+В том смысле, что вычисления просто напросто преобразуют одно представление объекта 
+в другое (возможно неполное) представление того же самого объекта.
+Другими словами, преобразуют невный (имплицитный) ответ в явный (эксплицитный)
+
+Каноническое представление объекта представляет собой явное и полное (но не избыточное) описание.
+
+Даны определения строк $\{0,1\}^*$ и рациональных чисел (заменяющих действительные).
+
+Page 20.
+Теория сложности сосредоточена на том, что компьютеры НЕ могут делать,
+или, вернее, на проведении линии между тем что может быть сделано и тем что не может.
+Проведение такой линии требует точной формулировки ВСЕХ возможных вычислительных процессов.
+
+Page 21.
+Loosely speaking, an algorithm corresponds to a computer program 
+written in a high-level programming language.
+
+We consider the mapping from inputs to outputs iduced by the computation.
+Thus, a computation rule (or an algorithm) determines a function (computed by it).
+Число шагов -- временн\'ая сложность.
+
+Большинство результатов теории вычислений остаются верными независимо от используемой вычислительной модели,
+если модель "разумна" (т.е. удовлетворяет упоминаемым выше условиям простоты и может выполнять некоторые простые вычисления).
+
+Page 22.
+Определение АЛГОРИТМА.
+Алгоритм $A$ вычисляет функцию $f_A \colon \{0,1\}^* \to \{0,1\}^*$, $f_A(x) = y$, 
+если, запущенный с входом $x$, алгоритм заканчивает свою работу с выходом $y$.
+Алгоритм $A$ решает задачу (поиска или распознавания), если функция $f_A$ решает эту задачу.
+Далее вместо $f_A(x)$ будем писать $A(x)$.
+
+Машины Тьюринга удобны для анализа, но совершенно неудобны для реализации алгоритмов.
+
+Как обычно, хорошая практика требует более совершенного (утонченного) понимания,
+чем предлагает хорошая теория, но начинать нужно с теории.
+
+
+Combinatorial Algorithms
+Lecture Notes, Winter Term 10/11
+Humboldt University Berlin
+Alexander Souza
+Page 5
+An instance of a combinatorial optimization problem (COP) can formally be defined as a
+tuple I = (U, P, val, extr) with the following meaning:
+U the solution space (on which val and S are defined),
+P the feasibility predicate,
+val the objective function val : U > R,
+extr the extremum (usually max or min).
+The feasibility predicate P induces a set:
+S the set of feasible solutions: S = {X ? U : X satisfies P}.
+Our goal is to find a feasible solution where the desired extremum of val is attained. Any
+such solution is called an optimum solution, or simply an optimum. U and S are usually
+not given explicitly, but implicitly.
+
+
+Pan V. Y. Optimal and nearly optimal algorithms for approximating polynomial zeros //Computers & Mathematics with Applications. – 1996. – Т. 31. – №. 12. – С. 97-138.
+Предложен (почти) оптимальный алгоритм для нахождения всех корней многочлена степени $n$ с абсолютной точностью $2^{-b}$ 
+(относительно максимального абсолютного значения корней, или же относительно области поиска корней).
+Сложность алгоритма $O(n^2 (n+b))$ с точностью до полинома от логарифмов $\log n$ и $\log b$.
+
+Sagraloff M., Mehlhorn K. Computing real roots of real polynomials //Journal of Symbolic Computation. – 2016. – Т. 73. – С. 46-86.
+В https://arxiv.org/abs/1605.00410 предложена реализация этого алгоритма и ее сравнение с существующими алгоритмами.
+Предложен гораздо более простой алгоритм с асимптотически той же трудоемкостью, но для нахождения только действительных корней.
+Там же сформулирована следующая теорема.
+Если все коэффициенты многочлена целые и их абсолютные значения не превосходят $2^b$,
+а сам многочлен не содержит кратных корней,
+то предлагаемый алгоритм находит изолирующие эти корни интервалы за $O(n^2 (n+b))$ битовых операций 
+(с точностью до полилогарифма $\~O(n) = O(n \log^k n)$, где $k$~--- фиксированное целое).
+Избавиться от кратных корней довольно просто с помощью алгоритма David Yun (см. https://en.wikipedia.org/wiki/Square-free_polynomial)
+
+
+Гэри и Джонсон.
+
+С. 24 Любая "реальная" модель ЭВМ эквивалентна по сложности ДМТ.
+"Разумность" означает, что объем работы выполняемой в единицу времени, ограничен сверху полиномом.
+
+2.1 Задачи распознавания, языки и кодирование.
+Говорится о том, что в книге рассматриваются только "разумные" схемы кодирования,
+которые переводятся другв друга за полиномиальное время.
+Если же схема кодирования "неразумна", то возможна, например, ситуация,
+когда экспоненциальный по времени алгоритм становится полиномиальным относительно длины входа.
+
+С. 43. Таким образом (ссылка на с. 24), при доказательстве полиномиальной разрешимости задачи
+не обязательно описывать алгоритм в терминах ДМТ.
+Следуя общепринятой практике, мы будем обсуждать алгоритмы в машинно-независимом стиле,
+как будто они работают непосредственно с компонентами индивидуальной задачи 
+(графами, множествами, числами и т.д.), а не с их кодами.
+При наличии желания и терпения для любого полиномиального алгоритма можно построить
+соответствующую полиномиальную ДМТ-программу.
+
+
+
+Циглер Теория многогранников.
+
+С. 42.
+Небольшой трюк Карпа (ссылка на работу Карпа и 
+Junger M., Reinelt G., Rinaldi G. The traveling salesman problem 
+//Handbooks in operations research and management science. – 1995. – Т. 7. – С. 225-330.)
+показывает, что $ATSP_n$ аффинно изоморфен грани многогранника $TSP_{2n}$.
+
+С. 44.
+По-видимому, для практических приложений особенно важны многогранники разрезов (см. Деза и Лоран).
+Здесь же много об успехах в решении задачи коммивояжера с помощью полиэдрального подхода.
+
+С. 102. Упр. 2.6.
+Предлагается в качестве упражнения решить задачу Биллера и Сарангараджана
+о числе классов комбнаторной эквивалентности d-мерных 0/1-многогранников.
+Рассказана идея доказательства.
+
+С. 107. Упр. 2.18.
+За счет проективного преобразования можно добиться того,
+что проекция многогранника будет в точности совпадать с проекцией заранее выбранной грани.
+
+С. 119.
+Значение $\Delta(d,n)$ является нижней оценкой числа итераций,
+необходимых для симплекс-метода с любым правилом выбора ведущего элемента.
+...
+Подробности можно найти в работе Klee \& Kleinschmidt, раздел 3.
+Victor Klee; Peter Kleinschmidt.
+The d-Step Conjecture and Its Relatives
+Mathematics of Operations Research, Vol. 12, No. 4. (Nov., 1987), pp. 718-755.
+
+
+1. Kaveh Khoshkhah, Dirk Oliver Theis
+Fooling Sets and the Spanning Tree Polytope
+2. Fiorini at al.
+SMALLER EXTENDED FORMULATIONS FOR THE SPANNING TREE POLYTOPE OF BOUNDED-GENUS GRAPHS
+Компактная формулировка для многогранника остовных деревьев.
+There is a classical extended formulation by Wong/Martin [10, 13] with O(n^3) inequalities (and variables).
+@inproceedings{wong1980integer,
+  title={Integer programming formulations of the traveling salesman problem},
+  author={Wong, Richard T},
+  booktitle={Proceedings of the IEEE international conference on circuits and computers},
+  pages={149--152},
+  year={1980},
+  organization={IEEE Press Piscataway, NJ}
+}
+
+Расширенные формулировки, краткий обзор в том числе позитивных результатов.
+
+@article{rothvoss2013some,
+  title={Some 0/1 polytopes need exponential size extended formulations},
+  author={Rothvo{\ss}, Thomas},
+  journal={Mathematical Programming},
+  volume={142},
+  number={1-2},
+  pages={255--268},
+  year={2013},
+  publisher={Springer}
+}
+
+Rothvoss 2010:
+Существует семейство многогранников матроидов с экспоненциальной сложностью расширения.
+Nevertheless, it is well known that the number of matroids with ground
+set {1, . . . , n} is at least 2( n
+?n/2?)/(2n) ? 22n/(10n3/2) for n large enough [Duk03].
+In other words, there are doubly-exponentially many matroids. Using the
+same proof as for Theorem 4 we obtain:
+Corollary 5. There exists a family Mn = ({1, . . . , n}, In) of matroids such
+that xc(conv(?(In))) = 
+(2n/2/(n5/4 log(2n))).
+
+Лемма из нашей совместной работы про циклические многогранники о том, 
+что ранг (покомпонентного) произведения матриц не превосходит произведения рангов,
+уже была в работе по числам прямоугольных покрытий Fiorini Kaibel Pashkovich: Lemma 3.5 на с. 14.
+
+
+Расширенные формулировки для орбитопов упаковок и разбиений.
+Предназначение -- избавление от симметрии (увеличивающей множество одинаковых решений) в многогранниках РАСКРАСОК.
+Тут же содержатся ссылки на описание многогранников РАСКРАСОК.
+Kaibel V., Pfetsch M. Packing and partitioning orbitopes //Mathematical Programming. – 2008. – Т. 114. – №. 1. – С. 1-36.
+
+Conforti, Cornuejols, Zambelli, Extended formulations in combinatorial optimization
+P. 101
+Компактная расширенная формулировка для the cycle relaxation of the cut polytope.
+Хороший пример, где расширенная формулировка дает реальное преимущество.
+Barahona, F. (1993a). On cuts and matchings in planar graphs. Mathematical Programming, 60, 53–68.
+
+
+Многогранник (точнее, полиэдр) кратчайших путей описан в Schrijver, Chapter 13, page 198.
+
+Полиэдр кратчайших путей с компактным описанием:
+3.4. The shortest-path polyhedron (p. 33)
+@book{vohra2011mechanism,
+  title={Mechanism design: a linear programming approach},
+  author={Vohra, Rakesh V},
+  volume={47},
+  year={2011},
+  publisher={Cambridge University Press}
+}
+
+
+Перестановки, матроиды, паросочетания, цепи и т.п.
+Блокирующие пары полиэдров.
+
+@article{fulkerson1971blocking,
+  title={Blocking and anti-blocking pairs of polyhedra},
+  author={Fulkerson, Delbert Ray},
+  journal={Mathematical programming},
+  volume={1},
+  number={1},
+  pages={168--194},
+  year={1971},
+  publisher={Springer}
+}
+
+Многогранник ориентированных разрезов. Смежность вершин не определена!
+
+@article{avis2016directed,
+  title={On the directed cut cone and polytope},
+  author={Avis, David and Meagher, Conor},
+  journal={Journal of Combinatorial Optimization},
+  volume={31},
+  number={4},
+  pages={1685--1708},
+  year={2016},
+  publisher={Springer}
+}
+
+
+
+Статьи о диаметре графа многогранника.
+
+Диаметр матроида равен его рангу.
+Диаметр кратчайших путей равен двум (в обоих случаях).
+Диаметр для задачи о минимальном разрезе равен двум 
+(согласно критерию смежности из статьи Николаева любые два разреза смежны по одновершинному разрезу).
+
+Francisco Santos
+Recent progress on the combinatorial diameter of polytopes and simplicial complexes
+July 24, 2013
+
+Hirsch's motivation for raising this question (and everybody else's for studying
+it!) is that the celebrated simplex algorithm of George Dantzig [Da51], one of the
+\ten algorithms with the greatest inuence in the development of science and
+engineering in the 20th century" according to the list compiled by Jack Dongarra
+and Francis Sullivan [DS00,Na00], solves linear programs by walking along the
+graph of the feasibility region, from an initial vertex that is easy to nd (perhaps
+after a certain transformation of the program which does not aect its optimum) up
+to an optimal vertex. When an improving edge does not exist we have either found
+a ray where the functional is unbounded (proving that the LP has no optimum)
+or a local and, by convexity, global optimum.
+That is to say, the Hirsch question is closely related to the worst-case computational
+complexity of the simplex method, a question that is somehow open; we
+know the simplex method to be exponential or subexponential (in the wort case)
+with most of the pivot rules that have been proposed, where a pivot rule is the
+rule used by the method to choose the improving edge to follow. (See [KM72] for
+Dantzig's maximum gradient rule, the rst one that was solved, and [Fr11,FHZ11]
+for some recent additions, including random edge, random facet and Zadeh's least
+visited facet rule). But we do not know whether polynomial pivot rules exist. Of
+course, this is impossible (or, at least, it would require some delicate strategy to
+nd a good initial vertex) if the answer to the Hirsch question turns out to be that
+Hp(n; d) is not bounded by a polynomial.
+Observe also that, even if polynomial-time algorithms for linear programming
+are known (the most classical ones being the ellipsoid method of Khachiyan (1979)
+and the interior point method of Karmarkar (1984)), all of them work by successive
+approximation and, hence, they are not strongly polynomial. They are polynomial
+in bit-complexity when the bit-size of the input is taken into account, but they are
+not guaranteed to nish in a number of arithmetic operations that is polynomial
+in n and d alone. In contrast, a polynomial pivot rule for the simplex method
+would automatically yield a strongly polynomial algorithm for linear programming.
+This relates the Polynomial Hirsch Conjecture to one of Smale's \Mathematical
+problems for the 21st century" [Sm00], namely the existence of strongly polynomial
+algorithms for linear programming.
+
+
+Задача вычисления диаметра многогранника D^p-трудна
+@article{frieze1994complexity,
+  title={On the complexity of computing the diameter of a polytope},
+  author={Frieze, Alan M and Teng, Shang-Hua},
+  journal={computational complexity},
+  volume={4},
+  number={3},
+  pages={207--219},
+  year={1994},
+  publisher={Springer}
+}
+
+Хороший краткий обзор существующего состояния полиномиальной гипотезы Хирша.
+Верхняя оценка диаметра графа многогранника полиномиальна по размерности
+и наибольшему абсолютному значению субдетерминанта матрицы неравенств
+@article{bonifas2014sub,
+  title={On sub-determinants and the diameter of polyhedra},
+  author={Bonifas, Nicolas and Di Summa, Marco and Eisenbrand, Friedrich and H{\"a}hnle, Nicolai and Niemeier, Martin},
+  journal={Discrete \& Computational Geometry},
+  volume={52},
+  number={1},
+  pages={102--115},
+  year={2014},
+  publisher={Springer}
+}
+
+
+В Емеличев-Ковалев-Кравцов несколько страниц отведено оценке ДИАМЕТРА транспортного многогранника.
+И, вообще, в этой книге большое внимание уделяется графам многогранников.
+См., например, с.152, гл. 4, S 7, Локально целочисленные многогранники.
+
+
+@article{brightwell2006linear,
+  title={A Linear Bound On The Diameter Of The Transportation Polytope*},
+  author={Brightwell, Graham and Van den Heuvel, Jan and Stougie†, Leen},
+  journal={Combinatorica},
+  volume={26},
+  number={2},
+  pages={133--139},
+  year={2006},
+  publisher={Springer}
+}
+
+@article{costa2008diameter,
+  title={The diameter of the acyclic Birkhoff polytope},
+  author={Costa, Liliana and da Fonseca, CM and Martins, Enide Andrade},
+  journal={Linear Algebra and its Applications},
+  volume={428},
+  number={7},
+  pages={1524--1537},
+  year={2008},
+  publisher={Elsevier}
+}
+
+@article{borgwardt2013diameter,
+  title={On the diameter of partition polytopes and vertex-disjoint cycle cover},
+  author={Borgwardt, Steffen},
+  journal={Mathematical Programming},
+  volume={141},
+  number={1-2},
+  pages={1--20},
+  year={2013},
+  publisher={Springer}
+}
+
+@article{borgwardt2016diameters,
+  title={The Diameters of Network-flow Polytopes satisfy the Hirsch Conjecture},
+  author={Borgwardt, S and De Loera, JA and Finhold, E},
+  journal={arXiv preprint arXiv:1603.00325},
+  year={2016}
+}
+
+@article{todd2014improved,
+  title={An Improved Kalai--Kleitman Bound for the Diameter of a Polyhedron},
+  author={Todd, Michael J},
+  journal={SIAM Journal on Discrete Mathematics},
+  volume={28},
+  number={4},
+  pages={1944--1947},
+  year={2014},
+  publisher={SIAM}
+}
+
+
+Диаметр для полиэдра кратчайших путей в орграфе:
+Rispoli F. J. The monotonic diameter of the perfect matching and shortest path polytopes //Operations research letters. – 1992. – Т. 12. – №. 1. – С. 23-27.
+Lemma 2. Two extreme points x 4= y of SP n are neighbors if and only if G(x) U G(y) contains a unique
+cycle.
+The proof of Lemma 2 is straightforward. It is easy to see that ~(SP,) = 2 for n > 3, and 3(SP 3) = 1.
+Simply let x e y be any pair of extreme points of SP n. If n -- 3, G(x) u G(y) can have at most 1 cycle,
+thus Lemma 2 implies x and y are neighbors. If n > 3 and G(x) u G(y) contains at least 2 cycles, let z
+be the extreme point corresponding to the path from node 1 to n which is simply edge (1, n). Then
+G(x) u G(z) is precisely a cycle, as is G(y) u G(z). Therefore, x and y are both neighbors to z.
+
+В работе
+@article{rispoli1994monotonic,
+  title={The monotonic diameter of the perfect 2-matching polytope},
+  author={Rispoli, Fred J},
+  journal={SIAM Journal on Optimization},
+  volume={4},
+  number={3},
+  pages={455--460},
+  year={1994},
+  publisher={SIAM}
+}
+упоминается диаметр графа многогранника матроидов:
+It is also an easy exercise to use the greedy algorithm to prove the monotonic Hirsch
+conjecture for matroid polytopes.
+
+Оценка сверху для диаметра графа полиэдра кратчайших путей (устарела).
+Там же сказано, что этот полиэдр определен в работе форда-фалкерсона.(L. R. FORD AND D. R. FULKERSON, Flows in Networks, Princeton University Press, Princeton,
+1962.)
+@article{saigal1969proof,
+  title={A proof of the Hirsch conjecture on the polyhedron of the shortest route problem},
+  author={Saigal, Romesh},
+  journal={SIAM Journal on Applied Mathematics},
+  volume={17},
+  number={6},
+  pages={1232--1238},
+  year={1969},
+  publisher={SIAM}
+}
+Эта работа также цитируется в The d-step conjecture and its relatives (см. P. 746-747 (30-31))
+@article{klee1987d,
+  title={The d-step conjecture and its relatives},
+  author={Klee, Victor and Kleinschmidt, Peter},
+  journal={Mathematics of Operations Research},
+  volume={12},
+  number={4},
+  pages={718--755},
+  year={1987},
+  publisher={INFORMS}
+}
+А уже здесь есть очень много похожих результатов
+В частности, упоминается диаметр ридж-графа циклического многогранника (P. 750 (34))
+и нерешенная гипотеза о его величине \phi(d,n) = [n/2].
+
+Geometric Combinatorics of Transportation Polytopes
+and the Behavior of the Simplex Method
+By EDWARD DONG HUHN KIM
+
+Theorem 2.3.25 (Kleinschmidt and Onn [185]). The diameter of a lattice polytope contained
+in [0; k]d cannot exceed kd.
+Using this theorem, one can obtain a bound for the diameter of all rational d-dimensional
+polytopes with n facets. However, the bound obtained is not polynomial in n and d, and it
+does not improve on the bound in [170] of Kalai and Kleitman (see [228]).
+
+
+
+О СМЕЖНОСТИ ВЕРШИН
+
+@article{balas1975set,
+  title={On the set-covering problem: II. An algorithm for set partitioning},
+  author={Balas, Egon and Padberg, Manfred},
+  journal={Operations Research},
+  volume={23},
+  number={1},
+  pages={74--90},
+  year={1975},
+  publisher={INFORMS}
+}
+
+@inproceedings{трубин1969методе,
+  title={О методе решения задач целочисленного программирования специального вида},
+  author={Трубин, ВА},
+  booktitle={Докл. АН СССР},
+  volume={189},
+  number={5},
+  pages={952--954},
+  year={1969}
+}
+@inproceedings{trubin1969method,
+  title={On a method of solution of integer linear programming problems of a special kind},
+  author={Trubin, VA},
+  booktitle={Soviet Mathematics Doklady},
+  volume={10},
+  pages={1544--1546},
+  year={1969}
+}
+
+@article{бондаренко1993многогранники,
+  title={Многогранники с высокой плотностью графа и полиномиальная разрешимость задач комбинаторной оптимизации},
+  author={Бондаренко, ВА},
+  journal={Automation and Remote Control},
+  volume={54},
+  number={4},
+  pages={541--545},
+  year={1993}
+}
+
+В статье
+@article{brualdi1977convex,
+  title={Convex polyhedra of doubly stochastic matrices: II. Graph of $\Omega$n},
+  author={Brualdi, Richard A and Gibson, Peter M},
+  journal={Journal of Combinatorial Theory, Series B},
+  volume={22},
+  number={2},
+  pages={175--198},
+  year={1977},
+  publisher={Elsevier}
+}
+доказано, что 2-смежностные грани многогранника Биркгофа обязаны быть симплексами, если число вершин больше 6:
+THEOREM 6.1. Let F be a face of \Omega_n. Then G(F) is a complete graph if
+and only if F is a simplex or G(F) = K_6.
+
+А также показано
+CQROLLARY 6.5. Let n \ge 4 and let v \in \{q(n + 1 - q): q = 2,..., n - 1\}.
+Then G(\Omega_n) has a clique with v vertices.
+То есть у этого многогранника есть грани-симплексы на v = q(n+1-q) вершинах, где q = 2,\dots,n-1, n \ge 4.
+Т.е. максимум v = (n+1)^2/4 при нечетном n, v = n(n+2)/4 при четном n.
+То есть в точности совпадает с моей оценкой (BondBook). 
+См. также
+@article{brualdi1977convex,
+  title={Convex polyhedra of doubly stochastic matrices. I. Applications of the permanent function},
+  author={Brualdi, Richard A and Gibson, Peter M},
+  journal={Journal of Combinatorial Theory, Series A},
+  volume={22},
+  number={2},
+  pages={194--230},
+  year={1977},
+  publisher={Elsevier}
+}
+COROLLARY 3.7.
+
+Многогранники Young
+@article{onn1993geometry,
+  title={Geometry, complexity, and combinatorics of permutation polytopes},
+  author={Onn, Shmuel},
+  journal={Journal of Combinatorial Theory, Series A},
+  volume={64},
+  number={1},
+  pages={31--49},
+  year={1993},
+  publisher={Elsevier}
+}
+Многогранник P((n-1,1)) является многогранником Биркгофа.
+Показано, что в его графе есть независимые множества размера 2^{\Omega(\sqrt{n} \log n)}
+Многогранник P((n-2,2)) является 2-смежностным, причем его проекциями является многогранник коммивояжера,
+а также многогранник изоморфизма графов.
+
+Не забываем также, что \Birk(n) является гранью многогранника \MATCH(n).
+
+Многогранники упаковок множеств являются многогранниками независимых множеств \cite{Ikura:1985}.
+В 
+@article{balas1976set,
+  title={Set partitioning: A survey},
+  author={Balas, Egon and Padberg, Manfred W},
+  journal={SIAM review},
+  volume={18},
+  number={4},
+  pages={710--760},
+  year={1976},
+  publisher={SIAM}
+}
+на с. 737 сказано о том, что многогранники упаковок множеств 
+являются частным случаем многогранников разбиений множеств.
+
+Очень интересный! обзор известных результатов, в том числе и по смежности вершин
+@article{pulleyblank1989chapter,
+  title={Chapter V Polyhedral combinatorics},
+  author={Pulleyblank, William R},
+  journal={Handbooks in operations research and management science},
+  volume={1},
+  pages={371--446},
+  year={1989},
+  publisher={Elsevier}
+}
+На с. 430:
+сказано о том, что критерии смежности вершин могут быть как тривиальными (многогранник разрезов),
+так и NP-трудными (многогранник коммивояжера).
+Там же упоминается доказательство гипотезы Хирша для 0-1 многогранников.
+На c. 429:
+When a linear program is
+nondegenerate, there is a bijection between feasible bases and vertices of the
+polyhedron of feasible solutions. Indeed, in any linear program, the nondegenerate
+simplex pivots correspond exactly to moving between adjacent vertices of
+the associated polyhedron. But combinatorial optimization problems are
+notoriously degenerate! И далее пояснение.
+В частности, там сказано, что из-за вырожденности два произвольных базиса, 
+соответствующих смежным вершинам многогранника могут отстоять друг от друга на несколько шагов симплекс-метода.
+
+И там же (Внимание!) упоминаются расширенные формулировки! Чуть позже Яннакакиса (1988)!
+We close this section by noting that the two terrninal Steiner tree example of
+Ball et al. (1987) provides an example of a problem which has a compact
+formulation, but for which the natural formulation has not only exponentially
+many facets, but also has facets whose coefficients grow exponentially with the
+size of the input.
+
+Большая книга про assignment. Там есть и quadratic и multi-index assignment.
+*Recently appeared *Assignment Problems - Revised reprint
+<http://www.assignmentproblems.com/> by R. Burkard, M. Dell'Amico and S. Martello
+
+Не забываем про теорему Трубина о релаксационном многограннике. (Емеличев, с. 153)
+
+Род графа — это минимальное целое n, такое что граф может быть вложен в поверхность рода n. 
+В частности, планарный граф имеет род 0, поскольку его можно нарисовать на сфере без самопересечений. 
+http://mathworld.wolfram.com/GraphGenus.html
+The genus of a graph is the minimum number of handles 
+that must be added to the plane to embed the graph without any crossings. 
+A planar graph therefore has graph genus 0.
+
+The complete graph K_n has genus
+ gamma(K_n)=[((n-3)(n-4))/(12)] 	
+for n>=3, where [x] is the ceiling function (Ringel and Youngs 1968; Harary 1994, p. 118). 
+The values for n=1, 2, ... are 0, 0, 0, 0, 1, 1, 1, 2, 3, 4, 5, 6, 8, 10, ... (OEIS A000933).

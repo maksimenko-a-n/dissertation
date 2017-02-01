@@ -1,0 +1,177 @@
+%
+% Внимание, при компиляции возникает ошибка, 
+% связанная с выбором языка в .toc
+% Проблема решается удалением строки \select@language {russian} из thesis.toc
+% и включением декларации \nofiles.
+% Или же закомментариванием \tableofcontents, как временная мера
+% ПРАВИЛЬНЫЙ способ решения проблемы: \renewcommand\tocsectionfont{}
+%
+% Еще одна проблема -- опция times каким-то чудесным образом отключает пакет cmap
+% Проблема находится в строках 
+% \renewcommand\rmdefault{ftm} и \renewcommand\ttdefault{cmtt}
+% после строки \usepackage{pscyr} в файле disser.cls
+% Решение:
+% \input glyphtounicode.tex 
+% \pdfgentounicode=1
+%
+\documentclass[%
+doctor,         % тип документа
+natbib,         % использовать пакет natbib для "сжатия" цитирований
+subf,           % использовать пакет subcaption для вложенной нумерации рисунков
+href,           % использовать пакет hyperref для создания гиперссылок
+colorlinks=true, % цветные гиперссылки
+%noams,				% Не подключать пакеты amsmath, amssymb и amsfonts из класса.
+times         % шрифт Times как основной
+%,fixint=false  % отключить прямые знаки интегралов
+%,classified    % гриф секретности
+%,libcat        % номер УДК
+%,facsimile     % отображать факсимиле диссертанта
+]{disser}
+
+% Замена cmap
+\input glyphtounicode.tex 
+\pdfgentounicode=1
+%\usepackage{cmap} %!!! cmap не работает ни здесь ни в стилевом ф.
+
+%\usepackage{xcolor} В disser.cls нужно заменить пакет color на xcolor
+\usepackage{tikz}
+\usetikzlibrary{graphs,babel,arrows.spaced}
+%\usetikzlibrary{}
+
+\renewcommand\tocsectionfont{}
+
+\usepackage[
+  a4paper, mag=1000,
+  left=2.5cm, right=1cm, top=2cm, bottom=2cm, headsep=0.7cm, footskip=1cm
+]{geometry}
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
+
+%\usepackage{tabularx,longtable}
+
+
+%\usepackage{amsthm} % Конфликт с пакетом disser. Уже определена команда \openbox
+\usepackage[amsmath, thref, hyperref, thmmarks]{ntheorem} % Для окружений типа Теорема
+\usepackage{bm} % Для выделения жирным шрифтом математических символов
+\usepackage{array}
+
+\usepackage{paralist} % Для компактных по высоте списков (перечислений)
+
+\ifpdf\usepackage{epstopdf}\fi
+
+% Номера страниц снизу и по центру
+%\pagestyle{footcenter}
+%\chapterpagestyle{footcenter}
+
+% Точка с запятой в качестве разделителя между номерами цитирований
+%\setcitestyle{semicolon}
+
+% Ссылки на работы соискателя включаются в общий список литературы
+\let\citemy=\cite
+
+% Использовать полужирное начертание для векторов
+\let\vec=\mathbf
+
+% Путь к файлам с иллюстрациями
+\graphicspath{{fig/}}
+
+%\setcounter{tocdepth}{2} % Глубина содержания. Значение 2 вызывает ошибку
+
+\input{newcommands}
+
+
+\begin{document}
+
+% Переопределение стандартных заголовков
+%\def\contentsname{Содержание}
+%\def\conclusionname{Выводы}
+%\def\bibname{Литература}
+
+% Включение файла с общим текстом диссертации и автореферата
+% (текст титульного листа и характеристика работы).
+\input{common}
+
+% номер копии для грифа секретности
+%\copynum{1}
+% класс доступа
+%\classlabel{Для служебного пользования}
+
+% номер УДК
+%\libcatnum{12345}
+
+\title{ДИССЕРТАЦИЯ\\
+на соискание ученой степени\\
+доктора физико-математических наук}
+
+\maketitle
+
+%%
+%% Titlepage in English
+%%
+%
+%\institution{Name of Organization}
+%
+%\title{Doctoral Dissertation}
+%
+%% Topic
+%\topic{Dummy Title}
+%
+%% Author
+%\author{Author's Name}
+%
+%\specnum{01.04.05}
+%\spec{Optics}
+%
+%%\specsndnum{01.04.07}
+%%\specsnd{Condensed matter physics}
+%
+%% Scientific consultants
+%\scon{B.\,B.~Baranov}
+%\sconstatus{Professor}
+%%\sconsnd{P.\,P.~Petrov}
+%%\sconsndstatus{Professor}
+%
+%% City & Year
+%\city{Saint Petersburg}
+%\date{\number\year}
+%
+%\maketitle[en]
+
+% Содержание
+\tableofcontents
+
+% Введение
+\input{intro}
+
+% Обзор литературы
+%\input{review}
+
+% Основная часть
+%% Глава 1
+\input{polytopes}
+%% Глава 2
+\input{affine}
+
+% Заключение
+%\input{concl}
+
+% Список сокращений и условных обозначений
+%\input{defs}
+
+% Словарь терминов
+%\input{dict}
+
+% Список литературы
+\bibliography{biblio}
+\bibliographystyle{gost705s}
+%\bibliographystyle{plain}
+
+% Список иллюстративного материала
+%\listoffigures
+
+% Приложения
+%\appendix
+%\input{app-a}
+
+\end{document}
