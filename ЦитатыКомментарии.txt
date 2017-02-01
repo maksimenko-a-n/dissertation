@@ -564,6 +564,17 @@ that xc(conv(?(In))) =
 что ранг (покомпонентного) произведения матриц не превосходит произведения рангов,
 уже была в работе по числам прямоугольных покрытий Fiorini Kaibel Pashkovich: Lemma 3.5 на с. 14.
 
+Компактное расширение 7-угольника обязательно содержит дополнительную (спрятанную) вершину.
+@article{pashkovich2015hidden,
+  title={Hidden vertices in extensions of polytopes},
+  author={Pashkovich, Kanstantsin and Weltge, Stefan},
+  journal={Operations Research Letters},
+  volume={43},
+  number={2},
+  pages={161--164},
+  year={2015},
+  publisher={Elsevier}
+}
 
 Расширенные формулировки для орбитопов упаковок и разбиений.
 Предназначение -- избавление от симметрии (увеличивающей множество одинаковых решений) в многогранниках РАСКРАСОК.
