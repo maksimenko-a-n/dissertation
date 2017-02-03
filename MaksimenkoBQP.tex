@@ -527,7 +527,7 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Set packing and set partition polytopes}
+\section{Многогранники разбиений и упаковок}
 \label{sec:PackPart}
 
 %Будем придерживаться терминологии монографии \cite{Yemelichev:1981}.
@@ -629,93 +629,81 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Double covering polytopes}
+\section{Многогранники двойных покрытий}
 \label{sec:DCP}
 
-The name ``double covering polytopes'' was used in~\cite{Maksimenko:2012c}
- for a~family of polytopes considered in~\cite{Matsui:1995}.
+Название <<многогранники двойных покрытий>> было использовано в~\cite{Maksimenko:2012c} для семейства многогранников, рассмотренных Мацуи~\cite{Matsui:1995}.
 
 \begin{definition}
 \label{DefDouble}
- The \emph{double covering polytope} is the~convex hull of the~set 
+ \emph{Многогранником двойных покрытий} называется выпуклая оболочка множества 
   $$
     \DCP_{d} = \{x\in\{0,1\}^d \mid B x = \mathbf{2}\},
   $$
-  where $B\in\R^{m\times d}$ is a~0-1 matrix, 
-  $\mathbf{2}$ is the~$m$-dimensional all 2 vector,
-  and each row of $B$ contains exactly four 1's.
+  где $B\in\{0,1\}^{m\times d}$ "--- матрица, каждая строка которой содержит ровно четыре единицы, $\mathbf{2}$ "--- $m$-мерный вектор, все координаты которого равны двум.
 \end{definition}
 
-Previously in~\cite{Maksimenko:2012c, Maksimenko:2013b},
- there have been found the~following relations 
- for several families of combinatorial polytopes 
- with the~property of NP-completeness of nonadjacency relation.
+Ранее, в~\cite{Maksimenko:2012c, Maksimenko:2013b},
+были описаны следующие связи между несколькими семействами многогранников, для которых задача проверки несмежности вершин NP-полна.
 
 \begin{theorem}[\cite{Maksimenko:2012c, Maksimenko:2013b}]
 \label{Theorem2}
-The family of double covering polytopes is affinely reduced 
- to families of polytopes associated with the~following problems:
- travelling salesman,
- knapsack, 
- set covering,
- 3-satisfiability,
- cubic subgraph,
- partial ordering.
+Семейство многогранников двойных покрытий аффинно сводится к семействам многогранников следующих задач:
+ задача коммивояжера,
+ задача о рюкзаке, 
+ покрытие множества,
+ 3-выполнимость,
+ кубический граф,
+ частичное упорядочение.
 \end{theorem}
 
-Now we prove that stable set polytopes are simpler than double covering polytopes.
+Покажем, что многогранники независимых множеств проще, чем многогранники двойных покрытий.
 
 \begin{theorem}
-$\SSP_k \leA \DCP_d$ for $d = k + |E| + 1$,
-where $|E|$ is the~number of edges (inequalities) in the~equation~\eqref{SSP}. 
+$\SSP_k \leA \DCP_d$ при $d = k + |E| + 1$,
+где $|E|$ "--- число ребер (неравенств) в~\eqref{SSP}. 
 \end{theorem}
 
 \begin{proof}
-Let us look at the~equation~\eqref{SSP}.
-For every edge $\{v_i, v_j\}\in E$
- we consider auxiliary variable
+Для каждого ребра $\{v_i, v_j\}\in E$ из~\eqref{SSP}
+ введем дополнительную переменную
  $u_{ij} = 1 - y_i - y_j$, $u_{ij} \in \{0, 1\}$.
 %The number of all such variables is not greater than $k(k-1)/2$. 
-Thus every inequality $y_i + y_j \le 1$ in~\eqref{SSP} 
- can be replaced by equality
+Каждое неравенство $y_i + y_j \le 1$ в~\eqref{SSP} 
+заменим уравнением
 \begin{equation}
 \label{PrfSSP-DCP}
   y_i + y_j + u_{ij} = 1.
 \end{equation}
-Let $u_0$ be yet another auxiliary variable and let $u_0 = 1$.
-Hence the~equality~\eqref{PrfSSP-DCP} is equivalent to 
+Пусть $u_0$ "--- еще одна дополнительная переменная и пусть $u_0 = 1$.
+Следовательно, уравнение~\eqref{PrfSSP-DCP} эквивалентно
 $$
   y_i + y_j + u_{ij} + u_0 = 2.
 $$
-According to the~definition~\ref{DefDouble}, 
- a~system of such equalities together with the~requirement of integer variables 
- defines the~vertices of a~double covering polytope $\DCP_d$
- for $d = k + |E| + 1$.
-The constraint $u_0 = 1$ defines a~face of this polytope.
-Moreover, this face is affinely equivalent to the~given $\SSP_k$.
+Согласно определению~\ref{DefDouble}, 
+ система таких уравнений вместе с требованием целочисленности переменных описывает множество вершин $\DCP_d$ при $d = k + |E| + 1$.
+Ограничение $u_0 = 1$ задает грань этого многогранника.
+Более того, эта грань аффинно эквивалентна рассматриваемому многограннику $\SSP_k$.
 \end{proof}
 
-We now show that the~affine reducibility in the~opposite direction is not possible.
-Note that the~NP-completeness of adjacency relation is inherited by affine reduction
- (theorem~\ref{ThProp}).
-The family of double covering polytopes has this property~\cite{Matsui:1995}, 
- whereas for a~stable set polytope the~checking of adjacency
- is polynomial~\cite{Chvatal:1975}.
-Hence, if $P \neq NP$ then 
- $\DCP$ can not be affinely reduced to $\SSP$.
-It turns out that the~latter is true even without the~assumption $P \neq NP$.
+Покажем теперь, что аффинная сводимость в обратную сторону невозможна.
+Заметим, что NP-полнота несмежности вершин наследуется при аффинном свед\'ении
+ (теорема~\ref{ThProp}).
+Семейство многогранников двойных покрытий обладает этим свойством~\cite{Matsui:1995}, тогда как проверка смежности вершин многогранника независимых множеств полиномиальна~\cite{Chvatal:1975}.
+Следовательно, если $P \neq NP$, то семейство $\DCP$ не может быть аффинно сведено к $\SSP$.
+Оказывается, это утверждение верно и без предположения~$P \neq NP$.
 
 \begin{theorem}
 \label{ThDCPnotSSP}
-For the~double covering polytope 
+Для многогранника двойных покрытий 
 $$
 P = \conv\{x\in\{0, 1\}^4 \ | \ x_1 + x_2 + x_3 + x_4 = 2\}
 $$ 
- the~relation $P \le \SSP_k$ does not hold for any $\SSP_k$.
+соотношение $P \le \SSP_k$ не верно для любого $\SSP_k$.
 \end{theorem}
 
 \begin{proof}
-The polytope $P$ has 6 vertices 
+Многогранник $P$ имеет 6 вершин 
 $$
 \begin{aligned}
   x^1 &= (1, 1, 0, 0),\\
@@ -726,45 +714,43 @@ $$
   x^6 &= (0, 1, 1, 0).
 \end{aligned}
 $$
-They are splitted into three pairs with the~following property
+Они разбиваются на три пары со следующим свойством
 \begin{equation}
 \label{3xpairs}
 x^1 + x^2 = x^3 + x^4 = x^5 + x^6.
 \end{equation}
 
-Assume that $P$ is affine equivalent to some face $\conv\{y^1, \ldots, y^6\}$ of $\SSP_k$.
-It is clear that the~vertices $y^1, y^2, \ldots, y^6$ inherit the~property~\eqref{3xpairs}:
+Предположим, что $P$ аффинно эквивалентен некоторой грани $\conv\{y^1, \ldots, y^6\}$ многогранника $\SSP_k$.
+Очевидно, вершины $y^1, y^2, \ldots, y^6$ должны наследовать свойство~\eqref{3xpairs}:
 \begin{equation}
 \label{3pairs}
 y^1 + y^2 = y^3 + y^4 = y^5 + y^6.
 \end{equation}
-We now show that there are two more vertices $y^7$ and $y^8$ of $\SSP_k$ with
+Покажем, что в многограннике $\SSP_k$ есть еще пара вершин $y^7$ и $y^8$, для которых
 \begin{equation}
 \label{ThGoal}
   y^7 + y^8 = y^1 + y^2.
 \end{equation}
-This means that the~intersection of $\conv \{y^7, y^8\}$
- and $\conv\{y^1, \ldots, y^6\}$ is not empty.
-Hence $\conv\{y^1, \ldots, y^6\}$ is not a~face of $\SSP_k$.
+Это будет означать, что пересечение $\conv \{y^7, y^8\}$ и $\conv\{y^1, \ldots, y^6\}$ не пусто.
+То есть $\conv\{y^1, \ldots, y^6\}$ не является гранью $\SSP_k$.
 
-For the~vertices $y^1 = (y^1_1, \ldots, y^1_k)$ and $y^2 = (y^2_1, \ldots, y^2_k)$
- we consider the~set
+Итак, для вершин $y^1 = (y^1_1, \ldots, y^1_k)$ и $y^2 = (y^2_1, \ldots, y^2_k)$
+рассмотрим множество
 $$
 I = \{i\in [k] \ | \ y^1_i = y^2_i\}.
 $$
-Note that every vertex of $\SSP_k$ is a~0-1 vector.
-Thus, by~\eqref{3pairs} and~\eqref{ThGoal},
+Воспользуемся тем, что каждая вершина $\SSP_k$ является 0/1-вектором.
+Значит, из~\eqref{3pairs} и~\eqref{ThGoal} следует
 \begin{equation}
 \label{eq:8}
  y^8_i = y^7_i =  \cdots = y^2_i = y^1_i \quad \text{ for } i\in I.
 \end{equation}
-Therefore, we shall consider only those coordinates 
-which values are different for every pair of vertices:
+Далее будем рассматривать только те координаты, значения которых различны для каждой пары вершин:
 $$
  J = \{j\in [k] \ | \ y^1_j + y^2_j = 1\} = [k] \setminus I.
 $$
 
-Consider the~six sets
+Рассмотрим шесть множеств
 $$
 \begin{aligned}
   U &= \{j\in J \ | \ y^1_j = 1\}, &\quad \bar{U} &= \{j\in J \ | \ y^2_j = 1\} = J \setminus U, \\
@@ -772,8 +758,7 @@ $$
   W &= \{j\in J \ | \ y^5_j = 1\}, &\quad \bar{W} &= \{j\in J \ | \ y^6_j = 1\} = J \setminus W. \\
 \end{aligned}
 $$
-All six sets are distinct, 
- otherwise there would be identical vertices among $y^1$, $y^2$, \dots, $y^6$.
+Все шесть множеств различны, в противном случае среди $y^1$, $y^2$, \dots, $y^6$ нашлась бы пара одинаковых вершин.
 %Следовательно, $|J| \ge 3$.
 %Воспользуемся тем, 
 % что порядок следования пар и порядок вершин внутри пары не существенны.
@@ -782,7 +767,7 @@ All six sets are distinct,
 %Предположим также, что $U \cap V \cap W \neq \emptyset$.
 %Ясно, что мы всегда можем этого добиться с помощью замены
 % $V$ на $\bar{V}$ и (или) $W$ на $\bar{W}$.
-Under this condition, the~two sets
+При таком условии два множества
 %При таком условии множества
 $$
 \begin{aligned}
@@ -790,9 +775,9 @@ $$
  \bar{S} &= (\bar{U} \cap V \cap W) \cup (\bar{U} \cap \bar{V} \cap \bar{W}) \cup (U \cap V \cap \bar{W}) \cup (U \cap \bar{V} \cap W) = J \setminus S
 \end{aligned}
 $$
- differ from each of the~above six.
+отличаются от каждого из шести рассмотренных выше.
 
-Now we can define the~points $y^7$ and $y^8$:
+Определим теперь координаты точек $y^7$ и $y^8$:
 $$
 \begin{aligned}
 y^7_i &= y^8_i = y^1_i, \quad i\in I,\\
@@ -800,33 +785,29 @@ y^7_i &= 1 - y^8_i = 1, \quad i\in S,\\
 y^7_i &= 1 - y^8_i = 0, \quad i\in \bar{S}.
 \end{aligned}
 $$
-This 0-1 points differ from $y^1, y^2, \ldots, y^6$
- and equality~\eqref{ThGoal} is satisfied for them.
-It remains to prove that $y^7$ and $y^8$ belong to the~$\SSP_k$.
-That is if $y_i + y_j \le 1$ holds for $y^1$, $y^2$, $y^3$, $y^4$, $y^5$, $y^6$
- then it holds for $y^7$ and $y^8$ also.
+Эти 0/1-вектора отличаются от $y^1, y^2, \ldots, y^6$ и удовлетворяют уравнению~\eqref{ThGoal}.
+Остается доказать, что $y^7$ и $y^8$ принадлежат~$\SSP_k$.
+То есть, если $y_i + y_j \le 1$ выполнено для $y^1$, $y^2$, $y^3$, $y^4$, $y^5$, $y^6$, то оно также выполнено для $y^7$ и $y^8$.
 
-By equation~\eqref{eq:8}, this condition is satisfied for $i,j \in I$.
-This is true for $i \in I$ and $j \in J$ also, since 
+Согласно уравнению~\eqref{eq:8}, это условие выполнено для $i,j \in I$.
+Для $i \in I$ и $j \in J$ оно также верно, так как 
 $$
 \max(y^1_i + y^1_j, y^2_i + y^2_j) = y^1_i + 1 = y^7_i + 1 = \max(y^7_i + y^7_j, y^8_i + y^8_j).
 $$
-It remains to check the~condition for $i,j \in J$.
-If $i \in S$ and $j \in \bar{S}$ then $y^7_i + y^7_j = y^8_i + y^8_j = 1$
- and the~condition is fulfilled.
+Остается проверить условие для $i,j \in J$.
+Если $i \in S$ и $j \in \bar{S}$, то $y^7_i + y^7_j = y^8_i + y^8_j = 1$,
+и условие выполнено.
 
-Consider the~case $i,j \in S$.
-If $i,j \in U$ then $y^1_i = y^1_j = 1$. 
-Hence $y_i + y_j \le 1$ is violated by $y^1$ for $i,j \in U$.
-The same is true if $i$ and $j$ both belong to one of the~sets 
+Рассмотрим случай $i,j \in S$. Если $i,j \in U$, то $y^1_i = y^1_j = 1$. 
+Следовательно, $y_i + y_j \le 1$ нарушается для $y^1$ при $i,j \in U$.
+То же самое верно, если $i$ и $j$ одновременно принадлежат одному из множеств
   $\bar{U}$, $V$, $\bar{V}$, $W$, $\bar{W}$.
-But for any $i$ and $j$ in $S$ the~latter is true.
-For example, if $i \in U \cap V \cap W$ and $j \in \bar{U} \cap \bar{V} \cap W$
- then $i,j \in W$ and so on.
-Hence for any $i,j\in S$ the~inequality $y_i + y_j \le 1$ is violated
- for at least one of the~vertices $y^1, \ldots, y^6$.
+Но для любых $i$ и $j$ из $S$ последнее верно.
+Например, если $i \in U \cap V \cap W$ и $j \in \bar{U} \cap \bar{V} \cap W$,
+ то $i,j \in W$ и т.\,д.
+Таким образом, для любых $i,j\in S$ неравенство $y_i + y_j \le 1$ не выполнено по крайней мере для одной из вершин $y^1, \ldots, y^6$.
 
-The same is true for the~case $i,j \in \bar{S}$ by symmetry.
+В силу симметрии, то же самое верно и в случае $i,j \in \bar{S}$.
 \end{proof}
 
 %\begin{theorem}
