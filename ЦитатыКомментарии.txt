@@ -1,4 +1,4 @@
-Handbook of Combinatorics, Volume 2, R.L. Graham, M. Gr\"otschel, L. Lov\'asz, 1995, Elsevier.
+﻿Handbook of Combinatorics, Volume 2, R.L. Graham, M. Gr\"otschel, L. Lov\'asz, 1995, Elsevier.
 @book{Graham:1996:HC:233228,
  editor = {Graham, R. L. and Gr\"{o}tschel, M. and Lov\'{a}sz, L.},
  title = {Handbook of Combinatorics (Vol. 2)},
@@ -632,6 +632,10 @@ Barahona, F. (1993a). On cuts and matchings in planar graphs. Mathematical Progr
 
 Статьи о диаметре графа многогранника.
 
+Оценки диаметра графа не сохраняются при аффинном сравнении многогранников.
+Пример --- пирамида.
+
+
 Диаметр матроида равен его рангу.
 Диаметр кратчайших путей равен двум (в обоих случаях).
 Диаметр для задачи о минимальном разрезе равен двум 
@@ -643,8 +647,7 @@ July 24, 2013
 
 Hirsch's motivation for raising this question (and everybody else's for studying
 it!) is that the celebrated simplex algorithm of George Dantzig [Da51], one of the
-\ten algorithms with the greatest in
-uence in the development of science and
+ten algorithms with the greatest influence in the development of science and
 engineering in the 20th century" according to the list compiled by Jack Dongarra
 and Francis Sullivan [DS00,Na00], solves linear programs by walking along the
 graph of the feasibility region, from an initial vertex that is easy to nd (perhaps
@@ -657,7 +660,7 @@ complexity of the simplex method, a question that is somehow open; we
 know the simplex method to be exponential or subexponential (in the wort case)
 with most of the pivot rules that have been proposed, where a pivot rule is the
 rule used by the method to choose the improving edge to follow. (See [KM72] for
-Dantzig's maximum gradient rule, the rst one that was solved, and [Fr11,FHZ11]
+Dantzig's maximum gradient rule, the first one that was solved, and [Fr11,FHZ11]
 for some recent additions, including random edge, random facet and Zadeh's least
 visited facet rule). But we do not know whether polynomial pivot rules exist. Of
 course, this is impossible (or, at least, it would require some delicate strategy to
