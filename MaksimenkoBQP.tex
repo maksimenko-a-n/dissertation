@@ -830,184 +830,165 @@ $$
 %http://en.wikipedia.org/wiki/3-dimensional\_matching
 
 
-\section{Three index assignment polytopes}
+\section{Многогранник трехиндексной задачи о назначениях}
 \label{sec:3Ass}
 
-Consider a~ground set $S$, $|S|=m$.
-Coordinates of a~vector $x\in\R^{S\times S\times S}$
- we denote by $x(s, t, u)$, where $s,t,u\in S$.
-Three index assignment (or 3-dimensional matching) problem can be formulated 
- as the~following 0-1 programming problem:
-$$
+Пусть $S$ "--- конечное множество.
+Координаты вектора $x\in\R^{S\times S\times S}$
+будем обозначать $x(s, t, u)$, где $s,t,u\in S$.
+Трехиндексная задача о назначениях (или 3-сочетаниях) может быть сформулирована как следующая задача 0/1"~программирования:
+\[
   \sum_{s\in S} \sum_{t\in S} \sum_{u\in S} c(s,t,u) \cdot x(s,t,u) 
   \rightarrow \max,
-$$ 
+\] 
 \begin{align}
   &\sum_{s\in S} \sum_{t\in S} x(s,t,u) = 1 \quad \forall u\in S,\label{eq:ThreeBeg}\\
   &\sum_{s\in S} \sum_{u\in S} x(s,t,u) = 1 \quad \forall t\in S,\label{eq:Three2}\\
   &\sum_{t\in S} \sum_{u\in S} x(s,t,u) = 1 \quad \forall s\in S,\label{eq:Three3}\\
   &x(s,t,u) \in \{0, 1\} \quad \forall s, t, u\in S,\label{eq:ThreeEnd}
 \end{align}
-where $c(s,t,u)\in\R$ is an input vector.
-By $\TAP_m$ denote the~set of all vectors $x\in\R^{S\times S\times S}$
- satisfying restrictions~\eqref{eq:ThreeBeg}--\eqref{eq:ThreeEnd}.
-The convex hull of $\TAP_m$ is called the~\emph{(axial) three index assignment polytope}.
+где $c(s,t,u)\in\R$ "--- координаты вектора входных данных.
+Через $\TAP(m)$, $m = |S|$, обозначим множество всех векторов $x\in\R^{S\times S\times S}$, удовлетворяющих ограничениям~\eqref{eq:ThreeBeg}--\eqref{eq:ThreeEnd}.
+Выпуклая оболочка множества $\TAP(m)$ называется \emph{многогранником трехиндексной (аксиальной) задачи о назначениях}.
 
-The first results about this polytope can be found in~\cite{Euler:1987} and~\cite{Balas:1989}.
-A more recent survey can be found in~\cite{Qi:2000}.
-In the~Russian-language papers there are given the~lower bound for the~clique number
- of the~graph of $\TAP_m$~\cite{Bondarenko:2008}
- and various properties of noninteger vertices
- of relaxations of this polytope (see for example~\cite{Kravtsov:2006}).
+По-видимому, первыми работами, посвященными изучению свойств этого многогранника, являются~\cite{Euler:1987} и~\cite{Balas:1989}.
+Более свежий обзор имеется в~\cite{Qi:2000}.
+В работах Кравцова (см.~\cite{Kravtsov:2006} и ссылки в ней) изучаются свойства нецелочисленных вершин релаксаций этого многогранника.
 
-It is obvious that $\TAP_m$ is a~special case of $\PART_d$:
+Очевидно, $\TAP(m)$ является частным случаем $\PART(A)$:
 \begin{equation}
 \label{Ine3AP-PART}
-\TAP_m \leA \PART_d \quad \text{for } d=m^3.
+\TAP(m) =_A \PART(A),
 \end{equation}
-That is the~family of three index assignment polytopes is 
- affinely reduced to set partition polytopes: $\TAP \propto_A \PART$.
+где $A$ "--- $(3m\times m^3)$-матрица, образованная коэффициентами левых частей уравнений \eqref{eq:ThreeBeg}--\eqref{eq:ThreeEnd}.
+Таким образом, семейство многогранников трехиндексной задачи о назначениях аффинно сводится к многогранникам разбиений: $\TAP \propto_A \PART$.
  
-Using a~standard reduction~\cite{Garey:1979} from 3SAT to 3-dimensional matching, 
- Avis and Tiwary~\cite{Avis:2013} showed that 3SAT polytope is a~projection
- of a~face of a~three index assignment polytope.
-That is $3SAT \propto_E \TAP$ in the~sense of relation $\leE$.
-However, from inequality~\eqref{Ine3AP-PART}, theorem~\ref{ThClass1}, 
- theorem~\ref{ThDCPnotSSP} and $\DCP \propto_A 3SAT$~\cite{Maksimenko:2012c}
- it follows that the~reduction $3SAT \propto_A \TAP$ is impossible.
+Пользуясь стандартным алгоритмом свед\'ения~\cite{Garey:1979} задачи 3-выполнимость к задаче 3-сочетаний, Авис и Тивари~\cite{Avis:2013} показали, что многогранник задачи 3-выполнимость является проекцией грани многогранника $\TAP(m)$, где $m = O(kn)$, $k$ "--- число булевых переменных в задаче 3-выполнимость, $n$ "--- число дизъюнкций.
+Однако, из неравенства~\eqref{Ine3AP-PART}, теоремы~\ref{ThClass1}, 
+ теоремы~\ref{ThDCPnotSSP} и соотношения $\DCP \propto_A 3SAT$~\cite{Maksimenko:2012c} следует, что свед\'ение $3SAT \propto_A \TAP$ невозможно.
 
-Now we show, that $\SSP \propto_A \TAP$.
-Therefore, $\TAP$ lies in one equivalence class (in the~sense of $\propto_A$) 
- with $\SSP$, $\PART$, and $\PACK$.
+Покажем, что $\SSP \propto_A \TAP$.
+Таким образом, $\TAP$ окажется в одном классе эквивалентности (в смысле $\propto_A$) вместе с $\SSP$, $\PART$, and $\PACK$.
 
-For the~graph $G(V, E)$ in the~equation~\eqref{SSP}
-we denote by
+Для графа $G(V, E)$ в уравнении~\eqref{SSP} через
 $$
-W = \{v\in V \mid v\notin e \text{ for every }  e\in E\},
+W = \{v\in V \mid v\notin e \text{ для каждого }  e\in E\},
 $$
-the set of isolated vertices.
+обозначим множество изолированных вершин.
   
 
 \begin{theorem}
 \label{TheSSP-3AP}
-$\SSP_k \le \TAP_m$
- for $m = 3|E| + 2|W|$.
+$\SSP_k \le \TAP_m$ при $m = 3|E| + 2|W|$.
 \end{theorem}
 
 \begin{proof}
-The ground set $S$ for the~$\TAP_m$
- will consist of three types of elements:
+Множество $S$ в определении~$\TAP_m$ будет составлено из трех типов элементов:
 \begin{enumerate}
-\item $v$ and $\bar{v}$ for every isolated vertex $v\in W$.
+\item $v$ и $\bar{v}$ для каждой изолированной вершины $v\in W$.
 
-\item $e$ for every edge $e\in E$.
+\item $e$ для каждого ребра $e\in E$.
 
-\item $(e, v)$ for every $e\in E$ and $v \in e$.
+\item $(e, v)$ для каждого $e\in E$ и $v \in e$.
 \end{enumerate}
-Now we construct the~set of triples $Q \subset S\times S\times S$ 
- such that the~face
+Построим множество троек $Q \subset S\times S\times S$ так, что грань
 $$
  F = \big\{x \in \conv(\TAP_m) \mid x(q) = 0 \ \forall q \notin Q\big\}
 $$ 
-of $\conv(\TAP_m)$ is affinely equivalent to the~$\conv(\SSP_k)$.
+многогранника $\TAP_m$ аффинно эквивалентна многограннику $\SSP_k$.
 
-For every $v\in W$ the~set $Q$ contains four triples:
- $(v, v, v)$, $(\bar{v}, \bar{v}, \bar{v})$,
- $(v, v, \bar{v})$, $(\bar{v}, \bar{v}, v)$.
-There are no other triples containing $v$ or $\bar{v}$.
-Hence, if $x \in F$ then for every $v\in W$
- we have only two cases: 
-$$
+Для каждого $v\in W$ множество $Q$ будет содержать четыре тройки:
+\[
+(v, v, v), \quad (\bar{v}, \bar{v}, \bar{v}), \quad
+(v, v, \bar{v}), \quad (\bar{v}, \bar{v}, v).
+\] 
+Других троек, содержащих $v$ или $\bar{v}$ в $Q$ нет.
+Следовательно, если $x \in F$, то для каждого $v\in W$ возможны только два случая: 
+\[
  x(v, v, v) = x(\bar{v}, \bar{v}, \bar{v}) = 1
- \quad \text{or} \quad 
+ \quad \text{или} \quad 
  x(v, v, \bar{v}) = x(\bar{v}, \bar{v}, v) = 1.
-$$ 
+\] 
 
-Now we consider elements $e$ and $(e, v)$ of the~set $S$,
- where $e\in E$ and $v \in e$.
-For every nonisolated vertex $v \in V \setminus W$ consider 
- the~set of incident edges $E(v) = \{e_{i_1}, \ldots, e_{i_p}\}$,
- where $p=d_G(v)$ is the~degree of $v$.
-The set of triples $Q$ contains:
+Рассмотрим теперь элементы $e$ и $(e, v)$ множества $S$,
+ где $e\in E$ и $v \in e$.
+Для каждой неизолированной вершины $v \in V \setminus W$ рассмотрим множество инцидентных ей ребер $E(v) = \{e_{i_1}, \ldots, e_{i_p}\}$, где $p=d_G(v)$ "--- степень вершины $v$.
+Множество троек $Q$ содержит
 \begin{enumerate} 
-\item $\big( e, e, e \big)$ for every $e\in E$.
+\item $\big( e, e, e \big)$ для каждого $e\in E$.
 
-\item $\big( (e,v), (e,v), (e,v) \big)$ for every $e\in E$ and $v \in e$.
+\item $\big( (e,v), (e,v), (e,v) \big)$ для всех $e\in E$ и $v \in e$.
 
-\item $\big( e, e, (e,v) \big)$ for every $e\in E$ and $v \in e$.
+\item $\big( e, e, (e,v) \big)$ для всех $e\in E$ и $v \in e$.
 
 \item $\big( (e_{i_q},v), (e_{i_{q+1}},v), e_{i_q} \big)$
-   for every nonisolated $v$ and for every $e_{i_q} \in E(v)$,
-   where addition $q+1$ means to be $1 + q \mod p$.
+   для каждой неизолированной вершины $v$ и каждого $e_{i_q} \in E(v)$,
+   где сложение $q+1$ выполняется по модулю $p$.
 \end{enumerate} 
 
-%Полагая $x(u, v, w) = 0$ для всех остальных троек $(u, v, w)\notin Q$,
-% перейдем к рассмотрению соответствующей грани многогранника $\TAP_m$.
+Полагая $x(u, v, w) = 0$ для всех остальных троек $(u, v, w)\notin Q$,
+ перейдем к рассмотрению соответствующей грани многогранника $\TAP(m)$.
+Перечислим некоторые свойства её вершин.
 
-We list some properties of the~vertices of the~face $F$.
-
-Note that for every $(e,v) \in S$ the~set $Q$ contains exactly two triples
- with $(e,v)$ in the~third entry: $\big( (e,v), (e,v), (e,v) \big)$ and $\big( e, e, (e,v) \big)$.
-Hence, the~equation~\eqref{eq:ThreeBeg} for $u = (e,v)$ is converted into 
+Заметим, что для каждого $(e,v) \in S$ множество $Q$ содержит в точности две тройки с элементом $(e,v)$ в третьей компоненте: $\big( (e,v), (e,v), (e,v) \big)$ и $\big( e, e, (e,v) \big)$.
+Следовательно, уравнение~\eqref{eq:ThreeBeg} для $u = (e,v)$ принимает вид
 $$
 x\big( (e,v), (e,v), (e,v) \big) + x\big( e, e, (e,v) \big) = 1.
 $$
-That is, $x\big( (e,v), (e,v), (e,v) \big)$ is linearly expressed in $x\big( e, e, (e,v) \big)$.
+То есть, $x\big( (e,v), (e,v), (e,v) \big)$ выражается линейно через $x\big( e, e, (e,v) \big)$.
 
-Note also that for every $e \in S$ the~set $Q$ contains exactly three triples
- with $e$ in the~first entry: $\big( e, e, e \big)$, $\big( e, e, (e,v_1) \big)$, and $\big( e, e, (e,v_2) \big)$, where $e = \{v_1, v_2\}$.
-Hence, the~equation~\eqref{eq:Three3} for $s = e$ is converted into 
+Заметим также, что для каждого $e \in S$ множество $Q$ содержит ровно три тройки
+ с элементом $e$ в третьей компоненте: $\big( e, e, e \big)$, $\big( e, e, (e,v_1) \big)$ и $\big( e, e, (e,v_2) \big)$, где $e = \{v_1, v_2\}$.
+Следовательно, уравнение~\eqref{eq:Three3} при $s = e$ преобразуется в
 $$
 x\big( e, e, e \big) + x\big( e, e, (e,v_1) \big) + x\big( e, e, (e,v_2) \big) = 1.
 $$
-That is
+То есть
 $x\big( e, e, e \big) = 1 - x\big( e, e, (e,v_1) \big) - x\big( e, e, (e,v_2) \big)$
-and 
+и 
 \begin{equation}
 \label{IneProof3AP}
 x\big( e, e, (e,v_1) \big) + x\big( e, e, (e,v_2) \big) \le 1.
 \end{equation}
 
-Reasoning by analogy, we obtain the~following equation
+Рассуждая по аналогии, получаем следующее уравнение
 $$
      x\big( (e_{i_q},v), (e_{i_q},v), (e_{i_q},v) \big) 
    + x\big( (e_{i_q},v), (e_{i_{q+1}},v), e_{i_q} \big) = 1
 $$ 
-for every nonisolated $v$ and for every $e_{i_q} \in E(v)$,
-   where addition $q+1$ is performed modulo $p=d_G(v)$.
-Hence,
+для каждой неизолированной $v$ и каждого $e_{i_q} \in E(v)$,
+   где сложение $q+1$ выполняется по модулю $p=d_G(v)$.
+Следовательно,
 $$
      x\big( (e_{i_q},v), (e_{i_{q+1}},v), e_{i_q} \big) = 
      1 - x\big( (e_{i_q},v), (e_{i_q},v), (e_{i_q},v) \big) =
      x\big( e_{i_q}, e_{i_q}, (e_{i_q},v) \big).
 $$ 
-Moreover, since 
+Более того, так как
 $$
      x\big( (e_{i_{q+1}},v), (e_{i_{q+1}},v), (e_{i_{q+1}},v) \big) 
    + x\big( (e_{i_q},v), (e_{i_{q+1}},v), e_{i_q} \big) = 1,
 $$ 
-then
+то
 $$
      x\big( e_{i_{q+1}}, e_{i_{q+1}}, (e_{i_{q+1}},v) \big) 
    = x\big( e_{i_q}, e_{i_q}, (e_{i_q},v) \big).
 $$ 
-That is $x\big( e, e, (e,v) \big) = x\big( e', e', (e',v) \big)$
- for any two edges $e$ and $e'$, $v \in e$, $v \in e'$.
+Значит $x\big( e, e, (e,v) \big) = x\big( e', e', (e',v) \big)$
+ для любых двух ребер $e$ и $e'$, $v \in e$, $v \in e'$.
 
-It is not difficult to see that for the~vertices of the~face $F$ all variables $x(s,t,u)$
- are expressed linearly in terms of $x\big( e, e, (e,v) \big)$
- and an inequality~\eqref{IneProof3AP} is an inequality $y_i + y_j \le 1$
- in~\eqref{SSP}.
+Таким образом, для вершин описанной грани $F$ все переменные $x(s,t,u)$
+ выражаются линейно через $x\big( e, e, (e,v) \big)$,
+ а неравенство~\eqref{IneProof3AP} является неравенством вида $y_i + y_j \le 1$
+ в~\eqref{SSP}.
 \end{proof}
 
 
 \begin{remark}
-The obtained results can be easily generalized to the~case
- of $p$ index assignment problem ($p > 3$).
-By analogy, the~vertices $\PAP_m$ of an $p$ index assignment polytope
- are 0-1 vectors $x\in\R^{m^p}$.
-The coordinates $x_{i_1 i_2 \ldots i_p}$
- ($i_1, i_2, \ldots, i_p \in \{1,2,\ldots,p\}$) satisfy the~following equalities:
+Полученные результаты могут быть легко обобщены на случай $p$-индексной задачи о назначениях ($p > 3$).
+По аналогии, вершины $\PAP_m$ многогранника $p$-индексной задачи о назначениях являются 0/1-векторами в $\R^{m^p}$.
+Координаты $x_{i_1 i_2 \ldots i_p}$
+ ($i_1, i_2, \ldots, i_p \in \{1,2,\ldots,p\}$) каждого такого вектора удовлетворяют следующим уравнениям:
 $$
 %\begin{equation}
 \begin{aligned}
@@ -1018,16 +999,16 @@ $$
 \end{aligned}
 $$
 %\end{equation}
-It is evident that
+Очевидно,
 $$
 \PAP_m \le \PART_d, \quad \text{where } d=m^p.
 $$
-On the~other hand, the~equalities
+С другой стороны, уравнения
 $$
 x_{i_1 i_2 \ldots i_p} = 0 \quad \forall i_p \not= i_{p-1}
 $$
- determine a~face of $\PAP_m$ and this face is affinely equivalent to $\AssP{$(p-1)$-}_m$.
-Therefore, by theorem~\ref{TheSSP-3AP}
+определяют грань многогранника $\PAP_m$, аффинно эквивалентную $\AssP{$(p-1)$-}_m$.
+Таким образом, по теореме~\ref{TheSSP-3AP}
 $$
 \SSP_k \le \PAP_m \quad \text{for } m = 2k(k-1).
 $$
