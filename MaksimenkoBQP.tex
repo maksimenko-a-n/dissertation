@@ -1024,115 +1024,102 @@ $$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\section{Quadratic linear ordering polytopes
-          and~quadratic assignment polytopes}
+\section{Многогранники квадратичной задачи линейных упорядочений и квадратичной задачи о назначениях}
 \label{sec:QLOP}
 
 %Более точно, задача о квадратичном упорядочении 
 % называется <<квадратичной задачей линейного упорядочения>> \cite{Buchheim:2009}.
 %То есть, по-существу, является усложнением обычной задачи линейного упорядочения.
-We begin by describing the~linear ordering problem
- in terms of graph theory.
+Начнем с описания задачи линейного упорядочения на языке теории графов.
  
-Let $D = (V, A)$ be a~digraph, 
- where $V = \{1, 2, \ldots, m\}$ is a~vertex set.
-We assume that $D$ is complete.
-That is $(i,j) \in A$ and $(j,i) \in A$ for any $i,j \in V$, $i \neq j$.
-An acyclic tournament%
- \footnote{Each pair of vertices in a~tournament is connected by exactly one arc.}
- in digraph $D$ is called a~\emph{linear ordering}.
+Пусть $D = (V, A)$ "--- орграф, 
+ где $V = \{1, 2, \ldots, m\}$ "--- множество вершин.
+Предполагается, что орграф $D$ полный, то есть $(i,j) \in A$ и $(j,i) \in A$ для всех $i,j \in V$, $i \neq j$.
+Ациклический турнир%
+ \footnote{Каждая пара вершин турнира соединена ровно одной дугой.}
+в орграфе $D$ называется \emph{линейным упорядочением}.
 %\end{definition} 
 
-Consider a~characteristic vector $y \in \R^{m(m-1)/2}$
- for a~linear ordering $L$ in $D$.
-The coordinates $y_{ij}$, $1 \le i < j \le m$, of $y$ are
+Рассмотрим характеристический вектор $y \in \R^{m(m-1)/2}$ для линейного упорядочения $L$ in $D$. Координаты $y_{ij}$, $1 \le i < j \le m$, этого вектора определяются следующим образом:
 $$
 y_{ij} = 
 \begin{cases}
-1 &\text{for $(i,j)\in L$,}\\
-0 &\text{for $(j,i)\in L$.}
+1 &\text{если $(i,j)\in L$,}\\
+0 &\text{если $(j,i)\in L$.}
 \end{cases}
 $$
-Denote by $\LOP_m$ the~set of characteristic vectors of all linear orderings in $D$.
-The convex hull of $\LOP_m$ is called the~\emph{linear ordering polytope}. 
-$\LOP_m$ can also be defined as the~set of integer solutions $y\in\{0,1\}^{m(m-1)/2}$ 
- of the~3-dicycle inequalities (see for example~\cite{Grotschel:1985}):
+Обозначим через $\LOP_m$ множество всех характеристических векторов линейных упорядочений в~$D$.
+Выпуклая оболочка $\LOP_m$ называется \emph{многогранником линейных упорядочений}. 
+$\LOP_m$ может быть также определен как множество 0/1-векторов $y\in\{0,1\}^{m(m-1)/2}$, удовлетворяющих 3-контурым неравенствам (см., например, \cite{Grotschel:1985}):
 \begin{equation}
 \label{3cycle}
   0 \le y_{ij} + y_{jk} - y_{ik} \le 1, \quad i < j < k.
 \end{equation}
 
-In~\cite{Buchheim:2009} the~quadratic linear ordering polytope is defined as follows.
-Let
+В~\cite{Buchheim:2009} многогранник квадратичной задачи линейного упорядочения определен следующим образом. Пусть
 $$
-I = \big\{(i,j,k,l) \ | \ i<j, \ k<l, \text{ and } (i,j) \prec (k,l) \big\},
+I = \big\{(i,j,k,l) \ | \ i<j, \ k<l, \text{ и } (i,j) \prec (k,l) \big\},
 $$
-where $(i,j) \prec (k,l)$ means that either $i<k$ or $i=k$ and $j < l$.
-For every pair of distinct variables $y_{ij}$ and $y_{kl}$ there is introduced a~new variable
+где $(i,j) \prec (k,l)$ означает либо $i<k$, либо $i=k$ и $j < l$.
+Для каждой пары различных переменных $y_{ij}$ и $y_{kl}$ вводится новая переменная
 \begin{equation}
 \label{eq:QLOP}
   z_{ijkl} = y_{ij} y_{kl}, \quad (i,j,k,l) \in I.
 \end{equation}
-Denote by $\QLOP_m$ the~set of all vectors $z\in\{0,1\}^d$, 
+Обозначим через $\QLOP_m$ множество всех векторов $z\in\{0,1\}^d$, 
  $d = \binom{m}{2} \left( \binom{m}{2} + 1 \right) / 2$,
- with coordinates $y_{ij}$ and $z_{ijkl}$ satisfying conditions 
-~\eqref{3cycle} and~\eqref{eq:QLOP}.
-The convex hull of $\QLOP_m$ is called the~\emph{quadratic linear ordering polytope}.
+ с координатами $y_{ij}$ и $z_{ijkl}$, удовлетворяющих ограничениям \eqref{3cycle} и~\eqref{eq:QLOP}.
+Выпуклая оболочка множества $\QLOP_m$ называется \emph{многогранником квадратичной задачи линейного упорядочения}.
 
 \begin{theorem}[\cite{Buchheim:2009}] 
-$\QLOP_m \leA \BQP_n$ for $n = \binom{m}{2}$.
+$\QLOP_m \leA \BQP_n$ при $n = \binom{m}{2}$.
 \end{theorem} 
 
-Buchheim, Wiegele, and Zheng~\cite{Buchheim:2009} 
- exploit this result within a~branch-and-cut algorithm
- for solving the~quadratic linear ordering problem.
+Buchheim, Wiegele, и Zheng~\cite{Buchheim:2009} 
+используют этот факт в алгоритме ветвей и отсечений для решения квадратичной задачи линейного упорядочения.
 
-We show that an affine reduction in the~opposite direction is also possible.
+Покажем, что аффинное свед\'ение в обратную сторону также возможно.
 
 \begin{theorem}
 \label{ThBQP-QLOP}
-$\BQP_n \leA \QLOP_m$ for $m = 2n$.
+$\BQP_n \leA \QLOP_m$ при $m = 2n$.
 \end{theorem} 
 
 \begin{proof}
-The idea of the~proof is simple.
-$\LOP_m$ contains an $n$-dimensional cube as a~proper face.
-In the~transformation $\LOP_m$ to $\QLOP_m$ this cube turns into a~Boolean quadratic polytope.
+Идея доказательства простая.
+Среди граней $\LOP_m$ есть $n$-мерный куб.
+При преобразовании $\LOP_m$ в $\QLOP_m$ этот куб превращается в булев квадратичный многогранник.
 
 %Пусть $m = 2n$. 
-Note that equalities $y_{ij} = 0$ and $y_{ij} = 1$ 
- defines supporting hyperplanes for $\LOP_m$ and for $\QLOP_m$.
-Let
+Заметим, что равенства $y_{ij} = 0$ и $y_{ij} = 1$ определяют опорные гиперплоскости для $\LOP_m$ и $\QLOP_m$.
+Пусть
 $$
 J = \{(2i-1,2i) \mid i\in[n] \}.
 $$ 
-We set 
+Положим 
 \begin{equation}
 \label{FaceQube}
 y_{ij} = 0 \quad \text{for all } (i,j)\notin J, \ 1 \le i < j \le m.
 \end{equation}
-Only variables $y_{ij}$ are unfixed where $i$ is odd and $j = i+1$.
-Let us check 3-dicycle inequalities~\eqref{3cycle}.
-Suppose $i < j < k$, we have two cases:
+Незафиксированными остаются только переменные $y_{ij}$, где $i$ нечетно и $j = i+1$.
+Обратим внимание на 3-контурные неравенства~\eqref{3cycle}.
+Предполагая $i < j < k$, имеем два случая:
 \begin{enumerate} 
-\item If $(i,j)\notin J$ then $y_{ij} = y_{ik} = 0$.
-  Thus the~inequality~\eqref{3cycle} 
-  is transformed into $0 \le y_{jk} \le 1$. 
-\item If $(i,j)\in J$ then $i$ is odd, $j = i+1$ is even, and $k > i+1$.
-  Hence, the~inequality~\eqref{3cycle} is equivalent to $0 \le y_{ij} \le 1$.
+\item Если $(i,j)\notin J$, то $y_{ij} = y_{ik} = 0$.
+  Тогда неравенство~\eqref{3cycle} преобразуется в $0 \le y_{jk} \le 1$. 
+\item Если $(i,j)\in J$, то $i$ нечетно, $j = i+1$ четно и $k > i+1$.
+  Следовательно, неравенство~\eqref{3cycle} эквивалентно $0 \le y_{ij} \le 1$.
 \end{enumerate} 
-Therefore, $n$ variables $y_{i\, i+1}$, where $i$ is odd, 
- may take the~values 0 or 1 independently of each other.
-Consequently, hyperplanes~\eqref{FaceQube} define a~face of $\LOP_m$ 
- and this face is an $n$-dimensional cube. 
+Таким образом, $n$ переменных $y_{i\, i+1}$, где $i$ четно, 
+ могут принимать значения 0 или 1 независимо друг от друга.
+Следовательно, гиперплоскости~\eqref{FaceQube} определяют грань $\LOP_m$, являющуюся $n$-мерным кубом. 
 
-Look at the~variables $z_{ijkl}$, $(i,j,k,l) \in I$.
-If $(i,j) \notin J$ or $(k,l) \notin J$, then $z_{ijkl}=0$.
-In the~case $(i,j) \in J$ and $(k,l) \in J$
- we have $z_{ijkl}=y_{ij} y_{kl}$, 
-  and besides $y_{ij}$ and $y_{kl}$ are free variables.
+Обратим внимание на переменные $z_{ijkl}$, $(i,j,k,l) \in I$.
+Если $(i,j) \notin J$ или $(k,l) \notin J$, то $z_{ijkl}=0$.
+В случае $(i,j) \in J$ и $(k,l) \in J$ имеем $z_{ijkl}=y_{ij} y_{kl}$, 
+  и, кроме того, $y_{ij}$ и $y_{kl}$ "--- свободные переменные.
 
-Thus there is the~following nondegenerate affine map between the~face of $\QLOP_m$ and $\BQP_n$:
+Таким образом, описанная грань $\QLOP_m$ и многогранник $\BQP_n$ связаны следующим аффинным невырожденным отображением:
 $$
 \begin{aligned}
   x_{ii} &= y_{2i-1,\, 2i}, \quad 1\le i\le n,\\
@@ -1144,66 +1131,60 @@ $$
 %Thus the~face of $\QLOP_m$ is affinely equivalent to $\BQP_n$. 
 \end{proof}
 
-The story for quadratic assignment polytopes is repeated almost exactly.
+Для многогранника квадратичной задачи о назначениях история повторяется почти дословно.
 
-The set of vertices $\DAP_m$ of the~\emph{assignment polytope} (or \emph{Birkhoff polytope}) 
- consists of vectors $y\in\{0,1\}^{m\times m}$ satisfying the~conditions
+Множество вершин $\DAP_m$ \emph{многогранника назначений} (или \emph{многогранника Биркгофа}) 
+ состоит из векторов $y\in\{0,1\}^{m\times m}$, удовлетворяющих условиям
 \begin{align}
  \sum_j y_{ij} = 1, \ \forall i \in [m], \label{eq:Ass1}\\ 
  \sum_i y_{ij} = 1, \ \forall j \in [m]. \label{eq:Ass2}
 \end{align}
 
-Define new variable $z_{ijkl}$ like~\eqref{eq:QLOP}:
+Введем новые переменные $z_{ijkl}$ так же, как это было сделано в~\eqref{eq:QLOP}:
 %For every pair $y_{ij}$ and $y_{kl}$ there is introduced a~new variable
 \begin{equation}
 \label{eq:QAP}
-  z_{ijkl} = y_{ij} y_{kl}, \text{ where } (i,j) \prec (k,l).
+  z_{ijkl} = y_{ij} y_{kl}, \text{ где } (i,j) \prec (k,l).
 \end{equation}
-Denote by $\QAP_m$ the~set of all vectors $z\in\{0,1\}^d$, $d = m^2 + \binom{m^2}{2}$,
- with coordinates $y_{ij}$ and $z_{ijkl}$ satisfying conditions 
-~\eqref{eq:Ass1},~\eqref{eq:Ass2}, and~\eqref{eq:QAP}.
-The convex hull of $\QAP_m$ is called the~\emph{quadratic assignment polytope}.
-It is also useful to consider the~\emph{quadratic semi-assignment polytope}~\cite{Saito:2009}.
-In the~definition of its vertex set $\QSAP_m$ the~condition~\eqref{eq:Ass2} is omitted.
+Обозначим через $\QAP_m$ множество всех векторов $z\in\{0,1\}^d$, $d = m^2 + \binom{m^2}{2}$,
+ с координатами $y_{ij}$ и $z_{ijkl}$, удовлетворяющих условиям \eqref{eq:Ass1}, \eqref{eq:Ass2} и~\eqref{eq:QAP}.
+Выпуклая оболочка множества $\QAP_m$ называется \emph{многогранником квадратичной задачи линейных упорядочений}.
+В литературе также встречается описание \emph{многогранника квадратичных полуназначений}~\cite{Saito:2009}.
+При определении его множества верщин $\QSAP_m$ условие~\eqref{eq:Ass2} опускается.
 
 \begin{theorem}[\cite{Rijal:1995, Kaibel:1997, Saito:2009}] 
-$\QAP_m \leA \QSAP_m \leA \BQP_n$ for $n = m^2$.
+$\QAP_m \leA \QSAP_m \leA \BQP_n$ при $n = m^2$.
 \end{theorem} 
 
-This connection is used in~\cite{Kaibel:1997} for obtaining valid inequalities for $\QAP_m$.
-In particular, $\QAP_m$ is a~2-neighborly polytope (every two vertices constitute an edge of it),
-since $\BQP_n$ is 2-neighborly.
-In~\cite{Kaibel:1997} it is also shown that the~linear ordering polytope $\LOP_m$
- and the~traveling salesman polytope $\TSP_m$ are projections of $\QAP_m$:
+Эта связь используется в~\cite{Kaibel:1997} для вывода неравенств, допустимых для $\QAP_m$.
+В частности, $\QAP_m$ является 2-смежностным многогранником (то есть каждые две вершины соединены ребром многогранника), так как $\BQP_n$ 2-смежностен.
+В~\cite{Kaibel:1997} также показано, что многогранник линейных упорядочений $\LOP_m$ и многогранник коммивояжера $\TSP_m$ являются проекциями $\QAP_m$:
 $$
  \LOP_m \leE \QAP_m,  \quad  \TSP_m \leE \QAP_m.
 $$ 
-Note that the~affine reductions 
- $\LOP \propto_A \QAP$ and $\TSP \propto_A \QAP$ are impossible,
- since $\LOP_m$ is not 2-neighborly for $m \ge 3$~\cite{Young:1978}
- and $\TSP_m$ is not 2-neighborly for $m \ge 6$~\cite{Padberg:1974}.
+Заметим, что аффинные сводимости $\LOP \propto_A \QAP$ и $\TSP \propto_A \QAP$ невозможны, так как $\LOP_m$ не 2смежностен при $m \ge 3$~\cite{Young:1978},
+ а $\TSP_m$ не 2-смежностен при $m \ge 6$~\cite{Padberg:1974}.
 
 \begin{theorem}
-$\BQP_n \leA \QAP_m$ for $m = 2n$.
+$\BQP_n \leA \QAP_m$ для $m = 2n$.
 \end{theorem} 
 
 \begin{proof}
-By analogy with the~proof of theorem~\ref{ThBQP-QLOP}
- it is sufficient to show that the~Birk\-hoff polytope $\DAP_m$
- has an $n$-dimensional cube as a~face.
-Let
+По аналогии с доказательством теоремы~\ref{ThBQP-QLOP},
+ достаточно показать, что многогранник Биркгофа $\DAP_m$ содержит грань, являющуюся $n$-мерным кубом.
+Положим
 $$
 J = \big\{(i,i) \mid i\in[m]\big\} \cup \big\{(2i-1,2i) \mid i\in[n]\big\} \cup \big\{(2i,2i-1) \mid i\in[n]\big\}.
 $$ 
-Then the~equalities
+Тогда уравнения
 $$
  y_{ij} = 0 \text { for every } (i,j) \notin J
 $$
-define the~required face.
+определяют требуемую грань.
 \end{proof}
 
 
-\section{Resume}
+\section{Заключение}
 
 Boolean quadratic polytopes, cut polytopes,
  quadratic linear ordering polytopes, and quadratic assignment polytopes
