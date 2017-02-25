@@ -1637,15 +1637,70 @@ $\bar{H}_i$ будет содержать все те компоненты, соответствующие дизъюнкции которы
 Аналогичные построения проделаем с множеством $\bar{H}_i$, начав цепочку с дуги <<ложь>>, выходящей из $v_i$ (см., для примера, рис.~\ref{fig:SATTSP}).
 Итак, в каждую компоненту $D_j$ теперь входит и выходит ровно столько дуг, сколько литералов содержится в соответствующем дизъюнкте $C_j$.
 		
-	% Рисунок 1
-	\begin{figure}[tbh]
-		\begin{center}
-%			\picturea
-		\end{center}
-		\caption{Граф $D'$ для формулы 
-			$(u_1\vee\bar{u}_2)\wedge(\bar{u}_1\vee\bar{u}_2\vee u_3)$.}
-		\label{fig:SATTSP}
-	\end{figure}
+\begin{figure}[tbh]
+\centering
+\tikzset{small circle/.style={inner sep = 1.5pt,draw,circle}}
+\begin{tikzpicture}[scale=1.9,
+>={Stealth[scale width=0.8]} % Определяем вид стрелок
+]
+%\node[small circle,densely dotted] (u) at (-2,0) {};	
+\node[small circle] (v3) at (0,1) {};	
+\node[small circle] (v2) at (0,0) {};	
+\node[small circle] (v1) at (0,-1) {};	
+\node[small circle] (v12) at (2.2,0) {};	
+\node[small circle] (w12) at (3.2,0) {};	
+\node[small circle] (v11) at (2.2,-1) {};	
+\node[small circle] (w11) at (3.2,-1) {};	
+\node[small circle] (v23) at (5,1) {};	
+\node[small circle] (w23) at (6.5,1) {};	
+\node[small circle] (v22) at (4.5,0) {};	
+\node[small circle] (w22) at (6.0,0) {};	
+\node[small circle] (v21) at (5,-1) {};	
+\node[small circle] (w21) at (6.5,-1) {};	
+\node[small circle,densely dotted] (w1) at (8,1) {};	
+\node[small circle,densely dotted] (w3) at (8,0) {};	
+\node[small circle,densely dotted] (w2) at (8,-1) {};	
+
+\draw[->] (v3) node[above] {$v_3$} -- node[pos=0.03,above right] {$u_3 = \text{истина}$} (v23) node[above] {$v_{23}$};
+\draw[->] (v23) -- (w23) node[above] {$w_{23}$};
+\draw[->] (w23) -- (w1) node[right] {$v_1$};
+
+\draw[->] (v2) node[below] {$v_2$} -- node[pos=0.075,above right] {$u_2 = \text{ложь}$} (v12) node[above] {$v_{12}$};
+\draw[->] (v12) -- (w12) node[above] {$w_{12}$};
+\draw[->] (w12) -- (v22) node[above left] {$v_{22}$};
+\draw[->] (v22) -- (w22) node[above left] {$w_{22}$};
+\draw[->] (w22) -- (w3) node[right] {$v_3$};
+
+\draw[->] (v1) node[below left] {$v_1$} -- node[pos=0.075,above right] {$u_1 = \text{истина}$} (v11) node[below] {$v_{11}$};
+\draw[->] (v11) -- (w11) node[below] {$w_{11}$};
+\draw[->] (v21) node[below] {$v_{21}$} -- (w21) node[below] {$w_{21}$};
+\draw[->] (w21) -- (w2) node[right] {$v_2$};
+
+\draw[->] (v3) to[bend right] node[below,sloped] {$u_3 = \text{ложь}$} (v1);
+\draw[->] (v2) to[bend right] (v3);
+\draw[->] (v1) to[bend right] node[pos=0.25,above,sloped] {$u_1 = \text{ложь}$} (v21);
+\draw[->] (w11) to[bend right] (w2);
+
+\draw[->] (v11) to[bend left] (v12);
+\draw[->] (v12) to[bend left] (v11);
+\draw[->] (w11) to[bend right] (w12);
+\draw[->] (w12) to[bend right] (w11);
+
+\draw[->] (v21) to (v22);
+\draw[->] (v22) to (v23);
+\draw[->] (v23) to[bend left] (v21);
+
+\draw[->] (w21) to[bend right] (w23);
+\draw[->] (w23) to (w22);
+\draw[->] (w22) to (w21);
+
+\draw[dotted] ($(v12)!0.5!(w11)$) node {$D_1$} circle (1.05); 
+\draw[dotted] ($(v23)!0.5!(w21)!0.06!(v22)$) circle (1.65); 
+\draw ($(v21)!0.5!(w22)$) node[right] {$D_2$}; 
+\end{tikzpicture}
+\caption{Граф $D'$ для формулы $(u_1\vee\bar{u}_2)\wedge(\bar{u}_1\vee\bar{u}_2\vee u_3)$.}
+\label{fig:SATTSP}
+\end{figure}
 	
 Определим внутреннее устройство компоненты $D_j$.
 Она состоит из вершин $v_{jl}$ и $w_{jl}$, $1\le l \le p_j$, где $p_j$ "--- число литералов в дизъюнкте $C_j$.
