@@ -1,4 +1,10 @@
-﻿Handbook of Combinatorics, Volume 2, R.L. Graham, M. Gr\"otschel, L. Lov\'asz, 1995, Elsevier.
+﻿Google's D-Wave 2X Quantum Computer 100 Million Times Faster Than Regular Computer Chip 
+http://www.techtimes.com/articles/114614/20151209/googles-d-wave-2x-quantum-computer-100-million-times-faster-than-regular-computer-chip.htm
+The D-Wave 2X computer runs on 1,097 qubits, making it best suitable for optimization problems. 
+Optimization problems are, in practical terms, instances when scientists have to find the best way to sift 
+through a number of possible solutions.
+
+Handbook of Combinatorics, Volume 2, R.L. Graham, M. Gr\"otschel, L. Lov\'asz, 1995, Elsevier.
 @book{Graham:1996:HC:233228,
  editor = {Graham, R. L. and Gr\"{o}tschel, M. and Lov\'{a}sz, L.},
  title = {Handbook of Combinatorics (Vol. 2)},
