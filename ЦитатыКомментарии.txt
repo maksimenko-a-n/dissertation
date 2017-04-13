@@ -557,14 +557,11 @@ There is a classical extended formulation by Wong/Martin [10, 13] with O(n^3) in
 
 Rothvoss 2010:
 Существует семейство многогранников матроидов с экспоненциальной сложностью расширения.
+(То есть, это пример "полиномиально разрешимой" задачи с экспоненциальной сложностью расширения.)
 Nevertheless, it is well known that the number of matroids with ground
-set {1, . . . , n} is at least 2( n
-?n/2?)/(2n) ? 22n/(10n3/2) for n large enough [Duk03].
-In other words, there are doubly-exponentially many matroids. Using the
-same proof as for Theorem 4 we obtain:
-Corollary 5. There exists a family Mn = ({1, . . . , n}, In) of matroids such
-that xc(conv(?(In))) = 
-(2n/2/(n5/4 log(2n))).
+set {1, . . . , n} is at least 2( n?n/2?)/(2n) ? 22n/(10n3/2) for n large enough [Duk03].
+In other words, there are doubly-exponentially many matroids. Using the same proof as for Theorem 4 we obtain:
+Corollary 5. There exists a family Mn = ({1, . . . , n}, In) of matroids such that xc(conv(?(In))) = (2n/2/(n5/4 log(2n))).
 
 Лемма из нашей совместной работы про циклические многогранники о том, 
 что ранг (покомпонентного) произведения матриц не превосходит произведения рангов,
