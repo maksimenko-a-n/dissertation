@@ -1,4 +1,7 @@
-﻿Google's D-Wave 2X Quantum Computer 100 Million Times Faster Than Regular Computer Chip 
+﻿НЕ ЗАБЫТЬ!:
+1. 
+
+Google's D-Wave 2X Quantum Computer 100 Million Times Faster Than Regular Computer Chip 
 http://www.techtimes.com/articles/114614/20151209/googles-d-wave-2x-quantum-computer-100-million-times-faster-than-regular-computer-chip.htm
 The D-Wave 2X computer runs on 1,097 qubits, making it best suitable for optimization problems. 
 Optimization problems are, in practical terms, instances when scientists have to find the best way to sift 
@@ -459,7 +462,8 @@ not given explicitly, but implicitly.
 
 
 
-Pan V. Y. Optimal and nearly optimal algorithms for approximating polynomial zeros //Computers & Mathematics with Applications. – 1996. – Т. 31. – №. 12. – С. 97-138.
+Pan V. Y. Optimal and nearly optimal algorithms for approximating polynomial zeros 
+//Computers & Mathematics with Applications. – 1996. – Т. 31. – №. 12. – С. 97-138.
 Предложен (почти) оптимальный алгоритм для нахождения всех корней многочлена степени $n$ с абсолютной точностью $2^{-b}$ 
 (относительно максимального абсолютного значения корней, или же относительно области поиска корней).
 Сложность алгоритма $O(n^2 (n+b))$ с точностью до полинома от логарифмов $\log n$ и $\log b$.
@@ -906,6 +910,23 @@ Then G(\Omega_n) has a clique with v vertices.
   publisher={Elsevier}
 }
 COROLLARY 3.7.
+
+In this paper we study combinatorial types LL of faces of a Birkhoff polytope. The Birkhoff dimension bd(L)bd(L) of LL is the smallest nn such that BnBn has a face with combinatorial type LL.
+
+By a result of Billera and Sarangarajan, a combinatorial type L of a d-dimensional face  appears in some BkBk for k≤2d, so bd(L)≤2d. 
+We will characterize those types with bd(L)≥2d−3, and we prove that any type with bd(L)≥d 
+is either a product or a wedge over some lower dimensional face. 
+Further, we computationally classify all d-dimensional combinatorial types for 2≤d≤8.
+@article{paffenholz2015faces,
+  title={Faces of Birkhoff Polytopes},
+  author={Paffenholz, Andreas},
+  journal={The Electronic Journal of Combinatorics},
+  volume={22},
+  number={1},
+  pages={P1.67},
+  year={2015}
+}
+
 
 Многогранники Young
 @article{onn1993geometry,
