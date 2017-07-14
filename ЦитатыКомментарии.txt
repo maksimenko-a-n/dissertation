@@ -1,5 +1,22 @@
-﻿НЕ ЗАБЫТЬ!:
-1. 
+﻿
+@inproceedings{goos2016extension,
+  title={Extension complexity of independent set polytopes},
+  author={G{\"o}{\"o}s, Mika and Jain, Rahul and Watson, Thomas},
+  booktitle={Foundations of Computer Science (FOCS), 2016 IEEE 57th Annual Symposium on},
+  pages={565--572},
+  year={2016},
+  organization={IEEE}
+}
+Abstract: We exhibit an n-node graph whose independent
+set polytope requires extended formulations of size exponential
+in Ω(n/ log n). Previously, no explicit examples of ndimensional
+0/1-polytopes were known with extension complexity
+larger than exponential in Θ(√n). Our construction
+is inspired by a relatively little-known connection between
+extended formulations and (monotone) circuit depth.
+
+В диссертации Kim E. D. Structural complexity of adjacency on 0-1 convex polytopes
+достаточно подробно обсуждается гипотеза Хирша.
 
 Google's D-Wave 2X Quantum Computer 100 Million Times Faster Than Regular Computer Chip 
 http://www.techtimes.com/articles/114614/20151209/googles-d-wave-2x-quantum-computer-100-million-times-faster-than-regular-computer-chip.htm
