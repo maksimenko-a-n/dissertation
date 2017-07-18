@@ -31,11 +31,12 @@ times         % шрифт Times как основной
 % Замена cmap
 \input glyphtounicode.tex 
 \pdfgentounicode=1
-%\usepackage{cmap} %!!! cmap не работает ни здесь ни в стилевом ф.
+%\usepackage{cmap} %!!! cmap не работает ни здесь ни в стилевом файле
 
 %\usepackage{xcolor} В disser.cls нужно заменить пакет color на xcolor
 \usepackage{tikz}
 \usetikzlibrary{calc, graphs,babel,arrows.spaced, arrows.meta, bending}
+\usetikzlibrary{shapes.misc} % for cross
 %\usetikzlibrary{}
 
 \renewcommand\tocsectionfont{}

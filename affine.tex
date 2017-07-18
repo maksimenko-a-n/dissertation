@@ -10,7 +10,7 @@
 \begin{flushright}
 При изучении наук примеры полезнее правил.\\ \emph{И.~Ньютон}
 \end{flushright}
-
+\bigskip
 %\hfill
 %\begin{minipage}{0.4\textwidth}
 %	При изучении наук примеры полезнее правил.
@@ -19,6 +19,86 @@
 %	\end{flushright}
 %\end{minipage}
 
+В предыдущей главе было показано, что семейства многогранников независимых множеств, многогранников разбиений и многогранников упаковок эквивалентны в смысле аффинной сводимости, а семейство булевых квадратичных многогранников аффинно сводится к ним. Причем сводимость $\Stable \propto_A \BQP$ невозможна.
+В этой главе будет доказан ряд аналогичных утверждений для часто встречаемых в литературе семейств многогранников. Выявленные взаимосвязи (за исключением последнего раздела главы) изображены на рис.~\ref{fig:AffTree}. Каждая стрелка означает аффинную сводимость семейства многогранников, расположенного в начале стрелки, к семейству многогранников, на которое указывает стрелка. Перечеркнутая (крестом) стрелка означает, что аффинная сводимость в данном направлении невозможна. Сплошные стрелки "--- известные (или имеющие простое доказательство) результаты. Пунктирные стрелки "--- результаты, выносимые на защиту. Для семейства многогранников двойных покрытий и других семейств, расположенных ниже его на рис.~\ref{fig:AffTree}, задача проверки несмежности вершин NP-полна. Для семейств, расположенных выше, эта задача полиномиально разрешима. Исключением являются многогранники деревьев Штейнера, для которых статус этой задачи не установлен.
+
+\tikzset{cross/.style={cross out, draw=black, minimum size=2*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+%default radius will be 4pt. 
+cross/.default={4pt}}
+\begin{figure}[tbh]
+\centering
+\begin{tikzpicture}[scale=1.3, >=stealth', thick] %, radius=2pt, delta angle=180]
+\label{hierarchy}
+\tikzstyle{every node}=[rounded corners,text centered,draw=black]
+
+\node (Cut) at (-4.1, 1.3) {\hyperref[def:CutPolytope]{Разрезы}};
+\node (BQuadr) at (0, 1.3) {\hyperref[eq:BQP]{Булево квадр. прогр.}};
+\node (QAss) at (4.1, 1.3) {\hyperref[eq:QAP]{Квадр. назначения}};
+\draw[<->] (Cut) to (BQuadr);
+\draw[->] (QAss) to[out=175,in=5] (BQuadr);
+\draw[->,dashed] (BQuadr) to[out=-5,in=-175] (QAss);
+
+%\tikzstyle{every node}=[rounded corners,text centered,draw=black,fill=lightyellow]
+
+\node (3Assign) at (4.4, -0.95) {\hyperref[sec:3Ass]{3-назначения}};
+\node (Color) at (2.2, 0) {\hyperref[sec:Color]{Раскраска графа}};
+\node (SS) at (0, -1.3) {\hyperlink{def:Stable}{Независ. множ.}};
+%			\draw[->,draw=red] (Cut) to (Part);
+\draw[->,dashed] (BQuadr) to[out=-100,in=100] (SS);
+\draw[->] (SS) to[out=80,in=-80] node[cross] {} (BQuadr);
+\node (Pack) at (-3.0, -1.3) {\hyperlink{def:Pack}{Упаковки}};
+\node (SetPart) at (-1.7, 0) {\hyperref[eq:Part]{Разбиения}};
+\draw[->] (Pack) to (SS);
+\draw[->] (SetPart) to (Pack);
+\draw[->] (SS) to (SetPart);
+\draw[->] (SS) to[out=25,in=-140] (Color);
+\draw[->,dashed] (Color) to[out=-155,in=40] (SS);
+\draw[->] (3Assign) to[out=180,in=10] (SS);
+\draw[->,dashed] (SS) to[out=0,in=-170] (3Assign);
+
+%\tikzstyle{every node}=[rounded corners,text centered,draw=black,fill=lightgray]
+
+\node (Steiner) at (3.9, -1.95) {\hyperref[sec:SteinerTree]{Деревья Штейнера}};
+\draw[->,dashed] (SS) to (Steiner);
+
+\node (LOP) at (-4.6, 0) {\hyperref[sec:LOP]{Лин. упоряд.}};
+\draw[->,dashed] (BQuadr) to[out=-172,in=30] (LOP);
+\draw[->] (LOP) to node[cross]{} (BQuadr);
+
+%\tikzstyle{every node}=[rounded corners,text centered,draw=black,fill=lightgreen]
+
+\node (DCover) at (0, -2.6) {\hyperref[def:DCP]{Двойные покр.}};
+\draw[->,dashed] (SS) to[out=-110,in=110] (DCover);
+\draw[->,dashed] (DCover) to[out=70,in=-70] node[cross] {} (SS);
+\draw[->,dashed] (LOP) to[out=-135,in=180] (DCover);
+
+\node (Cover) at (-1.5, -5.2) {\hyperref[def:Cover]{Покрытия}};
+\draw[->] (DCover) to[out=-130,in=75] (Cover);
+\draw[->] (Cover) to[out=55,in=-110] node[cross,rotate=-30] {} (DCover);
+\node (Part) at (-3.0, -3.9) {\hyperref[eq:KnapEq]{Разбиение чисел}};
+\draw[->] (DCover) to (Part);
+\node (Cubic) at (3.2, -3.9) {\hyperref[def:Cubic]{Кубические подграфы}};
+\draw[->,dashed] (DCover) to (Cubic);
+
+\node (Knapsack) at (-5.05, -5.2) {\hyperref[eq:KNAP]{Рюкзак}};
+\draw[->] (Part) to (Knapsack);
+\node (3SAT) at (1.0, -5.2) {\hyperref[subsec:k-Sat&POP]{3-выполн.}};
+\draw[->,dashed] (DCover) to (3SAT);
+
+\node (Assign) at (-3.8, -6.5) {\hyperref[def:CAP]{Назначения с огранич.}};
+\draw[->,dashed] (Part) to (Assign);
+\node (ATSP) at (1.0, -6.5) {\hyperref[sec:Travelling]{Коммивояжер}};
+\draw[->,dashed] (3SAT) to[out=-110,in=110] (ATSP);
+\draw[->] (ATSP) to[out=70,in=-70] node[cross] {} (3SAT);
+
+\node (Order) at (4.15, -5.2) {\hyperlink{def:POP}{Частич. упоряд.}};
+\draw[<->] (3SAT) to (Order);
+\node (Path) at (3.9, -6.5) {\hyperlink{def:PathPolytope}{$s$-$t$ путь}};
+\draw[->] (ATSP) to (Path);
+\end{tikzpicture}
+\caption{Аффинная сводимость многогранников NP-трудных задач}
+\label{fig:AffTree}
+\end{figure}
 
 
 \section{Многогранники покрытий и двойных покрытий}
@@ -26,15 +106,17 @@
 
 По аналогии с многогранниками упаковок и разбиений множества,
 \emph{многогранником покрытий множества} называется выпуклая оболочка множества
-\[
+\begin{equation*}
+\label{def:Cover}
 \Cover(M) = \Set*{\bm{x}\in\{0,1\}^n \given M \bm{x} \ge \bm{1}},
 \quad \text{где } M\in\{0,1\}^{m\times n}.
-\]
+\end{equation*}
 
 \emph{Многогранником двойных покрытий} будем называть выпуклую оболочку множества
-\[
+\begin{equation*}
+\label{def:DCP}
 \DCP(B) =  \Set*{\bm{x}\in\{0,1\}^n \given B \bm{x} = \bm{2}},
-\]
+\end{equation*}
 где $B \in \{0,1\}^{m\times n}$, причем каждая строка матрицы $B$ содержит ровно четыре единицы и не имеет нулевых столбцов.
 По-видимому, впервые это семейство многогранников было рассмотрено Мацуи~\cite{Matsui:1995}.
 Им же была установлена связь между многогранниками покрытий и двойных покрытий.
@@ -394,6 +476,7 @@ $\DCP \npropto_A \Stable$ и $\Cover \npropto_A \Stable$.
 Пусть $\bm{a} \in \Z^{n\times n}$, $b \in Z$.
 \emph{Многогранник задачи о назначениях с ограничением} определяется как выпуклая оболочка множества
 \begin{equation*}
+\label{def:CAP}
 \CAP(\bm{a},b) = \Set*{\bm{x} \in \Birk(n) \given \bm{a}^T \bm{x} = b},
 \end{equation*}
 где $\Birk(n)$ "--- многогранник Биркгофа.
@@ -471,7 +554,7 @@ a_p,& \text{если $i=j=2p$, $p\in[n]$},\\
 Ранее, Фиорини~\cite{Fiorini:2003} доказал этот факт (NP-полноты несмежности вершин) непосредственно. 
 В той же работе Фиорини показано, что многогранники задачи о 3"~выполнимости тесно связаны с многогранниками задачи о частичном упорядочивании.
 Сформулируем ее на языке теории графов. 
-Подграф $D' = (V, A')$ полного орграфа $D = (V, A)$ будем называть \emph{частичным порядком}, если он ацикличен и транзитивен:
+Подграф $D' = (V, A')$ полного орграфа $D = (V, A)$ будем называть \emph{\hypertarget{def:POP}{частичным порядком}}, если он ацикличен и транзитивен:
 \[
 ((u, v)\in A') \& ((v, w)\in A') \Rightarrow (u, w)\in A'.
 \]
@@ -548,9 +631,10 @@ x_i + \bar{x}_i \ge 1.
 
 Пусть $G=(V,E)$ "--- полный граф на $k$ вершинах и пусть $T_k$ "--- множество всех его кубических подграфов. (Напомним, что степень каждой вершины кубического графа равна трем.)
 \emph{Многогранником кубических подграфов} называется выпуклая оболочка множества 
-\[
+\begin{equation*}
+\label{def:Cubic}
 \Cubic(k) = \Set*{\chi(H)\in\{0,1\}^E \given H \in T_k}.
-\]
+\end{equation*}
 
 Известно, что задача проверки несмежности вершин этого многогранника NP-полна~\cite{Bondarenko:1996}.
 Покажем, что многогранники двойных покрытий являются гранями этого многогранника.
@@ -687,14 +771,14 @@ y_{ij} + \bar{y}_{ij} + z + h = 2.
 y_{ij} + y_{jk} + \bar{y}_{ik} + t_{ijk} = 2,
 \end{equation}
 где $t_{ijk}$~--- еще одна дополнительная переменная.
-С одной стороны, система из $m(m-1)(m+1)/6$ уравнений \eqref{eq:lopDCP1} и \eqref{eq:lopDCP2} определяет некоторый многогранник двойных покрытий.
+С одной стороны, система из $m(m-1)(m+1)/6$ уравнений~\eqref{eq:lopDCP1} и~\eqref{eq:lopDCP2} определяет некоторый многогранник двойных покрытий.
 С другой стороны, в пересечении опорных гиперплоскостей $z=0$ и $h=1$
 находится грань этого многогранника, аффинно эквивалентная $\LOP(m)$.
 В этой связи заметим, что многогранники двойных покрытий (во всяком случае, некоторые из них) едва ли могут быть гранями $\LOP(m)$, так как критерий смежности вершин последних полиномиален~\cite{Young:1978}.
 
 Покажем, что $\LOP(2n)$ содержит в качестве грани булев квадратичный многогранник $\BQP(n)$.
 
-\begin{theorem}
+\begin{theorem}[\cite{Maksimenko:2017LOP}]
 $\BQP(n) \lea \LOP(2n)$, $n\in\N$.
 \end{theorem}
 \begin{proof}
@@ -786,6 +870,7 @@ x_{ij} &= y_{2j-1, 2j} - y_{2i, 2j}, & 1 &\le i < j \le [n].
 
 
 \subsection{Многогранники деревьев Штейнера}
+\label{sec:SteinerTree}
 
 Пусть $G=(V,E)$ "--- реберно"=взвешенный граф, а $T$ "--- некоторое подмножество его вершин. \emph{Деревом Штейнера на $T$} называется подграф $G' = (V',E')$, $T\subseteq V'$, графа $G$, являющийся деревом. Задача Штейнера (в графе) заключается в отыскании дерева Штейнера с минимальным суммарным весом ребер.
 \emph{Многогранником деревьев Штейнера} называется выпуклая оболочка множества $\Steiner(G,T) \subseteq \{0,1\}^E$ всех характеристических векторов деревьев Штейнера на $T$~\cite{Chopra:1994}.
@@ -1149,7 +1234,7 @@ $d = \binom{m}{2} \left( \binom{m}{2} + 1 \right) / 2$,
 \sum_j y_{ij} = 1, \ \forall i \in [m], \label{eq:Ass1}\\ 
 \sum_i y_{ij} = 1, \ \forall j \in [m]. \label{eq:Ass2}
 \end{align}
-Чтобы определеить многогранник квадратичной задачи о назначениях,
+Чтобы определить многогранник квадратичной задачи о назначениях,
 введем новые переменные $z_{ijkl}$ так же, как это было сделано в~\eqref{eq:QLOP}:
 %For every pair $y_{ij}$ and $y_{kl}$ there is introduced a~new variable
 \begin{equation}
