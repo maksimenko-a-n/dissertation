@@ -73,7 +73,7 @@ Q = \Set*{(\bm{x}, y) \in \R^{d+1} \given A\bm{x} + \bm{b} y \le \bm{b}, \ y \ge
 Оказывается, с помощью расширения многогранника может быть продемонстрирована и несостоятельность использования кликового числа графа для оценок сложности задач.
 Вспомним, что расширением любого многогранника на $n+1$ вершинах является симплекс $\Delta_n$. 
 
-\begin{theorem}
+\begin{theorem}[\cite{Maksimenko:2016complexity}]
 	\label{th:simplex}
 	Для любого симплекса $\Delta_d\subset\R^d$ существует 
 	его расширенная формулировка $Q_{d+1}\subset\R^{d+1}$, для которой $\omega(Q_{d+1}) = 2$.
@@ -347,7 +347,7 @@ Y = \Cpert(X) \coloneq \bigl\{\bm{y}\in\Z^d \mid y = K \bm{x} + \eps(\bm{x}), \ 
 
 Покажем теперь, что точки множества $Y$ находятся в общем положении.
 
-\begin{lemma}
+\begin{lemma}[\cite{Maksimenko:2016complexity}]
 	Выпуклая оболочка циклической пертурбации $X\subseteq \{0,1\}^d$ является симплициальным многогранником.
 \end{lemma}
 
@@ -443,7 +443,7 @@ Y = \Cpert(X) \coloneq \bigl\{\bm{y}\in\Z^d \mid y = K \bm{x} + \eps(\bm{x}), \ 
 Согласно следствию~\ref{cor:simplicial}, $\rc(\conv \CBQP(n)) = O(n^5)$, то есть полиномиально.
 С~другой стороны, справедливо
 
-\begin{prop}
+\begin{prop}[\cite{Maksimenko:2016complexity}]
 Задача оптимизации на $\CBQP(n)$, $n \in \N$, с целевым вектором $\bm{c} \in \{-1,0,1\}^{d}$, $d = n(n+1)/2$, NP-трудна.
 \end{prop}
 
@@ -552,7 +552,7 @@ g_n(i) \coloneq 2i - h_n(b_n(i)), \quad i \in [2^{n}],
 Y^d_n \coloneq \CP(d, 2^n, g_n).
 \]
 
-\begin{prop}
+\begin{prop}[\cite{Maksimenko:2016complexity}]
 Массовая задача оптимизации вдоль вектора $\bm{c}$ на множестве $Y^2_n$ имеет экспоненциальную сложность по $n$ при условии $\size(\bm{c}) = \Omega(n)$.
 \end{prop}
 

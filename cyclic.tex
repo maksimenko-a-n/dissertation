@@ -6,14 +6,21 @@
 \chapter{Циклические многогранники}
 \label{chap:Cyclic}
 
-\hfill
-\begin{minipage}{0.5\textwidth}
-Циклические многогранники обладают максимальным числом граней среди всех выпуклых многогранников той же размерности и с таким же числом вершин.
-\begin{flushright}
+%\hfill
+%\begin{minipage}{0.5\textwidth}
+%Циклические многогранники обладают максимальным числом граней среди всех выпуклых многогранников той же размерности и с таким же числом вершин.
+%\begin{flushright}
 %Peter McMullen
-\emph{П.~МакМюллен}
-\end{flushright}
-\end{minipage}
+%\emph{П.~МакМюллен}
+%\end{flushright}
+%\end{minipage}
+
+Как известно~\cite{McMullen:1970}, циклические многогранники обладают максимальным числом граней (любой размерности) среди всех выпуклых многогранников той же размерности и с таким же числом вершин.
+Благодаря этому обстоятельству они являются хорошей экспериментальной базой для проверки разного рода теоретических утверждений.
+Ниже в настоящей главе будут доказаны два свойства этих многогранников.
+В разделе~\ref{sec:EF4Cyclic} для многогранника $\CP_d([n])$ приводится описание расширенной формулировки размера $2\bigl(2\lfloor \log_2(n-1)\rfloor+2\bigr)^{\lfloor d/2 \rfloor}$ при $2 \le d < n$.
+В разделе~\ref{sec:RidgeGraph} вычисляется точное значение для диаметра графа многогранника, двойственного к циклическому.
+
 
 \section{Определение и свойства}
 
@@ -80,7 +87,8 @@ y_i:=(s-t)^i+\sum_{j=1}^i \binom{i}{j} (s-t)^{i-j} x_j,
 \subsection{Случай $d=2$}
 
 
-\begin{lemma}\label{lem:two_dim}
+\begin{lemma}[\cite{BogomolovFMP:2015}]
+\label{lem:two_dim}
 $\xc(\CP_{2,n}(t)) \le 2\lfloor \log_2(n-1)\rfloor+2$, где $n \ge 3$ и $t \in \R$.
 \end{lemma}
 
@@ -206,7 +214,7 @@ M_{d,n}(i,S) := \prod_{j \in S} |t_j - t_i|\,,
 Перейдем непосредственно к доказательству основного утверждения этого раздела.
 Прежде всего рассмотрим четную размерность, положив~$d = 2q$, $q\in \N$.
 
-\begin{lemma}
+\begin{lemma}[\cite{BogomolovFMP:2015}]
 \label{lem:even_case}
 $\xc(\CP_{2q, n}) \le \big(\xc(\CP_{2, n})\big)^q$ при $q,n\in\N$, $2q < n$.
 \end{lemma}
@@ -233,7 +241,8 @@ $\xc(\CP_{2q, n}) \le \big(\xc(\CP_{2, n})\big)^q$ при $q,n\in\N$, $2q < n$.
 %\subsection[Случай d=2q+1]{Случай $\di=2q+1$}
 
 
-\begin{lemma}\label{lem:odd_case} 
+\begin{lemma}[\cite{BogomolovFMP:2015}]
+\label{lem:odd_case}
 $\xc(\CP_{2q+1,n}) \le 2 \xc(\CP_{2q,n-1})$ при $q,n\in\N$, $2q+1 < n$.
 \end{lemma}
 %
@@ -261,12 +270,12 @@ $\xc(\CP_{2q+1,n}) \le 2 \xc(\CP_{2q,n-1})$ при $q,n\in\N$, $2q+1 < n$.
 
 Из лемм \ref{lem:two_dim}, \ref{lem:even_case} и \ref{lem:odd_case} следует
 
-\begin{theorem}
+\begin{theorem}[\cite{BogomolovFMP:2015}]
 \label{thm:main}
 $\xc(\CP_{d,n}) \le 2\bigl(2\lfloor \log_2(n-1)\rfloor+2\bigr)^{\lfloor d/2 \rfloor}$ при $2 \le d < n$.
 \end{theorem}
 
-Отметим, что лемма~\ref{lem:two_dim} существенно использует тот факт, что $\CP_{2,n}$ является выпуклой оболочкой точек $(i,i^2)$ для $n$ \emph{последовательных} целых $i \in [n]$. В действительности, в~\cite{Fiorini:2012polygons} доказано, что среди двумерных циклических многогранников вида $P = \conv \Set{(i,i^2) \given i \in X}$, где $X \subseteq [2n]$ и $|X| = n$, есть такие, сложность расширенной формулировки которых ограничена снизу величиной $\Omega(\sqrt{n} / \sqrt{\log n})$. 
+Отметим, что лемма~\ref{lem:two_dim} существенно использует тот факт, что $\CP_{2,n}$ является выпуклой оболочкой точек $(i,i^2)$ для $n$ \emph{последовательных} целых $i \in [n]$. В действительности, в~\cite{Fiorini:2012polygons} доказано, что среди двумерных циклических многогранников вида $P = \conv \Set{(i,i^2) \given i \in X}$, где $X \subset [2n]$ и $|X| = n$, есть такие, сложность расширенной формулировки которых ограничена снизу величиной $\Omega(\sqrt{n} / \sqrt{\log n})$. 
 
 
 
@@ -484,7 +493,8 @@ $d=4$ и $n=9$ пример многогранника с диаметром $5$).
 %Ниже приводится точное значение для $\dc$.
 
 
-\begin{theorem}\label{thm:RidgeGraphDiamCyclic}
+\begin{theorem}[\cite{Maksimenko:2009}]
+\label{thm:RidgeGraphDiamCyclic}
 Диаметр $\dc$ ридж-графа циклического многогранника $\CP(d,n)$ вычисляется по формуле:
 \[
 	\dc=
