@@ -56,10 +56,12 @@
 \usepgflibrary{arrows}
 \usepgflibrary[shapes.geometric] % for 'ellipse' shape
 \usetikzlibrary{calc}
+\usetikzlibrary{shapes.misc} % for cross
 %\usetikzlibrary{arrows.spaced}
 
 \definecolor{lightpink}{rgb}{1,0.8,1}
-\definecolor{lightyellow}{rgb}{1,1,0.7}
+%\definecolor{lightyellow}{rgb}{1,1,0.7}
+\definecolor{lightyellow}{rgb}{1,1,0.6}
 \definecolor{lightblue}{rgb}{0.7,0.8,1}
 \definecolor{lightgreen}{rgb}{0.6,1,0.6}
 
@@ -142,6 +144,7 @@
 %{Анализ сложности многогранников \\ задач комбинаторной оптимизации}
 {Комбинаторно-геометрические характеристики\\ сложности задач комбинаторной оптимизации\\ (докторская диссертация)}
 
+\newcommand{\Maks}{М.}  % Сокращение для "Максименко" в названии утверждений 
 \author[А.\,Н. Максименко]
 {\texorpdfstring{\textit{Александр Николаевич Максименко}}{Александр Николаевич Максименко}}
 
@@ -621,7 +624,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 	Но~позднее был найден контрпример~[Klee '67].
 	С~тех~пор задача оставалась открытой.% до~2009~г.
 %}
-\begin{alertblock}{Теорема (Максименко '09)}%<3->
+\begin{alertblock}{Теорема (\Maks '09)}%<3->
 	\centerline{\(
 		\dc = n-d  - \left\lceil \frac{n-2d}{\left\lfloor d/2 \right\rfloor + 1} \right\rceil
 		\)  при $n > 2d$.
@@ -646,7 +649,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 		Пусть $T_n \subset [2n]$ и \alert{$|T_n| = n$}. \\%Далее полагаем $n = 2^n$.
 		Рассмотрим циклический многоугольник \(\CP(2,T_n)\).
 	\end{block}
-	\begin{alertblock}{Лемма (Богомолов, Fiorini, Максименко, Pashkovich '15)}%<2->
+	\begin{alertblock}{Лемма (Богомолов, Fiorini, \Maks, Pashkovich '15)}%<2->
 		Если расстояния между соседними числами в~$T_n$ одинаковы, то\\
 		\centerline{\(\xc(\CP(2,T_n)) \le 2\lfloor \log_2 (n-1) \rfloor + 2\).}
 	\end{alertblock}
@@ -666,7 +669,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 \end{frame}
 
 \begin{frame}{Циклический многогранник: сложность расширения}
-	\begin{alertblock}{Теорема (Богомолов, Fiorini, Максименко, Pashkovich '15)}
+	\begin{alertblock}{Теорема (Богомолов, Fiorini, \Maks, Pashkovich '15)}
 		Если расстояния между соседними числами в~$T_n$ одинаковы, то%\\
 		%Пусть $S_N = \{1,2,\dots,N\}$. Тогда
 %		\centering
@@ -714,7 +717,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 	Полиэдр $\ShortP(n)$ имеет простое H-описание,\\
 	состоящее из $n(n-1)$ линейных неравенств и $n$ уравнений.
 \end{block}
-\begin{alertblock}{Теорема (Максименко '04)}
+\begin{alertblock}{Теорема (\Maks '04)}
 	Кликовое число графа полиэдра $\ShortP(n)$ равно $\lfloor n^2 / 4\rfloor$.
 \end{alertblock}
 \end{frame}
@@ -731,7 +734,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 \begin{frame}{Аффинная сводимость многогранников задач}
 \begin{block}{Определение}
 	Пусть $P = \{p(I)\}$ и $Q = \{q(I')\}$ --- семейства многогранников.\\
-	Семейство $P$ \alert{аффинно сводится} к $Q$,\\ если найдутся полиномиально вычислимые: %(относительно размера многогранника $p\in P$):
+	Семейство $P$ \alert{аффинно сводится} к $Q$ (обозначение: \alert{$P \propto_A Q$}),\\ если найдутся полиномиально вычислимые: %(относительно размера многогранника $p\in P$):
 	\begin{enumerate}
 		\item 
 		Преобразование $\tau$ кода $I$ каждого многогранника $p = p(I)\in P$ в~код $I'$ многогранника $q = q(I') \in Q$.
@@ -743,7 +746,6 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 		такого, что многогранник \alert{$\alpha(p(I))$ аффинно эквивалентен $p(I)$\\ 
 		и является гранью} (возможно несобственной) многогр-ка \alert{$q(\tau(I))$}.
 	\end{enumerate}
-	Факт аффинной сводимости $P$ к $Q$ обозначаем так: \alert{$P \propto_A Q$}.  
 \end{block}
 \end{frame}
 
@@ -853,7 +855,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 
 
 \begin{frame}{Грань с NP-полным критерием несмежности}
-	\begin{alertblock}{Теорема (Максименко '12)}%<2->
+	\begin{alertblock}{Теорема (\Maks '12)}%<2->
 		Все вышеперечисленные многогранники содержат в~качестве граней\\ многогранники двойных покрытий (многогранники Мацуи),\\
 		для которых задача проверки на~несмежность NP-полна.
 	\end{alertblock}
@@ -869,7 +871,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 	У этого многогранника имеется простой критерий смежности вершин.
 	%пара вершин многогранника независимых множеств $\Stable(G)$ смежна тогда и только тогда, когда симметрическая разность соответствующих	независимых множеств индуцирует связный подграф в $G$.
 	\end{block}
-%	\begin{block}{Теорема (Максименко '15)}%<3->
+%	\begin{block}{Теорема (\Maks '15)}%<3->
 %		Многогранники двойных покрытий \\
 %		не являются гранями многогранников следующих задач:\\
 %		упаковки и~разбиения множества, кликовое число графа, 3-сочетание,\\
@@ -878,20 +880,20 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 \end{frame}
 
 \begin{frame}{Многогранники с простым критерием смежности}
-	\begin{alertblock}{Теорема (Максименко '17)}
+	\begin{alertblock}{Теорема (\Maks '17)}
 		Многогранники независимых множеств $\Stable(G)$\\
 		аффинно сводятся к многогранникам Мацуи.\\
 		Но, многогранники Мацуи (за исключением отрезков)\\
 		не могут быть гранями многогранника $\Stable(G)$ ни при каком $G$.
 	\end{alertblock}
-	\begin{alertblock}{Теорема (Максименко '15)}%<2->
+	\begin{alertblock}{Теорема (\Maks '15)}%<2->
 		Многогранники независимых множеств эквивалентны относительно аффинной сводимости многогранникам следующих задач:\\
 		упаковки и~разбиения множества, 3-сочетания, раскраска графа.
 	\end{alertblock}
 \end{frame}
 
 \begin{frame}{Сверхполиномиальность характеристик}
-	\begin{alertblock}{Теорема (Максименко)}
+	\begin{alertblock}{Теорема (\Maks)}
 	Семейство булевых квадратичных многогранников $\{\BQP_n\}$\\
 	аффинно сводится к каждому из перечисленных выше\\
 	семейств многогранников труднорешаемых задач,
@@ -899,15 +901,407 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 	задача Штейнера в~графе и~некоторых других.\\
 	\textbf{Замечание:} аффинное свед\'ение в обратную сторону невозможно.
 	\end{alertblock}
-	\begin{block}{Теорема (Deza, Laurent, Poljak '92)}
-	Булев квадратичный многогранник $\BQP_n$ 3-смежностен.\\
-	Следовательно, кликовое число графа совпадает с числом вершин $2^n$.
-	\end{block}
 	\begin{block}{Теорема (Fiorini, Massar, Pokutta, Tiwary, de Wolf '11)}
 	Число прямоугольного покрытия (а~значит и~сложность расширения)
 	
 	для~булева квадратичного многогранника экспоненциально.
 	\end{block}
+	\begin{block}{Теорема (Deza, Laurent, Poljak '92)}
+	Булев квадратичный многогранник $\BQP_n$ 3-смежностен.\\
+	Следовательно, кликовое число графа совпадает с числом вершин $2^n$.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Универсальные $k$-смежностные грани}
+	\begin{block}{Вопрос}
+		Для каких значений $k$ булевы квадратичные многогранники \\
+		содержат $k$-смежностные грани со сверхполиномиальным числом вершин?
+	\end{block}
+	\begin{alertblock}{Теорема (\Maks '14)}%<2->
+		Для каждого $k\ge 4$ булевы квадратичные многогранники\\ 
+		(а вместе с ними и все остальные, перечисленные выше семейства)\\
+		содержат $k$-смежностные грани со~сверхполиномиальным \\
+		(относительно размерности многогранника) числом вершин.
+	\end{alertblock}
+\end{frame}
+
+
+
+\tikzset{cross/.style={cross out, draw=red, minimum size=1.8*(#1-\pgflinewidth), inner sep=0pt, outer sep=0pt},
+	%default radius will be 4pt. 
+	cross/.default={4pt}}
+\begin{frame}{Аффинная сводимость NP-трудных задач}
+	\centering
+	\begin{tikzpicture}[xscale=1.0, yscale=0.78, >=stealth', thick] %, radius=2pt, delta angle=180]
+	\label{hierarchy}
+	\tikzstyle{every node}=[rounded corners,text centered,draw=black,minimum size=17pt]
+	
+	\node[fill=lightpink] (Cut) at (-4.1, 1.3) {Разрезы};
+	\node[fill=lightpink] (BQuadr) at (0, 1.3) {Булево квадр. прогр.};
+	\node[fill=lightpink] (QAss) at (4.1, 1.3) {Квадр. назначения};
+	\draw[<->] (Cut) to (BQuadr);
+	\draw[->] (QAss) to[bend right = 5] (BQuadr);
+	\draw[->,green] (BQuadr) to[bend right = 5] (QAss);
+	
+	%\tikzstyle{every node}=[rounded corners,text centered,draw=black,fill=lightyellow]
+	
+	\node[fill=lightyellow] (3Assign) at (4.3, -1.05) {3-Назначения};
+	\node[fill=lightyellow] (Color) at (2.2, 0) {Раскраска графа};
+	\node[fill=lightyellow] (SS) at (0, -1.3) {Независ. множ.};
+	%			\draw[->,draw=red] (Cut) to (Part);
+	\draw[->,green] (BQuadr) to[bend right = 10] (SS);
+	\draw[->] (SS) to[bend right = 10] node[cross] {} (BQuadr);
+	\node[fill=lightyellow] (Pack) at (-3.0, -1.3) {Упаковки};
+	\node[fill=lightyellow] (SetPart) at (-1.7, 0) {Разбиения};
+	\draw[->] (Pack) to (SS);
+	\draw[->] (SetPart) to (Pack);
+	\draw[->] (SS) to (SetPart);
+	\draw[->] (SS) to[bend right = 8] (Color);
+	\draw[->,green] (Color) to[bend right = 8] (SS);
+	\draw[->] (3Assign) to[bend right = 5] (SS);
+	\draw[->,green] (SS) to[bend right = 5] (3Assign);
+	
+	%\tikzstyle{every node}=[rounded corners,text centered,draw=black,fill=lightgray]
+	
+	\node (Steiner) at (3.9, -2.15) {Деревья Штейнера};
+	\draw[->,green] (SS) to (Steiner);
+	
+	\node (LOP) at (-4.6, 0) {Лин. упоряд.};
+	\draw[->,green] (BQuadr) to[out=-173,in=30] (LOP);
+	\draw[->] (LOP) to node[cross]{} (BQuadr);
+	
+	%\tikzstyle{every node}=[rounded corners,text centered,draw=black,fill=lightgreen]
+	
+	\node[fill=lightblue] (DCover) at (0, -3.0) {Двойные покрытия};
+	\draw[->,green] (SS) to[bend right = 20] (DCover);
+	\draw[->,green] (DCover) to[bend right = 20] node[cross] {} (SS);
+	\draw[->,green] (LOP) to[out=-135,in=180] (DCover);
+	
+	\node[fill=lightblue] (Part) at (-2.9, -4.3) {Разбиение чисел};
+	\draw[->,green] (DCover) to (Part);
+	\node[fill=lightblue] (3SAT) at (0.0, -5.6) {3-Выполнимость};
+	\draw[->, green] (DCover) to (3SAT);
+	\node[fill=lightblue] (Order) at (3.7, -5.6) {Частич. упоряд.};
+	\draw[<->] (3SAT) to (Order);
+	\node[fill=lightblue] (Cubic) at (3.2, -4.3) {Кубические подграфы};
+	\draw[->,green] (DCover) to (Cubic);
+	
+	\node[fill=lightblue] (Knapsack) at (-5.05, -5.6) {Рюкзак};
+	\draw[->] (Part) to (Knapsack);
+	\node[fill=lightblue] (SAT) at (0.0, -6.9) {Выполнимость};
+	\draw[->] (3SAT) to[bend right = 20] (SAT);
+	\draw[->] (SAT) to[bend right = 20] node[cross] {} (3SAT);
+	\node[fill=lightblue] (Cover) at (3.2, -6.9) {Покрытия};
+	\draw[->] (Cover) to[bend right = 5] (SAT);
+	\draw[->,green] (SAT) to[bend right = 5] (Cover);
+	
+	\node[fill=lightblue] (Assign) at (-3.8, -6.9) {Назначения с огранич.};
+	\draw[->,green] (Part) to (Assign);
+	% 0, 2.4, 4.65
+	\node[fill=lightblue] (ATSP) at (-2.4, -8.2) {Гамильтонов контур};
+	\draw[->,green] (SAT) to (ATSP);
+	\node[fill=lightblue] (Path) at (0.9, -8.2) {$s$-$t$ Путь};
+	\draw[->] (ATSP) to (Path);
+	\node[fill=lightblue] (TSP) at (3.9, -8.2) {Гамильтонов цикл};
+	\draw[->,green] (Path) to (TSP);
+	\end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Аналог теоремы Кука для многогранников}
+	\begin{block}{Аффинная сводимость}
+		Для каждого многогранника $p(I) \in P$ определен многогранник $q(I') \in Q$ такой, что $p(I)$ \alert{аффинно эквивалентен} грани $q(I')$.
+	\end{block}
+	\begin{block}{Расширенная аффинная сводимость}
+		Для каждого многогранника $p(I) \in P$ определен многогранник $q(I') \in Q$ такой, что $p(I)$ \alert{является аффинным образом} грани $q(I')$.
+	\end{block}
+	\begin{alertblock}{Теорема (\Maks '12)}
+		Пусть для семейства многогранников $\bigl\{\conv(X(I))\bigr\}$ задача проверки условия $\bm{x} \in X(I)$ (предикат допустимости) принадлежит классу NP.
+		Тогда это семейство расширенно аффинно сводится к булевым квадратичным многогранникам.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{Контрпример: диаметр графа}
+	\begin{exampleblock}{Задача (простая)}
+		\begin{center}
+			\begin{minipage}{60mm}
+				Пусть $P$ --- произвольный\\ выпуклый $d$-мерный многогранник.\\ 
+				Чему равен диаметр графа\\ для пирамиды над $P$?
+			\end{minipage}
+			\nolinebreak
+			  \hspace{5mm}  
+			\begin{minipage}{40mm}
+				\begin{center}
+					\begin{tikzpicture}[scale=3.0, >=stealth', thick, line join = round]%baseline=(current bounding box.north)]
+					
+					\coordinate (0) at (0,0,0);
+					\coordinate (1) at (0,0,1);
+					\coordinate (2) at (0,0.3,0);
+					\coordinate (3) at (0,0.3,1);
+					\coordinate (4) at (1,0,0);
+					\coordinate (5) at (1,0,1);
+					\coordinate (6) at (1,0.3,0);
+					\coordinate (7) at (1,0.3,1);
+					\node[circle,draw,inner sep=1pt] (v) at (0.6, 1.0, 0.7) {};
+					
+					\draw (0) -- (1) -- (3) -- (2) -- cycle;
+					\path[fill = green, fill opacity = 0.4, draw=black] (4) -- (5) -- (7) -- (6) -- cycle;
+					\path[fill = green, fill opacity = 0.2, draw=black] (1) -- (3) -- (7) -- (5) -- cycle;
+					\path[fill = green, fill opacity = 0.3, draw=black] (2) -- (3) -- (7) -- (6) -- cycle;
+					\foreach \i/\j in {0/4,1/5,2/6,3/7} {\draw (\i) -- (\j);}
+					\foreach \i in {0,...,7} {\draw[dashed] (\i) -- (v);}
+					\draw ($(0)!0.5!(7)$) node[above] {$P$};
+					\end{tikzpicture}
+				\end{center}
+			\end{minipage}
+		\end{center}
+	\end{exampleblock}
+\begin{block}{Вывод}
+	Любое семейство многогранников аффинно сводится\\
+	к семейству многогранников с диаметром графа не более двух.
+\end{block}
+\end{frame}
+
+\begin{frame}{Контрпример: кликовое число графа}
+	\begin{block}{Гипотеза}
+	Большое кликовое число графа многогранника\\
+	(или наличие $k$-смежностных граней с~большим числом вершин)\\
+	является необходимым условием труднорешаемости задачи.
+	%Существуют ли примеры трудных задач с маленьким кликовым числом?
+	\end{block}
+	\begin{alertblock}{Теорема (Максименко '16)}
+		Для любого $d$-мерного симплекса можно построить\\
+		$(d+1)$-мерное расширение с кликовым числом~2.
+	\end{alertblock}
+	\visible<2->{		
+		\begin{block}{Доказательство для $d=2$}
+			\begin{minipage}{0.2\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=1.0, line join = round]
+				\coordinate (1) at (1,0,0);
+				\coordinate (2) at (0,0,-1);
+				\coordinate (3) at (1,0,-1);
+				\coordinate (4) at (0,1,0);
+				\coordinate (5) at (1,1,0);
+				\coordinate (6) at (0,1,-1);
+				\coordinate (7) at (1,1,-1);
+				\fill[fill = blue, fill opacity = 0.2] % низ 
+				(1) -- (2) -- (3) -- cycle;
+				\fill[fill = blue, fill opacity = 0.25] % лево
+				(2) -- (4) -- (6) -- cycle;
+				\draw[dashed, thin] (6) -- (2) -- (3);
+				\fill[fill = blue, fill opacity = 0.35, draw = black] % верх
+				(4) -- (5) -- (7) -- (6) -- cycle;
+				\fill[fill = blue, fill opacity = 0.25, draw = black] % право
+				(1) -- (3) -- (7) -- (5) -- cycle;
+				\fill[fill = blue, fill opacity = 0.1, draw = black] % перед
+				(1) -- (4) -- (5) -- cycle;
+				\fill[fill = red, fill opacity = 0.3, draw = black] % срез
+				(1) -- (2) -- (4) -- cycle;
+				\end{tikzpicture}
+			\end{minipage}
+			\hfill
+			\visible<3->{$\Longrightarrow$}
+			\hfill
+			\begin{minipage}{0.3\textwidth}
+				\centering
+				\begin{tikzpicture}[scale=1.0, line join = round]
+				%cnode/.style={inner sep = 0mm, minimum size = 2pt, circle, text centered,
+				%		draw=black, thick, fill=black}]
+				\visible<4->{
+					\coordinate (x) at (1, 0, 0);
+					\coordinate (y) at (0, 0, 1);
+					\coordinate (z) at (0,-1, 0); 
+					
+					\coordinate (a) at ($-1*(x)$);
+					\coordinate (b) at (x);
+					\coordinate (c) at ($sin(60)*2*(y)$); %1.7321016);
+					%\coordinate (c) at (0, 0, 1.7321016);
+					\coordinate (d) at ($0.5*(a) + 0.5*(b) + sin(60)*(z)$);
+					\coordinate (e) at ($0.5*(b) + 0.5*(c) + sin(60)*(z)$);
+					\coordinate (f) at ($0.5*(a) + 0.5*(c) + sin(60)*(z)$);
+					\coordinate (g) at ($1/3*(a) + 1/3*(b) + 1/3*(c) + 1/sin(60)*(z)$);
+					
+					\fill[fill = blue, fill opacity = 0.1] % Зад
+					(a) -- (d) -- (b) -- cycle;
+					\draw[dashed] (a) -- (d) -- (b) -- cycle (d) -- (g);
+					\fill[fill = blue, fill opacity = 0.4, draw = black] 
+					(b) -- (e) -- (c) -- cycle;
+					\fill[fill = blue, fill opacity = 0.2, draw = black] 
+					(c) -- (f) -- (a) -- cycle;
+					
+					\fill[fill = blue, fill opacity = 0.1] 
+					(a) -- (f) -- (g) -- (d) -- cycle;
+					\fill[fill = blue, fill opacity = 0.1] 
+					(b) -- (d) -- (g) -- (e) -- cycle;
+					\fill[fill = blue, fill opacity = 0.25, draw = black] % Перед
+					(c) -- (e) -- (g) -- (f) -- cycle;
+					
+					\fill[fill = red, fill opacity = 0.2]  % Bottom
+					(a) -- (b) -- (c) -- cycle;
+				}	
+				\visible<3->{		
+					\begin{scope}[yshift = 3mm]
+					\coordinate (x) at (1, 0, 0);
+					\coordinate (y) at (0, 0, 1);
+					\coordinate (z) at ( 0, 1, 0); 
+					
+					\coordinate (a) at ($-1*(x)$);
+					\coordinate (b) at (x);
+					\coordinate (c) at ($sin(60)*2*(y)$); %1.7321016);
+					%\coordinate (c) at (0, 0, 1.7321016);
+					\coordinate (d) at ($0.5*(a) + 0.5*(b) + sin(60)*(z)$);
+					\coordinate (e) at ($0.5*(b) + 0.5*(c) + sin(60)*(z)$);
+					\coordinate (f) at ($0.5*(a) + 0.5*(c) + sin(60)*(z)$);
+					\coordinate (g) at ($1/3*(a) + 1/3*(b) + 1/3*(c) + 1/sin(60)*(z)$);
+					
+					\fill[fill = red, fill opacity = 0.2]  % Низ
+					(a) -- (b) -- (c) -- cycle;
+					
+					\fill[fill = blue, fill opacity = 0.1] % Зад
+					(a) -- (d) -- (b) -- cycle;
+					\draw[dashed] (d) -- (a) -- (b);
+					\fill[fill = blue, fill opacity = 0.4, draw = black] 
+					(b) -- (e) -- (c) -- cycle;
+					\fill[fill = blue, fill opacity = 0.2, draw = black] 
+					(c) -- (f) -- (a) -- cycle;
+					
+					\fill[fill = blue, fill opacity = 0.1] % Лево
+					(a) -- (f) -- (g) -- (d) -- cycle;
+					\fill[fill = blue, fill opacity = 0.35, draw = black]
+					(b) -- (d) -- (g) -- (e) -- cycle;
+					\fill[fill = blue, fill opacity = 0.25, draw = black] 
+					(c) -- (e) -- (g) -- (f) -- cycle;
+					\end{scope}	
+				}
+				\end{tikzpicture}
+			\end{minipage}
+			\hfill
+			\visible<5->{$\Longrightarrow$
+				\hfill
+				\begin{minipage}{0.3\textwidth}
+					\centering
+					\begin{tikzpicture}[scale=1.0, line join = round]
+					%cnode/.style={inner sep = 0mm, minimum size = 2pt, circle, text centered,
+					%		draw=black, thick, fill=black}]
+					
+					\coordinate (a) at (-1, 0, 0);
+					\coordinate (b) at ( 1, 0, 0);
+					\coordinate (c) at ( 0, 1.7321016, 0);
+					\coordinate (d) at ( 0, 0, 0.4330254);
+					\coordinate (e) at ( 0.5, 0.8660508, 0.4330254);
+					\coordinate (f) at (-0.5, 0.8660508, 0.4330254);
+					\coordinate (g) at (   0, 0.5773672, 0.5773672);
+					\coordinate (h) at (   0, 0, -0.4330254);
+					\coordinate (i) at ( 0.5, 0.8660508, -0.4330254);
+					\coordinate (j) at (-0.5, 0.8660508, -0.4330254);
+					\coordinate (k) at (   0, 0.5773672, -0.5773672);
+					
+					\coordinate (ap) at (-1, 0, -2.0);
+					\coordinate (bp) at ( 1, 0, -2.0);
+					\coordinate (cp) at ( 0, 1.7321016, -2.0);
+					\coordinate (dp) at ( 0, 0, -2.0);
+					\coordinate (ep) at ( 0.5, 0.8660508, -2.0);
+					\coordinate (fp) at (-0.5, 0.8660508, -2.0);
+					%			      \draw ( -2.0, 2, 0) node {{$\textcolor{green}p$} $\le_E$ {$\textcolor{blue}q$}};
+					\draw ( 1.5, 2, 0) node {$\textcolor{green}P$};
+					\draw (-1.8, 0, -2.0) node {$\textcolor{blue}Q$};
+					
+					\fill[fill = green, opacity = 0.4, draw = black, densely dotted] 
+					(ap) -- (bp) -- (cp) -- cycle;
+					\draw[thin, dashed] (a) -- (ap);
+					\draw[thin, dashed] (b) -- (bp);
+					\draw[thin, dashed] (c) -- (cp);
+					\draw[thin, dashed] (h) -- (dp);
+					\draw[thin, dashed] (i) -- (ep);
+					\draw[thin, dashed] (j) -- (fp);
+					
+					% Bottom
+					\draw[draw = black] (h) -- (k) -- (i);
+					\draw[draw = black] (j) -- (k);
+					
+					\fill[fill = blue, fill opacity = 0.1, draw = black] 
+					(a) -- (d) -- (b) -- (h) -- cycle;
+					\fill[fill = blue, fill opacity = 0.4, draw = black] 
+					(b) -- (e) -- (c) -- (i) -- cycle;
+					\fill[fill = blue, fill opacity = 0.2, draw = black] 
+					(c) -- (f) -- (a) -- (j) -- cycle;
+					
+					\fill[fill = blue, fill opacity = 0.2, draw = black] 
+					(a) -- (f) -- (g) -- (d) -- cycle;
+					\fill[fill = blue, fill opacity = 0.35, draw = black] 
+					(b) -- (d) -- (g) -- (e) -- cycle;
+					\fill[fill = blue, fill opacity = 0.25, draw = black] 
+					(c) -- (e) -- (g) -- (f) -- cycle;
+					\end{tikzpicture}
+				\end{minipage}
+			}
+		\end{block}
+	}
+\end{frame}
+
+
+\begin{frame}{Контрпример: алгоритмы прямого типа}
+	\begin{block}{Цитата (Бондаренко '93, \dots, Бондаренко\&Николаев '17)}
+	Кликовое число графа многогранника характеризует сложность задачи
+	в широком классе алгоритмов (прямого типа).
+	\end{block}
+	\begin{alertblock}{Теорема (Максименко '14)}
+	\begin{enumerate}
+		\item Венгерский алгоритм (Куна--Манкреса) для задачи о назначениях\\
+		 не является алгоритмом прямого типа.
+		\item Имеется достаточно простой и естественный способ модификации \\
+		классических алгоритмов комбинаторной оптимизации \\
+		в~алгоритмы, не~являющиеся прямыми.
+	\end{enumerate}
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Вопрос о числе прямоугольного покрытия}
+	
+	\begin{block}{Факты}
+		%\textbf{Все} перечисленные выше факты говорят о том, \\	что 
+		Число прямоугольного покрытия \textbf{во~всех известных случаях}\\
+		отражает реальную вычислительную сложность задачи.
+	\end{block}
+	
+	\begin{block}{Вопрос}
+		Существует~ли алгоритм для задач дискретной оптимизации, \\
+		сложность которого оценивается \textbf{сверху} числом прямоугольного покрытия?
+	\end{block}
+	
+	\begin{alertblock}{Теорема (Максименко '16)}<2->
+		Имеется пример NP-трудной задачи, многогранник которой \\
+		обладает полиномиальным числом прямоугольного покрытия.
+	\end{alertblock}
+\end{frame}
+
+\begin{frame}{Комбинаторика многогранника VS сложность задачи} %{Пример NP-трудной задачи с полиномиальным $\rc()$}
+	\begin{block}{Вопрос}
+		Выше были представлены примеры \textbf{труднорешаемых} задач с~\textbf{полиномиальным} кликовым числом
+		и~\textbf{полиномиальным} числом прямоугольного покрытия.\\
+		Можно~ли, зная \textbf{только комбинаторные} свойства многогранника, \\
+		оценить сложность соответствующей оптимизационной~задачи?
+	\end{block}
+	\begin{alertblock}{Теорема (Максименко '16)}<2->
+		Существуют два семейства конечных множеств $X_n\subset \Z^n_+$ и $Y_n\subset \Z^n_+$, $n\in \N$:
+		%		Существуют два семейства многогранников $\conv(X_n)$ и $\conv(Y_n)$, $n\in \N$:
+		\begin{enumerate}
+			\item многогранники $\conv(X_n)$ и $\conv(Y_n)$ \textbf{комбинаторно эквивалентны};
+			%			\item $\conv(X_n)$ и $\conv(Y_n)$ \textbf{комбинаторно эквивалентны},
+			\item $\dim(X_n) = n$, $|X_n| = 2^n$;
+			\item для любого $x\in X_n$ и соответствующего ему $y \in Y_n$,\\
+			длины их двоичных записей ограничены сверху полиномом от $n$\\
+			и, кроме того, $0 \le \frac{\|x-y\|_{\infty}}{\|x\|_{\infty}} < \frac{1}{2^n}$.
+			\item Задача оптимизации на $\conv(X_n)$ \textbf{полиномиально разрешима} по $n$.
+			\item Задача оптимизации на $\conv(Y_n)$ \textbf{экспоненциально сложна}.
+		\end{enumerate}
+	\end{alertblock}
+	%	\begin{alertblock}{Теорема (Максименко '15)}<2->
+	%		Можно построить два комбинаторно эквивалентных семейства многогранников,
+	%		для~одного из~которых задача линейной оптимизации полиномиально разрешима (относительно размерности),\\
+	%		а~для~другого имеет экспоненциальную сложность.
+	%	\end{alertblock}
 \end{frame}
 
 \end{document}
