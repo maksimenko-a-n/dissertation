@@ -668,12 +668,11 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 	\end{block}
 	\vspace{-1mm}
 	\begin{block}{Теорема, Pan '96}
-		Для нахождения корней многочлена степени $d$ с точностью $2^{-n}$ (относительно диапазона поиска) требуется порядка $\Theta(d^2 (d+n))$ битовых операций.
+		Для нахождения корней многочлена степени $d$ с точностью $2^{-n}$ (относительно радиуса области поиска) требуется порядка $\Theta(d^2 (d+n))$ битовых операций.
 	\end{block}
 	\vspace{-1mm}
 	\begin{block}{Следствие}
-		Если $T \subseteq [N]$, то \alert{задача линейной оптимизации на $\CP(d,T)$
-		полиномиально разрешима} относительно $d$, $\log_2 N$\\
+		Если $T = \Z \cap [a,b]$, то \alert{задача линейной оптимизации на $\CP(d,T)$ полиномиально разрешима} относительно $d$, $\log_2 (b+1-a)$\\
 		 и длины двоичной записи целевого вектора $\bm{c}$.
 	\end{block}
 \end{frame}
@@ -721,18 +720,37 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 
 
 \begin{frame}{Циклический многоугольник: сложность расширения}
-	\begin{block}{Условия}
-		Пусть $T_n \subset [2n]$ и \alert{$|T_n| = n$}. \\%Далее полагаем $n = 2^n$.
-		Рассмотрим циклический многоугольник \(\CP(2,T_n)\).
+	\vspace{-15pt}
+	\begin{minipage}[t]{0.58\textwidth}
+	\begin{block}{}
+		Пусть $T_n = \{t_1, \dots, t_n\} \subset \R$.
 	\end{block}
 	\begin{alertblock}{Лемма (Богомолов, Fiorini, \Maks, Pashkovich '15)}%<2->
-		Если расстояния между соседними числами в~$T_n$ одинаковы, то\\
-		\centerline{\(\xc(\CP(2,T_n)) \le 2\lfloor \log_2 (n-1) \rfloor + 2\).}
+		Если $t_{i+1} - t_{i} = \text{const}$, $i \in [n-1]$, то
+		\[\xc(\CP(2,T_n)) \le 2\lfloor \log_2 (n-1) \rfloor + 2.\]
 	\end{alertblock}
 	\begin{block}{Теорема (Fiorini, Rothvo\ss, Tiwary '12)}%<3->
-		Существует $T_n$ такое, что
-		\(\xc(\CP(2,T_n)) = \Omega(\sqrt{n/\log n})\).
+		Существует $T_n \subset [2n]$ такое, что\\
+		\[\xc(\CP(2,T_n)) = \Omega(\sqrt{n/\log n}).\]
 	\end{block}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.37\textwidth}
+	\begin{exampleblock}{}
+		\centering
+		\begin{tikzpicture}[yscale=0.64, >=stealth', line join = round]
+			\draw[->] (-1.2,0) to (3.05,0) node[above left] {$x$}; 
+			\draw[->] (0,-0.2) to (0,7) node[left] {$y$}; 
+			\foreach \x in {-1,1,2} {\draw (\x,-0.078) -- (\x,0.078);}
+			\foreach \y in {1,...,6} {\draw (-0.05,\y) -- (0.05,\y);}
+			\draw[thick, blue, dashed, smooth, samples = 50, domain = -1.2:3.05] plot ({\x}, {\x*\x});
+			\draw[thick,fill=green, fill opacity = 0.3] (-1,1) -- (0,0) -- (1,1) -- (2,4) -- (3,9) -- cycle;
+			\draw (0.7,8.4) node {$\CP\bigl(2,\{-1,\dots,3\}\bigr)$};
+			\draw[blue] (2.4,2.3) node {$y=x^2$};
+		\end{tikzpicture}
+	\end{exampleblock}
+	\end{minipage}
+		
 	\begin{block}{Теорема (Ben-Tal\&Nemirovski '01)}%<3->
 		Сложность расширения правильного $n$-угольника равна~$\Theta(\log n)$.
 	\end{block}
@@ -746,15 +764,16 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 
 \begin{frame}{Циклический многогранник: сложность расширения}
 	\begin{alertblock}{Теорема (Богомолов, Fiorini, \Maks, Pashkovich '15)}
-		Если расстояния между соседними числами в~$T_n$ одинаковы, то%\\
+		%Если расстояния между соседними числами в~$T_n$ одинаковы, то%\\
+		Если $t_{i+1} - t_{i} = \text{const}$, $i \in [n-1]$, то
 		%Пусть $S_N = \{1,2,\dots,N\}$. Тогда
 %		\centering
-		\[\alert{\xc}(\CP(d, T_n)) = \bigO\bigl((\log n)^{\lfloor d/2\rfloor}\bigr).\]
+		\[\alert{\xc}(\CP(d, T_n)) = \bigO(\log n)^{\lfloor d/2\rfloor}.\]
 	\end{alertblock}
 	\begin{block}{Теорема (Fiorini, Kaibel, Pashkovich, Theis '12)}%<2->
 		Оценка сверху для числа прямоугольного покрытия:%\\
 %		\centering
-		\[\alert{\rc}(\CP(d, T)) = \bigO(d^2\log n).\]
+		\[\alert{\rc}(\CP(d, T_n)) = \bigO(d^2\log n).\]
 	\end{block}
 \end{frame}
 
@@ -774,7 +793,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 	\alert{\Dipath(n)} \coloneqq \conv\bigl\{\bm{x}(S) \bigm| \text{$S$ --- путь в орграфе $D_n$ из $v_1$ в $v_n$}\bigr\}.
 	\]
 \end{block}
-\begin{block}{Утверждение}
+\begin{block}{Замечание}
 	Многогранник задачи коммивояжера $\ATSP(n)$ аффинно эквивалентен грани многогранника орпутей $\Dipath(n+1)$.
 	
 	Как следствие, $\Dipath(n+1)$ имеет большие (сверхполиномиальные) характеристики сложности: кликовое число графа,\\ число прямоугольного покрытия, \dots
@@ -1368,10 +1387,10 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 		оценить сложность соответствующей оптимизационной~задачи?
 	\end{block}
 	\begin{alertblock}{Теорема (Максименко '16)}<2->
-		Существуют два семейства конечных множеств $X_n\subset \Z^n_+$ и $Y_n\subset \Z^n_+$, $n\in \N$:
+		$\exists$ два семейства конечных множеств $X_n\subset \Z^n_+$ и $Y_n\subset \Z^n_+$, $n\in \N$:
 		%		Существуют два семейства многогранников $\conv(X_n)$ и $\conv(Y_n)$, $n\in \N$:
 		\begin{enumerate}
-			\item многогранники $\conv(X_n)$ и $\conv(Y_n)$ \textbf{комбинаторно эквивалентны};
+			\item $\conv(X_n)$ и $\conv(Y_n)$ \textbf{комбинаторно эквивалентны};
 			%			\item $\conv(X_n)$ и $\conv(Y_n)$ \textbf{комбинаторно эквивалентны},
 			\item $\dim(X_n) = n$, $|X_n| = 2^n$;
 			\item для любого $x\in X_n$ и соответствующего ему $y \in Y_n$,\\
