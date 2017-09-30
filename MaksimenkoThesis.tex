@@ -1,29 +1,11 @@
-%
-% Внимание, при компиляции возникает ошибка, 
-% связанная с выбором языка в .toc
-% Проблема решается удалением строки \select@language {russian} из thesis.toc
-% и включением декларации \nofiles.
-% Или же закомментариванием \tableofcontents, как временная мера
-% ПРАВИЛЬНЫЙ способ решения проблемы: \renewcommand\tocsectionfont{}
-%
-% Еще одна проблема -- опция times каким-то чудесным образом отключает пакет cmap
-% Проблема находится в строках 
-% \renewcommand\rmdefault{ftm} и \renewcommand\ttdefault{cmtt}
-% после строки \usepackage{pscyr} в файле disser.cls
-% Решение:
-% \input glyphtounicode.tex 
-% \pdfgentounicode=1
-%
 \documentclass[%
 %draft,
 doctor,         % тип документа
 natbib,         % использовать пакет natbib для "сжатия" цитирований
-subf,           % использовать пакет subcaption для вложенной нумерации рисунков
+%subf,           % использовать пакет subcaption для вложенной нумерации рисунков
 pagebackref,    % обратные ссылки в списке литературы -- номера страниц 
 href,           % использовать пакет hyperref для создания гиперссылок
 %colorlinks=true, % цветные гиперссылки
-%noams,				% Не подключать пакеты amsmath, amssymb и amsfonts из класса.
-times         % шрифт Times как основной
 %,fixint=false  % отключить прямые знаки интегралов
 %,classified    % гриф секретности
 %,libcat        % номер УДК
@@ -34,6 +16,10 @@ times         % шрифт Times как основной
 \input glyphtounicode.tex 
 \pdfgentounicode=1
 %\usepackage{cmap} %!!! cmap не работает ни здесь ни в стилевом файле
+
+\usepackage[T2A]{fontenc}
+\usepackage[cp1251]{inputenc}
+\usepackage[english,russian]{babel}
 
 %\usepackage{xcolor} В disser.cls нужно заменить пакет color на xcolor
 \usepackage{tikz}
@@ -47,13 +33,9 @@ times         % шрифт Times как основной
   a4paper, mag=1000,
   left=2.5cm, right=1cm, top=2cm, bottom=2cm, headsep=0.7cm, footskip=1cm
 ]{geometry}
-\usepackage[T2A]{fontenc}
-\usepackage[cp1251]{inputenc}
-\usepackage[english,russian]{babel}
 
-%\usepackage{tabularx,longtable}
-
-
+\usepackage[intlimits]{amsmath}
+\usepackage{amssymb,amsfonts}
 %\usepackage{amsthm} % Конфликт с пакетом disser. Уже определена команда \openbox
 \usepackage[amsmath, thref, hyperref, thmmarks]{ntheorem} % Для окружений типа Теорема
 \usepackage{bm} % Для выделения жирным шрифтом математических символов
@@ -65,7 +47,27 @@ times         % шрифт Times как основной
 
 %\hypersetup{pagebackref = true, backref = page} % Обратные ссылки из списка литературы, нужно включать эту опцию сразу с подключением hyperref. Иначе (через \hypersetup) она не работает.
 
+% Что-то новое ?????????????
 %\ifpdf\usepackage{epstopdf}\fi
+%\usepackage[autostyle]{csquotes}
+
+% Список сокращений и условных обозначений
+\usepackage[intoc,nocfg,russian]{nomencl}
+\newcommand{\nomencl}[2]{#1 --- #2\nomenclature{#1}{#2}}
+\setlength{\nomlabelwidth}{3em}
+\setlength{\nomitemsep}{-\parsep}
+\renewcommand{\nomlabel}[1]{#1 ---}
+\makenomenclature
+
+% Шрифт Times в тексте как основной
+\usepackage{tempora}
+% альтернативный пакет из дистрибутива TeX Live
+%\usepackage{cyrtimes}
+
+% Шрифт Times в формулах как основной
+\usepackage[varg,cmbraces,cmintegrals]{newtxmath}
+% альтернативный пакет
+%\usepackage[subscriptcorrection,nofontinfo]{mtpro2}
 
 % Номера страниц снизу и по центру
 %\pagestyle{footcenter}
@@ -76,17 +78,17 @@ times         % шрифт Times как основной
 
 % Ссылки на работы соискателя включаются в общий список литературы
 \let\citemy=\cite
+%\let\citeown=\cite
 
 % Использовать полужирное начертание для векторов
 \let\vec=\mathbf
 
 % Путь к файлам с иллюстрациями
-\graphicspath{{fig/}}
+%\graphicspath{{fig/}}
 
 %\setcounter{tocdepth}{2} % Глубина содержания. Значение 2 вызывает ошибку
 
 \input{newcommands}
-
 
 \begin{document}
 
@@ -177,14 +179,20 @@ times         % шрифт Times как основной
 \input{conclusion}
 
 % Список сокращений и условных обозначений
-%\input{defs}
+%\printnomenclature
 
 % Словарь терминов
 %\input{dict}
 
+% Не добавлять длинное тире в качестве разделителя
+%\newcommand\BibDash{}
+% Выделять курсивом
+\let\BibEmph=\emph
+\bibliographystyle{gost2008ns} % 'n' for natbib compatibility
+%\bibliographystyle{gost705s}
+
 % Список литературы
 \bibliography{biblio}
-\bibliographystyle{gost705s}
 % Когда список литературы будет сформирован окончательно, 
 % нужно переименовать MaksimenkoThesis.bbl -> bibl-finished.tex и включить в текст последний файл непосредственно
 %\input{bibl-finished}
@@ -195,6 +203,6 @@ times         % шрифт Times как основной
 
 % Приложения
 %\appendix
-%\input{app-a}
+%\input{a}
 
 \end{document}

@@ -53,6 +53,9 @@
 
 %\useinnertheme[shadow]{rounded}
 
+% Remove the shadow from the title page
+\setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=false]
+
 
 % Делим нижний колонтитул на три части: автор, название, число слайдов
 \newcommand{\makefootline}[3]{
@@ -104,7 +107,8 @@
 \newcommand{\N}{\mathbb{N}}  %Set of natural numbers
 \newcommand{\Z}{\mathbb{Z}}  %Set of integer
 \newcommand\op[1]{\mathop{\rm #1}\nolimits}
-\renewcommand\vec[1]{\ensuremath{\mathbf{#1}}}
+%\renewcommand\vec[1]{\ensuremath{\mathbf{#1}}}
+\renewcommand\vec[1]{\ensuremath{\bm{#1}}}
 
 %\renewcommand\dim{\op{dim}}
 \DeclareMathOperator{\conv}{conv}
@@ -130,6 +134,7 @@
 \newcommand{\neleA}{\not\le_A} 
 \newcommand{\leE}{\le_E} 
 \newcommand{\from}{\colon} 
+\newcommand{\npropto}{\lefteqn{\;\not}\propto}
 
 \newcommand{\EP}{\textup{Э}} % Difficult problem
 %\newcommand{\CP}{\textup{Ц}} % Cyclic polytope
@@ -142,13 +147,14 @@
 \newcommand{\IP}{\textup{ISP}} % Stable set polytope
 \newcommand{\TSP}{\textup{TSP}} % Travelling salesman polytope
 \newcommand{\ATSP}{\textup{ATSP}} % Travelling salesman polytope
-\newcommand{\PATH}{\textup{PATH}} % Path polytope
+\newcommand{\PATH}{P_{\textup{path}}} % Path polytope
 \newcommand{\Dipath}{P_{\text{dipath}}} % DiPath polytope
-\newcommand{\ShortP}{P_{\textup{shortpath}}} % Short Path polyhedron \newcommand{\KNAP}{\textup{KNAP}} % Knapsack polytope
+\newcommand{\ShortP}{P_{\textup{shortpath}}} % Short Path polyhedron 
+\newcommand{\KNAP}{P_{\textup{KNAP}}} % Knapsack polytope
 \newcommand{\PRT}{\textup{PRT}} % Numbers partitioning polytope
 \newcommand{\KSAT}[1]{\textup{#1-SAT}} % SAT polytope
 \newcommand{\TREE}{\textup{TREE}} % Spanning tree polytope
-\newcommand{\MATCH}{\textup{MATCH}} % Matching polytope
+\newcommand{\Match}{P_{\textup{MATCH}}} % Matching polytope
 \newcommand{\CUT}{\textup{CUT}} % Cut polytope
 \newcommand{\CGP}{\textup{CGP}} % Cubic subgraph polytope
 \newcommand{\QAP}{\textup{QAP}} % Quadratic assignment polytope
@@ -156,6 +162,7 @@
 \newcommand{\CAP}{\textup{CAP}} % Constrained assignment polytope
 \newcommand{\Stable}{P_{\textup{stab}}} % Stable set polytope \newcommand{\PACK}{\textup{PACK}} % Set packing polytope
 \newcommand{\COVER}{\textup{COVER}} % Set covering polytope
+\newcommand{\Matsui}{P_{\textup{Matsui}}} % Matsui polytope
 \newcommand{\PART}{\textup{PART}} % Set partition polytope
 \newcommand{\DCP}{\textup{DCP}} % Double covering polytope
 \newcommand{\POP}{\textup{POP}} % Partial ordering polytope
@@ -164,9 +171,10 @@
 \newcommand{\bigO}{\mathcal{O}}  % Big O
 
 
-\title[Докторская диссертация]
+\title[Многогранники задач]%[Докторская диссертация]
 %{Анализ сложности многогранников \\ задач комбинаторной оптимизации}
-{Комбинаторно-геометрические характеристики\\ сложности задач комбинаторной оптимизации\\ (докторская диссертация)}
+{Комбинаторно-геометрические характеристики\\ сложности задач комбинаторной оптимизации}
+%\\ (докторская диссертация)}
 
 \newcommand{\Maks}{М.}  % Сокращение для "Максименко" в названии утверждений 
 \author[А.\,Н. Максименко]
@@ -229,139 +237,184 @@
 \end{frame}
 
 
-\begin{frame}{Анализ общей формулировки}
-	\begin{block}{Определение (неформальное)}
-		\alert{Задача комбинаторной оптимизации} --- найти оптимальное решение\\ из~некоторого конечного множества (допустимых решений).\\
-		\alert{Массовая задача} --- параметры не зафиксированы.\\
-		\alert{Индивидуальная задача} --- все входные данные зафиксированы.\\
-		\alert{Код задачи} --- набор входных данных, от которых зависит множество допустимых решений.\\
-	\end{block}
-	\begin{block}{Пример: задача о рюкзаке}
-		\alert{Допустимое решение} --- набор предметов, помещающихся в рюкзак.\\
-		Множество допустимых решений зависит от (\alert{кода задачи}):\\
-		числа предметов, их~размеров и размера рюкзака.\\
-		От ценностей предметов зависит только выбор оптимального решения.
-		Набор ценностей --- \alert{целевой вектор} задачи о рюкзаке.
-	\end{block}
-\end{frame}
 
-\begin{frame}{Линейная задача комбинаторной оптимизации}
-\begin{block}{Определение}
-\textbf{Линейная задача комбинаторной оптимизации (ЛЗКО)} "---\\
-это~тройка функций, аргументом которых является \alert{код задачи $I$}:
-\begin{enumerate}
-	\item \alert{Размерность} задачи $\alert{d} = d(I) \in \N$.
-	\item Функция $k = k(I) \in \N$, задающая \alert{пространство решений} $\alert{U} \coloneqq \{0,\dots,k\}^d$. В большинстве примеров $k\equiv 1$.
-	\item \alert{Предикат допустимости} $\alert{g(\bm{x}, I)} \in \{\text{ложь}, \text{истина}\}$, где $\bm{x} \in U$.
-\end{enumerate}
-\medskip
-\textbf{Входные данные:} код задачи $I$ и \alert{целевой вектор} $\alert{\bm{c}} \in \Z^d$.
-
-\medskip
-\textbf{Цель:} \alert{$\langle\bm{c},\bm{x}\rangle \to \max$} при условии $\bm{x} \in X$,\\
-%найти оптимальное решение
-%\[\bm{x^*} = \arg\max_{\bm{x} \in X} \langle\bm{c},\bm{x}\rangle,\]
-где
-$X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{допустимых} решений.
+\begin{frame}{Пример: задача о рюкзаке}
+\begin{block}{Задача о рюкзаке}
+	\begin{description}
+	\item[\textbf{Дано:}] множество предметов $E = \{e_1, \dots, e_n\}$,\\
+	стоимости предметов $\vec{c} = (c_1, \dots, c_n)$,\\
+	размеры предметов $\vec{a} = (a_1, \dots, a_n)$,\\
+	размер рюкзака $A$.
+	\item[\textbf{Найти:}] подмножество $S \subseteq E$ такое, что\\
+		\(\displaystyle\sum_{e_i \in S} c_i \to \max\), \quad
+		при условии \(\displaystyle\sum_{e_i \in S} a_i \le A\).
+	\end{description}
+\end{block}
+\begin{block}{Геометрическая интерпретация}
+	\begin{description}
+	\item[\textbf{Дано:}] $n \in \N$, векторы $\vec{c}, \vec{a} \in \R^n$ и число $A \in \R$.
+	\item[\textbf{Найти:}] 0/1-вектор $\vec{x} \in \{0,1\}^n$ такой, что\\
+	\(\langle\vec{x}, \vec{c}\rangle \to \max\), \quad
+	при условии \(\langle\vec{x}, \vec{a}\rangle \le A\).
+	\end{description}
+	\(X(\vec{a}, A) = \{\vec{x} \in \{0,1\}^n \mid  \langle \vec{a}, \vec{x}\rangle \le A\}\) --- допустимые решения,\\
+	\(\alert{\KNAP (\vec{a}, A)} \coloneqq \conv (X(\vec{a}, A))\) --- \alert{многогранник задачи о рюкзаке}
 \end{block}
 \end{frame}
 
-\begin{frame}{Пример 1}
-\begin{block}{Задача о кратчайшем пути}
+
+\begin{frame}{Пример: задача о кратчайшем пути}
+\begin{block}{Задача о кратчайшем пути в орграфе}
 \begin{description}
-	\item[Дано:] полный граф $K_n = ([n],E)$, $[n] \coloneqq \{1,\dots,n\}$;\\
-	длина $c_e \in \Z$ для каждого ребра $e \in E$.
-	\item[Найти:] кратчайший путь из вершины $1$ в вершину $n$.
+	\item[Дано:] полный орграф $D_n = ([n],A)$, $[n] \coloneqq \{1,\dots,n\}$,\\
+	вектор длин дуг $\vec{c} \in \R^A$.
+	\item[Найти:] кратчайший путь в $D_n$ из вершины $1$ в $n$.
 \end{description}
 \end{block}
 
-\begin{block}{Задача о кратчайшем пути в виде ЛЗКО}
-\begin{enumerate}
-\item \textbf{Код задачи} "--- число вершин графа $K_n$.
-\item \textbf{Размерность} задачи равна числу ребер графа.
-\item \textbf{Пространство решений} $U = \{0,1\}^E$ \\
-состоит из характеристических векторов подграфов графа $K_n$.
-\item \textbf{Предикат допустимости} $g = g(\bm{x}, n)$ равен <<истина>>,\\
-если $\bm{x} \in \{0,1\}^E$ "--- характеристический вектор пути\\
-в $K_n$ из вершины $1$ в вершину $n$.
-\end{enumerate}
-\textbf{Входные данные:} число вершин $n$ и вектор длин ребер $\bm{c} = (c_e) \in \Z^E$.
+\begin{block}{Геометрическая интерпретация}
+	\begin{description}
+		\item[\textbf{Дано:}] $n \in \N$ и вектор $\vec{c} \in \R^A$, $|A| = n(n-1)$.
+		\item[\textbf{Найти:}] $\vec{x} \in \{0,1\}^A$ такой, что\\
+		\(\langle\vec{x}, \vec{c}\rangle \to \max\),\\
+		\(\vec{x}\) --- характеристический вектор пути в $D_n$ из $1$ в $n$.
+	\end{description}
+\end{block}
+\begin{block}{Многогранник орпутей}
+	\(\alert{\Dipath (n)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^A \Bigm| \vec{x} \text{ --- путь в $D_n = ([n],A)$ из 1 в $n$}\Bigr\}\)
 \end{block}
 \end{frame}
 
-\begin{frame}{Пример 2}
+\begin{frame}{Пример: булево квадратичное программирование}
 \begin{block}{Булево квадратичное программирование}
 \begin{description}
-	\item[Дано:] число $n$ булевых переменных $x_i \in \{0,1\}$, $i \in [n]$;\\ матрица коэффициентов $\bm{c} = (c_{ij}) \in \Z^{n \times n}$.
+	\item[Дано:] число $n$ булевых переменных $x_i \in \{0,1\}$, $i \in [n]$;\\ матрица коэффициентов $\vec{c} = (c_{ij}) \in \R^{n \times n}$.
 	\item[Найти:] $\max \displaystyle\sum_{i,j \in [n]} c_{ij} x_i x_j$.
 \end{description}
 \end{block}
+
+\begin{block}{Геометрическая интерпретация}
+	\begin{description}
+		\item[\textbf{Дано:}] $n \in \N$ и матрица $\vec{c} \in \R^{n \times n}$.
+		\item[\textbf{Найти:}] $\vec{x} = (x_{ij}) \in \{0,1\}^{n \times n}$ такой, что\\
+		\(\langle\vec{x}, \vec{c}\rangle \to \max\),
+		при условии \alert{$x_{ij} = x_{ii} x_{jj}$}.
+	\end{description}
+\end{block}
 	
-\begin{block}{Булево квадратичное программирование в виде ЛЗКО}
-	\begin{enumerate}
-		\item \textbf{Код задачи} "--- число переменных $n$.
-		\item \textbf{Размерность} задачи равна $n^2$.
-		\item \textbf{Пространство решений} $U = \{0,1\}^{n \times n}$.
-		\item \textbf{Предикат допустимости} $g = g(\bm{x}, n)$ равен <<истина>>,\\
-		если $\bm{x} = (x_{ij}) \in \{0,1\}^{n \times n}$ и \alert{$x_{ij} = x_{ii} x_{jj}$}.
-	\end{enumerate}
-	\textbf{Входные данные:} число $n$ и матрица $\bm{c} \in \Z^{n \times n}$.
+\begin{block}{Булев квадратичный многогранник}
+	\[\alert{\BQP(n)} \coloneqq \conv \Bigl\{ \vec{x} = (x_{ij}) \in \{0,1\}^{n \times n} \Bigm| x_{ij} = x_{ii} x_{jj}, \ i,j\in[n] \Bigr\}\]
 \end{block}
 \end{frame}
 
-\begin{frame}{Многогранники задачи}
-\begin{block}{Определение}
-При оптимизации $\langle\bm{c},\bm{x}\rangle \to \max$ \\
-множество допустимых решений $X = X(I) \subseteq \{0,\dots,k\}^d$\\
-можно заменить его выпуклой оболочкой $\alert{P(I) \coloneqq \conv(X(I))}$,\\
-которая называется \alert{многогранником задачи}.\\
-При произвольном выборе кода $I$ получаем \alert{семейство многогранников}.
+\begin{frame}{Терминология}
+\begin{block}{Общие черты таких задач}
+	\begin{itemize}
+		\item Линейная целевая функция \(\langle\vec{x}, \vec{c}\rangle \to \max\).
+		\item Оптимизация на множестве $X \subseteq \{0,1\}^d$,\\ удовлетворяющем некоторым ограничениям\\
+		(\(\langle\vec{x}, \vec{a}\rangle \le A\) для задачи о рюкзаке,
+		$x_{ij} = x_{ii} x_{jj}$ для задачи BQP).
+	\end{itemize}
 \end{block}
-
-\begin{block}{Пример: булев квадратичный многогранник}
-\[\alert{\BQP(n)} \coloneqq \conv \Bigl\{ \bm{x} = (x_{ij}) \in \{0,1\}^{n \times n} \Bigm| x_{ij} = x_{ii} x_{jj}, \ i,j\in[n] \Bigr\}\]
-\end{block}
-
-\begin{block}{Для чего нужны многогранники задач?}
-	\begin{enumerate}
-	\item Использование геометрических методов для решения ЛЗКО.
-	\item Явное представление структуры множества допустимых решений.
-	\end{enumerate}
+\begin{block}{Понятия и обозначения}
+	\begin{itemize}
+		\item $\vec{c} \in \R^d$ "--- \alert{целевой вектор},
+		\item $d \in \N$ "--- \alert{размерность задачи},
+		\item $X \subseteq \{0,1\}^d$ "--- \alert{множество допустимых решений},
+		\item входные данные, от которых зависит $X$, "--- \alert{код задачи}\\
+		($n$, $\vec{a}$ и $A$ для задачи о рюкзаке, $n$ "--- для других двух примеров)
+	\end{itemize}
 \end{block}
 \end{frame}
+
+
+\begin{frame}{Линейная задача комбинаторной оптимизации}
+	\vspace*{-\fill}
+	\begin{block}{Определение}
+		\textbf{Линейная задача комбинаторной оптимизации (ЛЗКО)} "---\\
+		это~пара функций, аргументом которых является \alert{код задачи $I$}:
+		\begin{enumerate}
+			\item \alert{Размерность} задачи $\alert{d} = d(I) \in \N$.
+			\item \alert{Предикат допустимости} $\alert{g(\vec{x}, I)} \in \{\text{ложь}, \text{истина}\}$, где $\vec{x} \in \{0,1\}^d$.
+		\end{enumerate}
+		\medskip
+		\underline{Входные данные:} код задачи $I$ и \alert{целевой вектор} $\alert{\vec{c}} \in \Z^d$.
+		
+		\medskip
+		\underline{Цель:} \alert{$\langle\vec{c},\vec{x}\rangle \to \max$} при условии $\vec{x} \in \{0,1\}^d$ и $g(\vec{x}, I) = \text{истина}$.
+		%найти оптимальное решение
+		%\[\vec{x^*} = \arg\max_{\vec{x} \in X} \langle\vec{c},\vec{x}\rangle,\]
+	\end{block}
+\begin{block}{Многогранники задачи}
+	$X(I) \coloneqq \{\vec{x} \in \{0,1\}^d \mid g(\vec{x}, I)\}$ "--- множество допустимых решений.\\
+	$\alert{P(I)} \coloneqq \conv(X(I))$ --- \alert{многогранник задачи}.\\
+	При произвольном выборе кода $I$ получаем \alert{семейство многогранников}.
+\end{block}
+\end{frame}
+
+\begin{frame}{Линейная задача комбинаторной оптимизации 2}
+	\vspace*{-\fill}
+	\begin{block}{Определение 2}
+		\textbf{Линейная задача комбинаторной оптимизации (ЛЗКО)} "---\\
+		это~тройка функций, аргументом которых является код задачи $I$:
+		\begin{enumerate}
+			\item Размерность задачи $d = d(I) \in \N$.
+			\item Предикат допустимости $g(\vec{x}, I) \in \{\text{ложь}, \text{истина}\}$, где $\vec{x} \in \alert{U}$.
+			\item \alert{Функция $k = k(I) \in \N$, задающая пространство решений $\alert{U} \coloneqq \{0,\dots,k\}^d$.} В большинстве известных примеров $k\equiv 1$.
+		\end{enumerate}
+		\medskip
+		\underline{Входные данные:} код задачи $I$ и целевой вектор $\vec{c} \in \Z^d$.
+		
+		\medskip
+		\underline{Цель:} $\langle\vec{c},\vec{x}\rangle \to \max$ при условии $\vec{x} \in \alert{U}$ и $g(\vec{x}, I) = \text{истина}$.
+	\end{block}
+\end{frame}
+
+\begin{frame}{}
+\begin{center}
+	\LARGE \bfseries
+Для чего нужны\\ многогранники задач?
+\end{center}
+\end{frame}
+%\begin{block}{}
+%	\begin{enumerate}
+%	\item Использование геометрических методов для решения ЛЗКО.
+%	\item Явное представление структуры множества допустимых решений для анализа сложности задач.
+%	\end{enumerate}
+%\end{block}
 
 
 \begin{frame}{ЛЗКО и задача линейного программирования}
 	\begin{block}{ЛЗКО}
-		$\langle\bm{c},\bm{x}\rangle \to \max$ при условии \alert{$\bm{x} \in \conv(X(I))$},\\
+		$\langle\vec{c},\vec{x}\rangle \to \max$ при условии \alert{$\vec{x} \in \conv(X(I))$},\\
 		где %$X(I) \subseteq \{0,\dots,k\}^d$ "--- множество допустимых решений,\\
 		$\conv(X(I))$ "--- многогранник задачи.
 	\end{block}
 
 	\begin{block}{Задача линейного программирования}
-		$\langle\bm{c},\bm{x}\rangle \to \max$ при условии \alert{$A \bm{x} \le \bm{b}$},
-		где $\bm{x} \in \R^d$, $A \in \Z^{n \times d}$, $\bm{b} \in \Z^n$.
+		$\langle\vec{c},\vec{x}\rangle \to \max$ при условии \alert{$A \vec{x} \le \vec{b}$},
+		где $\vec{x} \in \R^d$, $A \in \Z^{n \times d}$, $\vec{b} \in \Z^n$.
 	\end{block}
 	\begin{block}{Способы описания выпуклого многогранника}
 		\begin{description}
 		\item[V-описание:] выпуклая оболочка конечного множества точек.
 		\item[H-описание:] пересечение полупространств.
 		\end{description}
-		\textbf{Пример} <<0/1-куб>>: $\conv\left(\{0,1\}^d\right) = \{\bm{x} \in \R^d \mid \bm{0} \le \bm{x} \le \bm{1}\}$.
+		\textbf{Пример} <<0/1-куб>>: $\conv\left(\{0,1\}^d\right) = \{\vec{x} \in \R^d \mid \vec{0} \le \vec{x} \le \vec{1}\}$.
 	\end{block}
 \end{frame}
 
 \begin{frame}{Смежные решения}
 	\begin{block}{Определение}
 		Для задачи линейной оптимизации на конечном множестве $X \subset \Z^d$\\
-		пару точек $\bm{x}, \bm{y} \in X$ назовем \alert{смежными},\\
-		если найдется $\bm{c_{xy}} \in \Z^d$ такой, что 
-		\[\langle\bm{c_{xy}}, \bm{x}\rangle = \langle\bm{c_{xy}}, \bm{y}\rangle > \langle\bm{c_{xy}}, \bm{z}\rangle \qquad 
-		\forall \bm{z} \in X \setminus \{\bm{x}, \bm{y}\}.\]
-		Смежность $\bm{x}$ и $\bm{y}$ означает, что $\bm{x}$ и $\bm{y}$ являются вершинами многогранника $\conv(X)$ и образуют \alert{ребро} этого многогранника.
+		пару точек $\vec{x}, \vec{y} \in X$ назовем \alert{смежными},
+		если $\exists$ $\vec{c_{xy}} \in \Z^d$ такой, что 
+		\[\langle\vec{c_{xy}}, \vec{x}\rangle = \langle\vec{c_{xy}}, \vec{y}\rangle > \langle\vec{c_{xy}}, \vec{z}\rangle \qquad 
+		\forall \vec{z} \in X \setminus \{\vec{x}, \vec{y}\}.\]
+		Смежность $\vec{x}$ и $\vec{y}$ означает, что $\vec{x}$ и $\vec{y}$ являются вершинами многогранника $\conv(X)$ и образуют \alert{ребро} этого многогранника.
 	\end{block}
 	\begin{block}{Наблюдение}
-		Алгоритм для линейной оптимизации на $X$ должен быть чувствителен к небольшим изменениям вектора $\bm{c_{xy}}$, так как оптимальное решение может меняться с $\bm{x}$ на $\bm{y}$ и обратно.
+		Алгоритм для линейной оптимизации на $X$ должен быть чувствителен к небольшим изменениям вектора $\vec{c_{xy}}$, так как оптимальное решение может меняться с $\vec{x}$ на $\vec{y}$ и обратно.
 		
 		Таким образом, наличие ребер (1-граней) между вершинами многогранника влияет на структуру алгоритма.
 	\end{block}
@@ -429,6 +482,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 	\vspace{-1mm}
 	\begin{block}{NP-трудные задачи}
 		\alert{Кликовые числа} графов многогранников следующих задач \alert{сверхполиномиальны}:
+		% $= O(2^{n^{\varepsilon}})$, $\varepsilon \in (0,1)$
 		коммивояжер, максимальный разрез, максимальная клика, 3-назначения, разбиение на клики, кубичекий подграф %, остовное деревья с доп. ограничениями 
 		и многие другие 
 		[Бондаренко~'83, Грешнев~'84, Barahona\&Mahjoub~'86, \dots, Бондаренко~и~др.~'15].
@@ -461,7 +515,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 				
 				если существует аффинное 
 				
-				отображение~$\pi\colon Q \to P$.
+				отображение~$\pi\colon Q \to P$, $P = \pi(Q)$.
 			\end{minipage}
 			\nolinebreak
 			%  \hspace{5mm}  
@@ -587,11 +641,8 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 		а $f(P)$~--- число его граней всех размерностей. Тогда
 		\centerline{\(\dim(P) < \log_2 f(P) \le \alert{\rc(M) \le \xc(P)} \le \min\{\vertices(P), \facet(P)\}\)}
 	\end{block}
-%	\begin{alertblock}{Теорема (Fiorini, Massar, Pokutta, Tiwary, de Wolf '11)}
-%		\centering\(\rc(\BQP(n)) = 2^{\Theta(n)}\)
-%		Число прямоугольного покрытия (а~значит и~сложность расширения)\\
-%		для~булева квадратичного многогранника экспоненциально.
-%	\end{alertblock}
+% При этом есть примеры многогранников, для которых кликовое число меньше, чем $\dim(P)$, и есть примеры, для которых оно больше, чем правая часть этого неравенства
+% Для диаметра графа правое неравенство, скорее всего, выполнено всегда (гипотеза Хирша), а левое --- нет (для многогранников с полным графом).
 \end{frame}
 
 
@@ -607,7 +658,7 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 		\end{enumerate}
 	\end{block}
 	
-	\begin{block}{Пример: многогранник гамильтоновых контуров $\ATSP(n)$}
+	\begin{exampleblock}{Пример: многогранник гамильтоновых к\'онтуров $\ATSP(n)$}
 	%\textbf{Размерность} равна $n (n-2)$, \textbf{число вершин} равно $(n-1)!$,
 	%\textbf{число гиперграней} сверхэкспоненциально, 
 	\textbf{Диаметр} равен двум при $n > 5$, 
@@ -615,210 +666,22 @@ $X = X(I) \coloneqq \{\bm{x} \in U \mid g(\bm{x}, I)\}$ "--- множество \alert{до
 	\textbf{кликовое число графа} равно $2^{\Omega(\sqrt{n})}$,\\
 	\textbf{сложность расширения} $\xc(\ATSP(n)) = 2^{\Omega(n)}$,\\
 	\textbf{число прямоугольного покрытия} $\rc(\ATSP(n)) = 2^{\Omega(\sqrt{n})}$.
-	\end{block}
+	\end{exampleblock}
 \end{frame}
 
 
-\begin{frame}{Цели и задачи диссертационной работы}
+\begin{frame}{Цели и задачи} % диссертационной работы}
 \begin{block}{Цель}
 	Анализ комбинаторных свойств многогранников, характеризующих вычислительную сложность соответствующих линейных задач комбинаторной оптимизации.
 \end{block}
 \begin{block}{Группы задач}
 	\begin{enumerate}
 	\item Поиск численных оценок различных комбинаторных характеристик для востребованных семейств многогранников.
-	\item Разработка методологии, упрощающей такого рода поиски и позволяющей сделать обобщающие выводы.
+	\item Разработка методологии, упрощающей такого рода поиски и~позволяющей сделать обобщающие выводы.
 	\item Анализ перспективности использования различных характеристик в качестве оценок сложности соответствующих задач.
 	\end{enumerate}
 \end{block}
 \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-%   Непосредственные оценки
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Непосредственные численные оценки}
-
-\begin{frame}{Циклический многогранник}
-\begin{block}{Определение}
-	Пусть $T = \{t_1, \dots, t_n\} \subset \R$, $t_1 < t_2 < \dots < t_n$.\\
-	\alert{Циклическим многогранником} называется выпуклая оболочка
-	\[\alert{\CP(d,T)} \coloneqq \conv\bigl\{(t, t^2, \dots, t^d) \bigm| t \in T\bigr\}, \qquad 2 \le d < n,\]
-	$d$ --- размерность многогранника,
-	$n$ --- число его вершин.
-\end{block}
-	
-\begin{block}{Теорема, McMullen '70 (гипотеза, Motzkin '57)}
-	Циклический многогранник~\alert{$\CP(d,T)$} для любого $k \in [d]$ \alert{обладает\\ максимальным числом $k$-граней} среди всех выпуклых многогранников той же размерности и с~тем~же числом вершин.
-	
-	В частности, он $\lfloor d/2\rfloor$-смежностен\\
-	(т. е. любые $\lfloor d/2\rfloor$ вершин образуют грань).
-\end{block}
-\end{frame}
-
-\begin{frame}{Оптимизация на циклическом многограннике}
-	\vspace{-1mm}
-	\begin{block}{Максимум многочлена}
-		Пусть $\bm{x} = (t, t^2, \dots, t^d)$, $t \in T$, $\bm{c} \in \Z^d$.
-		Тогда\\
-		\centerline{$\langle \bm{c}, \bm{x}\rangle = c_1 t + c_2 t^2 + \dots + c_d t^d$.}
-		Следовательно, задача линейной оптимизации на многограннике $\CP(d,T)$
-		эквивалентна нахождению максимума многочлена степени $d$, определенного на конечном множестве $T$.
-	\end{block}
-	\vspace{-1mm}
-	\begin{block}{Теорема, Pan '96}
-		Для нахождения корней многочлена степени $d$ с точностью $2^{-n}$ (относительно радиуса области поиска) требуется порядка $\Theta(d^2 (d+n))$ битовых операций.
-	\end{block}
-	\vspace{-1mm}
-	\begin{block}{Следствие}
-		Если $T = \Z \cap [a,b]$, то \alert{задача линейной оптимизации на $\CP(d,T)$ полиномиально разрешима} относительно $d$, $\log_2 (b+1-a)$\\
-		 и длины двоичной записи целевого вектора $\bm{c}$.
-	\end{block}
-\end{frame}
-
-%\newcommand{\dc}{{\textup{D}_{\text{ц}}(n, d)}}
-\newcommand{\dc}{{\Delta_{C}(d, n)}}
-\begin{frame}{Диаметр ридж-графа циклического многогранника}
-\begin{block}{Следствие из теоремы (McMullen '70)}
-	Двойственный к~циклическому $d$-многогранник~$C^*(d,n)$, \\
-	имеющий $n$~гиперграней, обладает \textbf{максимальным числом вершин} \\
-	среди всех $d$-многогранников с~тем~же числом гиперграней.
-\end{block}
-	
-%\uncover<2->{
-	\begin{block}{Теорема (Klee '64)}
-		Диаметр $\dc$ графа многогранника~$C^*(d, n)$ удовлетворяет\\
-		гипотезе Хирша. Причем $\dc = n-d$ при~$d < n \le 2d$.
-	\end{block}
-		
-%	\begin{block}{}
-	В~той~же работе была высказана гипотеза о~том, что~для~$n > 2d$ выполнено 
-	равенство~$\dc=\left\lfloor n/2\right\rfloor$.
-	Но~позднее был найден контрпример~[Klee '67].
-	С~тех~пор задача оставалась открытой.% до~2009~г.
-%	\end{block}
-%}
-\begin{alertblock}{Теорема (\Maks '09)}%<3->
-	\centerline{\(
-		\dc = n-d  - \left\lceil \frac{n-2d}{\left\lfloor d/2 \right\rfloor + 1} \right\rceil
-		\)  при $n > 2d$.
-	}
-\end{alertblock}
-	%Но даже эти результаты в виду недоступности работы \cite{Klee:1964}
-	% настолько плохо известны, что по прошествии более 30~лет делаются 
-	% попытки нахождения величины $\dc$ для $n=2d$ с помощью 
-	% вычислительной техники \cite{Ferrez:1998}, а в работе \cite{Lagarias:1998} 
-	% при упоминании факта \eqref{Hirsh4Cycl} приводится ссылка на работу \cite{Klee:1966}, не содержащую этого результата.
-	%\textbf{Критерий Гейла \cite{Gale:1963}.} 
-	% Все грани многогранника $C(d,n)$
-	% являются симплексами и подмножество $Y\subset X$, состоящее из $d$ вершин, 
-	% определяет некоторую фасету тогда и только тогда, когда 
-	% для любых двух $x^i,x^j\in X\setminus Y$, $i<j$, 
-	% число вершин $x^k\in Y$, для которых $i<k<j$, четно.
-\end{frame}
-
-
-\begin{frame}{Циклический многоугольник: сложность расширения}
-	\vspace{-15pt}
-	\begin{minipage}[t]{0.58\textwidth}
-	\begin{block}{}
-		Пусть $T_n = \{t_1, \dots, t_n\} \subset \R$.
-	\end{block}
-	\begin{alertblock}{Лемма (Богомолов, Fiorini, \Maks, Pashkovich '15)}%<2->
-		Если $t_{i+1} - t_{i} = \text{const}$, $i \in [n-1]$, то
-		\[\xc(\CP(2,T_n)) \le 2\lfloor \log_2 (n-1) \rfloor + 2.\]
-	\end{alertblock}
-	\begin{block}{Теорема (Fiorini, Rothvo\ss, Tiwary '12)}%<3->
-		Существует $T_n \subset [2n]$ такое, что\\
-		\[\xc(\CP(2,T_n)) = \Omega(\sqrt{n/\log n}).\]
-	\end{block}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[t]{0.37\textwidth}
-	\begin{exampleblock}{}
-		\centering
-		\begin{tikzpicture}[yscale=0.64, >=stealth', line join = round]
-			\draw[->] (-1.2,0) to (3.05,0) node[above left] {$x$}; 
-			\draw[->] (0,-0.2) to (0,7) node[left] {$y$}; 
-			\foreach \x in {-1,1,2} {\draw (\x,-0.078) -- (\x,0.078);}
-			\foreach \y in {1,...,6} {\draw (-0.05,\y) -- (0.05,\y);}
-			\draw[thick, blue, dashed, smooth, samples = 50, domain = -1.2:3.05] plot ({\x}, {\x*\x});
-			\draw[thick,fill=green, fill opacity = 0.3] (-1,1) -- (0,0) -- (1,1) -- (2,4) -- (3,9) -- cycle;
-			\draw (0.7,8.4) node {$\CP\bigl(2,\{-1,\dots,3\}\bigr)$};
-			\draw[blue] (2.4,2.3) node {$y=x^2$};
-		\end{tikzpicture}
-	\end{exampleblock}
-	\end{minipage}
-		
-	\begin{block}{Теорема (Ben-Tal\&Nemirovski '01)}%<3->
-		Сложность расширения правильного $n$-угольника равна~$\Theta(\log n)$.
-	\end{block}
-	%	\visible<3->{
-	%	\begin{block}{Теорема (Shitov '13, Padrol\&Pfeifle '14)}
-	%		Сложность расширения любого \textbf{семиугольника} равна~6.\\
-	%		\textbf{Следствие:} $\xc(P_n) \le \lceil 6n/7\rceil$ для любого $n$-угольника $P_n$.
-	%	\end{block}
-	%	}
-\end{frame}
-
-\begin{frame}{Циклический многогранник: сложность расширения}
-	\begin{alertblock}{Теорема (Богомолов, Fiorini, \Maks, Pashkovich '15)}
-		%Если расстояния между соседними числами в~$T_n$ одинаковы, то%\\
-		Если $t_{i+1} - t_{i} = \text{const}$, $i \in [n-1]$, то
-		%Пусть $S_N = \{1,2,\dots,N\}$. Тогда
-%		\centering
-		\[\alert{\xc}(\CP(d, T_n)) = \bigO(\log n)^{\lfloor d/2\rfloor}.\]
-	\end{alertblock}
-	\begin{block}{Теорема (Fiorini, Kaibel, Pashkovich, Theis '12)}%<2->
-		Оценка сверху для числа прямоугольного покрытия:%\\
-%		\centering
-		\[\alert{\rc}(\CP(d, T_n)) = \bigO(d^2\log n).\]
-	\end{block}
-\end{frame}
-
-
-\begin{frame}{Многогранник орпутей}
-	
-\begin{block}{Обозначения}
-Пусть $\alert{D_n} = (V,A)$ --- \alert{полный орграф}, $|V| = n$, $|A| = n(n-1)$,\\
-$\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический вектор} подмножества $S \subseteq A$:\\
-для каждой дуги $a \in A$, если $a \in S$, то $x_{a} = 1$, иначе $x_{a} = 0$.
-\end{block}
-	
-\begin{block}{Многогранник орпутей}
-	\centering
-	\(
-	\alert{\Dipath(n)} \coloneqq \conv\bigl\{\bm{x}(S) \bigm| \text{$S$ --- путь в орграфе $D_n$ из $v_1$ в $v_n$}\bigr\}
-	\)
-\end{block}
-\begin{block}{Замечание}<2->
-	Многогранник гамильтоновых контуров $\ATSP(n)$ аффинно эквивалентен грани многогранника орпутей $\Dipath(n+1)$.
-	
-	Как следствие, $\Dipath(n+1)$ имеет сверхполиномиальные\\ характеристики сложности: кликовое число графа,\\ число прямоугольного покрытия, \dots
-\end{block}
-\end{frame}
-
-\begin{frame}{Полиэдр кратчайших орпутей}
-\begin{block}{Условие задачи о кратчайшем пути}
-	В орграфе $D_n$ отсутствуют контуры отрицательной длины.
-\end{block}
-\begin{block}{Определение}
-	Пусть $K(n)  \coloneqq \cone\bigl\{\bm{x}(S) \bigm| \text{$S$ --- контур в орграфе $D_n$}\bigr\}$.\\
-	\alert{Полиэдр кратчайших орпутей} есть сумма Минковского
-	\[
-	\alert{\ShortP(n)} \coloneqq \Dipath(n) + K(n).
-	\]
-\end{block}
-\begin{block}{Утверждение (Saigal '69)}
-	Полиэдр $\ShortP(n)$ имеет простое H-описание,\\
-	состоящее из $n(n-1)$ линейных неравенств и $n$ уравнений.
-\end{block}
-\begin{alertblock}{Теорема (\Maks '04)}
-	Кликовое число графа полиэдра $\ShortP(n)$ равно $\lfloor n^2 / 4\rfloor$.
-\end{alertblock}
-\end{frame}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -828,33 +691,26 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 
 \section{Аффинная сводимость}
 
-\begin{frame}{Аффинная сводимость многогранников задач}
-\vspace{-1mm}	
-\begin{block}{Идея сравнения семейств многогранников}
-	Пусть $P = \{p(I)\}$ и $Q = \{q(I')\}$ --- семейства многогранников.\\
-	Для каждого $p \in P$ найдется $q \in Q$ такой, что\\ %что $p$ --- грань $q$.
-	$p$ аффинно эквивалентен некоторой грани многогранника $q$.
-\end{block}
-\vspace{-1mm}	
-\begin{block}{Определение}<2->
-	Семейство $P$ \alert{аффинно сводится} к $Q$ (обозначение: \alert{$P \propto_A Q$}),\\ если найдутся полиномиально вычислимые: %(относительно размера многогранника $p\in P$):
-	\begin{enumerate}
-		\item 
-		\alert{Преобразование $\tau$ кода $I$} каждого многогранника $p = p(I)\in P$ \alert{в~код $I'$} многогранника $q = q(I') \in Q$.
-		\item 
-		Алгоритм построения для каждого кода $I$ \alert{аффинного отображения} 
-		\[
-		\alert{\alpha}\from \R^d \to \R^{d'}, \qquad d = d(I), \quad d' = d'(\tau(I)),
-		\]
-		такого, что \alert{$\alpha(p(I))$ аффинно эквивалентен $p(I)$\\ 
-		и является гранью многогранника $q(\tau(I))$}.
-	\end{enumerate}
-\end{block}
-\end{frame}
+%\begin{frame}{}
+%	\begin{center}
+%		\LARGE \bfseries
+%		ИдеяСравнение многогранников.\\
+%		Аффинная сводимость
+%	\end{center}
+%\end{frame}
 
-\begin{frame}{Аффинная сводимость: иллюстрация и свойства}
+
+\begin{frame}{Идея: сравнение многогранников}
+\begin{block}{Сравнение многогранников: $p \le q$}
+	Если многогранник $p$ аффинно эквивалентен многограннику $q$ или некоторой его грани, то пишем $p \le q$ ($p$ не сложнее $q$).
+\end{block}
+\begin{block}{Сравнение семейств многогранников: $P \propto_A Q$}
+	Пусть $P = \{p(I)\}$ и $Q = \{q(I')\}$ --- семейства многогранников.\\
+	Для каждого $p \in P$ найдется $q \in Q$ такой, что $p \le q$.
+%	$p$ аффинно эквивалентен некоторой грани многогранника $q$.
+\end{block}
   \begin{exampleblock}{Пример: $P \propto_A Q$}
-  	\centering
+	\centering
 	\begin{tikzpicture}[scale=0.88, >=stealth', thick]
 	\draw (-0.5, 2.5) node[anchor=east] {\Large$\mathbf{P:}$};
 	\draw[fill=lightpink]	(0.1, 2) -- (1.1, 2) -- (0.55, 3) -- cycle;
@@ -905,6 +761,26 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 	\draw[->] (7.35, 2.05) to (4.5, 0.7);
 	\end{tikzpicture}
 \end{exampleblock}
+\end{frame}
+
+\begin{frame}{Аффинная сводимость многогранников задач}
+	\begin{block}{Определение}
+		Семейство $P$ \alert{аффинно сводится} к $Q$ (обозначение: \alert{$P \propto_A Q$}),\\ если найдутся полиномиально вычислимые: %(относительно размера многогранника $p\in P$):
+		\begin{enumerate}
+			\item 
+			\alert{Преобразование $\tau$ кода $I$} каждого многогранника $p = p(I)\in P$ \alert{в~код $I'$} многогранника $q = q(I') \in Q$.
+			\item 
+			Алгоритм построения для каждого кода $I$ \alert{аффинного отображения} 
+			\[
+			\alert{\alpha}\from \R^d \to \R^{d'}, \qquad d = d(I), \quad d' = d'(\tau(I)),
+			\]
+			такого, что образ \alert{$\alpha(p(I))$ аффинно эквивалентен $p(I)$\\ 
+				и является гранью многогранника $q(\tau(I))$}.
+		\end{enumerate}
+	\end{block}
+\end{frame}
+
+\begin{frame}{Аффинная сводимость: свойства}
 
   \begin{block}{Свойства}
 	Пусть $P \propto_A Q$. 
@@ -919,8 +795,8 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 		NP-полноту проверки несмежности вершин
 		\item 
 		сверхполиномиальную сложность расширения
-		%\item 
-		%  сверхполиномиальность числа прямоугольного покрытия
+		\item 
+		сверхполиномиальность числа прямоугольного покрытия
 		\item 
 		\dots
 	\end{enumerate}
@@ -932,17 +808,17 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 		Задача проверки на несмежность двух произвольных вершин\\
 		многогранника задачи коммивояжера NP-полна.
 	\end{block}
-	\begin{block}{Таким же свойством обладают многогранники:}%<2->
+	\begin{block}{Таким же свойством обладают многогранники:}<2->
 		\begin{enumerate}
 			\item задачи о рюкзаке [Geist\&Rodin~'92]
-			\item покрытий множества [Matsui~'95]
+			\item покрытий и двойных покрытий множества [Matsui~'95]
 			\item кубических подграфов [Бондаренко\&Юров~'96]
 			\item задачи о~назначениях с~ограничением [Alfakih\&Murty~'98]
 			\item задачи о 3-выполнимости [Fiorini~'03]
-			\item двойных покрытий множества [Matsui~'95]
+%			\item двойных покрытий множества [Matsui~'95]
 		\end{enumerate}
 	\end{block}
-	\begin{block}{Вопрос}<2->
+	\begin{block}{Вопрос}<3->
 		Почему свойства этих многогранников совпадают?
 	\end{block}
 	%  \begin{block}{Комментарий (Matsui '95)}<2->
@@ -959,38 +835,52 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 
 \begin{frame}{Грань с NP-полным критерием несмежности}
 	\begin{alertblock}{Теорема (\Maks '12)}%<2->
-		Все вышеперечисленные многогранники содержат в~качестве граней\\ многогранники двойных покрытий (многогранники Мацуи),\\
+		Все вышеперечисленные многогранники содержат в~качестве граней\\ многогранники двойных покрытий $\Matsui$,\\
 		для которых задача проверки на~несмежность NP-полна.
 	\end{alertblock}
 	\begin{alertblock}{}
 		Не для всех многогранников NP-трудных задач это верно!
 	\end{alertblock}
-	\begin{block}{Пример 1}<2->
+	\begin{block}{Теорема (Грешнев '84, Белошевский '86, Barahona\&Mahjoub '86)}<2->
 		Все вершины булева квадратичного многогранника попарно смежны.
 	\end{block}
-	\begin{block}{Пример 2}<3->
+	\begin{block}{Следствие}<2->
+		Аффинная сводимость $\Matsui \propto_A \BQP$ невозможна,
+		так как среди многогранников $\Matsui$
+		есть многогранники с~неполным графом.
+	\end{block}
+\end{frame}
+
+
+\begin{frame}{Многогранники независимых множеств}
+	\begin{block}{Определение}
 	Пусть $G=(V,E)$ --- произвольный граф на $n = |V|$ вершинах.
 	\alert{Многогранником независимых множеств} называется
 	\centerline{\(
-		\alert{\Stable(G)} \coloneqq \conv\bigl\{\bm{x}\in\{0,1\}^V \bigm| x_v + x_u \le 1 \quad \forall \{v,u\} \in E\bigr\}.
+		\alert{\Stable(G)} \coloneqq \conv\bigl\{\vec{x}\in\{0,1\}^V \bigm| x_v + x_u \le 1 \quad \forall \{v,u\} \in E\bigr\}.
 		\)}
-	У этого многогранника имеется простой критерий смежности вершин.
-	%пара вершин многогранника независимых множеств $\Stable(G)$ смежна тогда и только тогда, когда симметрическая разность соответствующих	независимых множеств индуцирует связный подграф в $G$.
 	\end{block}
-%	\begin{block}{Теорема (\Maks '15)}%<3->
-%		Многогранники двойных покрытий \\
-%		не являются гранями многогранников следующих задач:\\
-%		упаковки и~разбиения множества, кликовое число графа, 3-сочетание,\\
-%		булево квадратичное программирование и~некоторых других.
-%	\end{block}
+	\begin{block}{Теорема (Chv\'atal '75)}<2->
+	%У этого многогранника имеется простой критерий смежности вершин.
+	Пара вершин многогранника $\Stable(G)$ смежна тогда и~только тогда, когда симметрическая разность соответствующих независимых множеств индуцирует связный подграф в~$G$.
+	\end{block}
+	\begin{block}{Следствие}<2->
+		Если $\text{NP} \ne \text{P}$, то сводимость $\Matsui \propto_A \Stable$ невозможна.
+	\end{block}
+	\begin{block}{Вопрос}<3->
+		А если убрать условие $\text{NP} \ne \text{P}$?
+	\end{block}
 \end{frame}
 
 \begin{frame}{Многогранники с простым критерием смежности}
 	\begin{alertblock}{Теорема (\Maks '17)}
-		Многогранники независимых множеств $\Stable(G)$\\
-		аффинно сводятся к многогранникам Мацуи.\\
-		Но, многогранники Мацуи (за исключением отрезков)\\
-		не могут быть гранями многогранника $\Stable(G)$ ни при каком $G$.
+		\begin{enumerate}
+			\item $\Stable \propto_A \Matsui$.
+			\item Многогранники $\Matsui$ (за исключением отрезков)\\
+			не могут быть гранями многогранника $\Stable(G)$ ни при каком $G$.\\
+			Следовательно, $\Matsui \npropto_A \Stable$.
+			%сводимость $\Matsui \propto_A \Stable$ невозможна.
+		\end{enumerate}
 	\end{alertblock}
 	\begin{alertblock}{Теорема (\Maks '15)}<2->
 		Многогранники независимых множеств эквивалентны относительно аффинной сводимости многогранникам следующих задач:\\
@@ -1124,10 +1014,142 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 		Для каждого многогранника $p(I) \in P$ определен многогранник $q(I') \in Q$ такой, что $p(I)$ \alert{является аффинным образом} грани $q(I')$.
 	\end{block}
 	\begin{alertblock}{Теорема (\Maks '12)}
-		Пусть для семейства многогранников $\bigl\{\conv(X(I))\bigr\}$ задача проверки условия $\bm{x} \in X(I)$ (предикат допустимости) принадлежит классу NP.
+		Пусть для семейства многогранников $\bigl\{\conv(X(I))\bigr\}$ задача проверки условия $\vec{x} \in X(I)$ (предикат допустимости) принадлежит классу NP.
 		Тогда это семейство расширенно аффинно сводится к булевым квадратичным многогранникам.
 	\end{alertblock}
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Расширение циклического многогранника
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Расширение циклического многогранника}
+
+%\begin{frame}{}
+%\begin{center}
+%	\LARGE \bfseries
+%	Особый пример:\\
+%	циклический многогранник
+%\end{center}
+%\end{frame}
+
+\begin{frame}{Сложность расширения $k$-смежностного многогранника}
+\begin{block}{Наблюдение}
+	Выше было показано, что многогранники NP-трудных задач\\
+	$\forall k \in \N$	содержат $k$-смежностные грани\\
+	со сверхполиномиальным числом вершин.\\
+	Кроме того, сложность их расширения сверхполиномиальна.
+\end{block}
+\begin{block}{Факт}
+	$k$-смежностные многогранники обладают\\ максимальным числом $i$-граней для $i \in [k]$\\ (при фиксированных размерности и числе вершин).
+\end{block}
+\begin{block}{Гипотеза}
+	Наличие $k$-смежностных граней ($\forall k \in \N$) со сверхполиномиальным числом вершин является причиной высокой сложности расширения.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Циклический многогранник}
+	\begin{block}{Определение}
+		Пусть $T = \{t_1, \dots, t_n\} \subseteq \R$, $t_1 < t_2 < \dots < t_n$.\\
+		\alert{Циклическим многогранником} называется выпуклая оболочка
+		\[\alert{\CP(d,T)} \coloneqq \conv\bigl\{(t, t^2, \dots, t^d) \bigm| t \in T\bigr\}, \qquad 2 \le d < n,\]
+		$d$ --- размерность многогранника,
+		$n$ --- число его вершин.
+	\end{block}
+	
+	\begin{block}{Теорема, McMullen '70 (гипотеза, Motzkin '57)}
+		Циклический многогранник~\alert{$\CP(d,T)$} для любого $k \in [d]$ \alert{обладает\\ максимальным числом $k$-граней} среди всех выпуклых многогранников той же размерности и с~тем~же числом вершин.
+		
+		В частности, он $\lfloor d/2\rfloor$-смежностен.
+%		\\(т. е. любые $\lfloor d/2\rfloor$ вершин образуют грань).
+	\end{block}
+\end{frame}
+
+\begin{frame}{Оптимизация на циклическом многограннике}
+	\vspace{-1mm}
+	\begin{block}{Максимум многочлена}
+		Пусть $\vec{x} = (t, t^2, \dots, t^d)$, $t \in T \subseteq \R$, $\vec{c} \in \Z^d$.
+		Тогда\\
+		\centerline{$\langle \vec{c}, \vec{x}\rangle = c_1 t + c_2 t^2 + \dots + c_d t^d$.}
+		Следовательно, задача $\langle \vec{c}, \vec{x}\rangle \to \max$ при $\vec{x} \in \CP(d,T)$
+		%линейной оптимизации на многограннике $\CP(d,T)$
+		эквивалентна нахождению максимума многочлена 
+		$c_1 t + c_2 t^2 + \dots + c_d t^d$ при $t \in T$.
+		%степени $d$, определенного на конечном множестве $T$.
+	\end{block}
+	\vspace{-1mm}
+	\begin{block}{Теорема, Pan '96}
+		Для нахождения корней многочлена степени $d$ с точностью $\varepsilon \in (0,1)$ (относительно радиуса области поиска) требуется порядка $\Theta(d^2 (d + \lvert\log \varepsilon\rvert))$ битовых операций.
+	\end{block}
+	\vspace{-1mm}
+	\begin{block}{Следствие}
+		Если $T = \Z \cap [a,b]$, то \alert{задача линейной оптимизации на $\CP(d,T)$ полиномиально разрешима} относительно $d$, $\log_2 (b+1-a)$\\
+		и длины двоичной записи целевого вектора $\vec{c}$.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Циклический многоугольник: сложность расширения}
+	\vspace{-15pt}
+	\begin{minipage}[t]{0.58\textwidth}
+		\begin{block}{}
+			Пусть $T_n = \{t_1, \dots, t_n\} \subset \R$.
+		\end{block}
+		\begin{alertblock}{Лемма (Богомолов, Fiorini, \Maks, Pashkovich '15)}%<2->
+			Если $t_{i+1} - t_{i} = \text{const}$, $i \in [n-1]$, то
+			\[\xc(\CP(2,T_n)) \le 2\lfloor \log_2 (n-1) \rfloor + 2.\]
+		\end{alertblock}
+		\begin{block}{Теорема (Fiorini, Rothvo\ss, Tiwary '12)}%<3->
+			Существует $T_n \subset [2n]$ такое, что\\
+			\[\xc(\CP(2,T_n)) = \Omega(\sqrt{n/\log n}).\]
+		\end{block}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[t]{0.37\textwidth}
+		\begin{exampleblock}{}
+			\centering
+			\begin{tikzpicture}[yscale=0.64, >=stealth', line join = round]
+			\draw[->] (-1.2,0) to (3.05,0) node[above left] {$x$}; 
+			\draw[->] (0,-0.2) to (0,7) node[left] {$y$}; 
+			\foreach \x in {-1,1,2} {\draw (\x,-0.078) -- (\x,0.078);}
+			\foreach \y in {1,...,6} {\draw (-0.05,\y) -- (0.05,\y);}
+			\draw[blue, smooth, samples = 50, domain = -1.2:3.05] plot ({\x}, {\x*\x});
+			\draw[thick,fill=green, fill opacity = 0.3] (-1,1) -- (0,0) -- (1,1) -- (2,4) -- (3,9) -- cycle;
+			\draw (0.7,8.4) node {$\CP\bigl(2,\{-1,\dots,3\}\bigr)$};
+			\draw[blue] (2.4,2.3) node {$y=x^2$};
+			\end{tikzpicture}
+		\end{exampleblock}
+	\end{minipage}
+	
+	\begin{block}{Теорема (Ben-Tal\&Nemirovski '01)}%<3->
+		Сложность расширения правильного $n$-угольника равна~$\Theta(\log n)$.
+	\end{block}
+	%	\visible<3->{
+	%	\begin{block}{Теорема (Shitov '13, Padrol\&Pfeifle '14)}
+	%		Сложность расширения любого \textbf{семиугольника} равна~6.\\
+	%		\textbf{Следствие:} $\xc(P_n) \le \lceil 6n/7\rceil$ для любого $n$-угольника $P_n$.
+	%	\end{block}
+	%	}
+\end{frame}
+
+\begin{frame}{Циклический многогранник: сложность расширения}
+	\begin{alertblock}{Теорема (Богомолов, Fiorini, \Maks, Pashkovich '15)}
+		%Если расстояния между соседними числами в~$T_n$ одинаковы, то%\\
+		Если $t_{i+1} - t_{i} = \text{const}$, $i \in [n-1]$, то
+		%Пусть $S_N = \{1,2,\dots,N\}$. Тогда
+		%		\centering
+		\[\alert{\xc}\bigl(\CP(d, T_n)\bigr) \le 2\Bigl(\xc\bigl(\CP(2, T_n)\bigr)\Bigr)^{\lfloor d/2\rfloor} = \Theta\bigl(\log n\bigr)^{\lfloor d/2\rfloor}.\]
+	\end{alertblock}
+	\begin{block}{Теорема (Fiorini, Kaibel, Pashkovich, Theis '12)}%<2->
+		Оценка сверху для числа прямоугольного покрытия:%\\
+		%		\centering
+		\[\alert{\rc}\bigl(\CP(d, T_n)\bigr) = \bigO\bigl(d^2\log n\bigr).\]
+	\end{block}
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1137,8 +1159,27 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 
 \section{Контрпримеры}
 
+%\begin{frame}{}
+%	\begin{center}
+%		\LARGE \bfseries
+%		Контрпримеры
+%	\end{center}
+%\end{frame}
+
+\begin{frame}{Сложность задач и характеристики многогранников}
+	\begin{block}
+		Насколько точно предсказывается сложность задач следующими характеристиками многогранников:
+		\begin{itemize}
+			\item диаметр графа,
+			\item кликовое число графа,
+			\item сложность расширения,
+			\item число прямоугольного покрытия?
+		\end{itemize}
+	\end{block}
+\end{frame}
+
 \begin{frame}{Контрпример: диаметр графа}
-	\begin{exampleblock}{Задача (простая)}
+	\begin{exampleblock}{Задача о диаметре графа пирамиды (простая)}
 		\begin{center}
 			\begin{minipage}{60mm}
 				Пусть $P$ --- произвольный\\ выпуклый $d$-мерный многогранник.\\ 
@@ -1375,18 +1416,32 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 \end{alertblock}
 \end{frame}
 
+\begin{frame}{Контрпример: сложность расширения}
+	\begin{block}{}
+		Сложность расширения многогранника предсказывает сложность оптимизационной задачи значительно точнее, чем кликовое число графа. Тем не менее\dots
+	\end{block}
+	\begin{block}{Теорема (Gabow '73, Lawler '76)}
+		Задача о максимальном совершенном паросочетании\\
+		в полном графе на $n$ вершинах имеет сложность \alert{$\bigO(n^3)$}.
+	\end{block}
+	\begin{block}{Теорема (Rothvo\ss{} '14)}
+		Сложность расширения для многогранника совершенных паросочетаний $\Match(n)$ \alert{экспоненциальна}.
+	\end{block}
+	\begin{block}{Теорема (Fiorini, Kaibel, Pashkovich, Theis '13)}
+		Число прямоугольного покрытия матрицы инциденций\\ для~$\Match(n)$ принадлежит отрезку \alert{$[n^2, n^4]$}.
+	\end{block}
+\end{frame}
+
+
 \begin{frame}{Контрпример: число прямоугольного покрытия}
-	
 	\begin{block}{Факты}
 		%\textbf{Все} перечисленные выше факты говорят о том, \\	что 
 		Число прямоугольного покрытия \textbf{во~всех известных случаях}\\
 		отражает реальную вычислительную сложность задачи.
 	\end{block}
-	
 	\begin{block}{Вопрос}
-		Существует~ли (универсальный) алгоритм для линейных задач комбинаторной оптимизации, сложность которого оценивается \textbf{сверху} числом прямоугольного покрытия?
+		Существует~ли (универсальный) алгоритм для линейных задач комбинаторной оптимизации, сложность которого\\ оценивается \textbf{сверху} числом прямоугольного покрытия?
 	\end{block}
-	
 	\begin{alertblock}{Теорема (Максименко '16)}<2->
 		Имеется пример NP-трудной задачи, для многогранников которой \\
 		число прямоугольного покрытия полиномиально.
@@ -1405,13 +1460,16 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 		%		Существуют два семейства многогранников $\conv(X_n)$ и $\conv(Y_n)$, $n\in \N$:
 		\begin{enumerate}
 			\item $\conv(X_n)$ и $\conv(Y_n)$ \textbf{комбинаторно эквивалентны};
-			%			\item $\conv(X_n)$ и $\conv(Y_n)$ \textbf{комбинаторно эквивалентны},
+			\item задача оптимизации на $\conv(X_n)$ \textbf{полиномиально разрешима}, % по $n$.
+			\item задача оптимизации на $\conv(Y_n)$ \textbf{экспоненциально сложна}.
+		\end{enumerate}
+	Причем:
+		\begin{enumerate}
+			\setcounter{enumi}{3}
 			\item $\dim(\conv(X_n)) = n$, $|X_n| = 2^n$;
-			\item для любого $x\in X_n$ и соответствующего ему $y \in Y_n$,\\
-			длины их двоичных записей ограничены сверху полиномом от $n$\\
-			и, кроме того, $0 \le \frac{\|x-y\|_{\infty}}{\|x\|_{\infty}} < \frac{1}{2^n}$.
-			\item Задача оптимизации на $\conv(X_n)$ \textbf{полиномиально разрешима}. % по $n$.
-			\item Задача оптимизации на $\conv(Y_n)$ \textbf{экспоненциально сложна}.
+			\item для любого $\vec{x}\in X_n$ и соответствующего ему $\vec{y} \in Y_n$,\\
+			длины их двоичных записей ограничены сверху полиномом от~$n$\\
+			и, кроме того, $0 \le \frac{\|\vec{x} - \vec{y}\|_{\infty}}{\|\vec{x}\|_{\infty}} < \frac{1}{2^n}$.
 		\end{enumerate}
 	\end{alertblock}
 	%	\begin{alertblock}{Теорема (Максименко '15)}<2->
@@ -1420,6 +1478,113 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 	%		а~для~другого имеет экспоненциальную сложность.
 	%	\end{alertblock}
 \end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%   Непосредственные оценки
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Непосредственные численные оценки}
+\section{Дополнения}
+
+\begin{frame}{}
+	\begin{center}
+		\LARGE \bfseries
+		Продолжение следует\dots
+	\end{center}
+\end{frame}
+
+%\newcommand{\dc}{{\textup{D}_{\text{ц}}(n, d)}}
+\newcommand{\dc}{{\Delta_{C}(d, n)}}
+\begin{frame}{Диаметр ридж-графа циклического многогранника}
+	\begin{block}{Следствие из теоремы (McMullen '70)}
+		Двойственный к~циклическому $d$-многогранник~$C^*(d,n)$, \\
+		имеющий $n$~гиперграней, обладает \textbf{максимальным числом вершин} \\
+		среди всех $d$-многогранников с~тем~же числом гиперграней.
+	\end{block}
+	
+	%\uncover<2->{
+	\begin{block}{Теорема (Klee '64)}
+		Диаметр $\dc$ графа многогранника~$C^*(d, n)$ удовлетворяет\\
+		гипотезе Хирша. Причем $\dc = n-d$ при~$d < n \le 2d$.
+	\end{block}
+	
+	%	\begin{block}{}
+	В~той~же работе была высказана гипотеза о~том, что~для~$n > 2d$ выполнено 
+	равенство~$\dc=\left\lfloor n/2\right\rfloor$.
+	Но~позднее был найден контрпример~[Klee '67].
+	С~тех~пор задача оставалась открытой.% до~2009~г.
+	%	\end{block}
+	%}
+	\begin{alertblock}{Теорема (\Maks '09)}%<3->
+		\centerline{\(
+			\dc = n-d  - \left\lceil \frac{n-2d}{\left\lfloor d/2 \right\rfloor + 1} \right\rceil
+			\)  при $n > 2d$.
+		}
+	\end{alertblock}
+	%Но даже эти результаты в виду недоступности работы \cite{Klee:1964}
+	% настолько плохо известны, что по прошествии более 30~лет делаются 
+	% попытки нахождения величины $\dc$ для $n=2d$ с помощью 
+	% вычислительной техники \cite{Ferrez:1998}, а в работе \cite{Lagarias:1998} 
+	% при упоминании факта \eqref{Hirsh4Cycl} приводится ссылка на работу \cite{Klee:1966}, не содержащую этого результата.
+	%\textbf{Критерий Гейла \cite{Gale:1963}.} 
+	% Все грани многогранника $C(d,n)$
+	% являются симплексами и подмножество $Y\subset X$, состоящее из $d$ вершин, 
+	% определяет некоторую фасету тогда и только тогда, когда 
+	% для любых двух $x^i,x^j\in X\setminus Y$, $i<j$, 
+	% число вершин $x^k\in Y$, для которых $i<k<j$, четно.
+\end{frame}
+
+
+\begin{frame}{}
+	\begin{center}
+		\LARGE \bfseries
+		Задача о кратчайшем пути
+	\end{center}
+\end{frame}
+
+\begin{frame}{Многогранник орпутей}
+	
+	\begin{block}{Обозначения}
+		Пусть $\alert{D_n} = (V,A)$ --- \alert{полный орграф}, $|V| = n$, $|A| = n(n-1)$,\\
+		$\alert{\vec{x}} = \alert{\vec{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический вектор} подмножества $S \subseteq A$:\\
+		для каждой дуги $a \in A$, если $a \in S$, то $x_{a} = 1$, иначе $x_{a} = 0$.
+	\end{block}
+	
+	\begin{block}{Многогранник орпутей}
+		\centering
+		\(
+		\alert{\Dipath(n)} \coloneqq \conv\bigl\{\vec{x}(S) \bigm| \text{$S$ --- путь в орграфе $D_n$ из $v_1$ в $v_n$}\bigr\}
+		\)
+	\end{block}
+	\begin{block}{Замечание}<2->
+		Многогранник гамильтоновых контуров $\ATSP(n)$ аффинно эквивалентен грани многогранника орпутей $\Dipath(n+1)$.
+		
+		Как следствие, $\Dipath(n+1)$ имеет сверхполиномиальные\\ характеристики сложности: кликовое число графа,\\ число прямоугольного покрытия, \dots
+	\end{block}
+\end{frame}
+
+\begin{frame}{Полиэдр кратчайших орпутей}
+	\begin{block}{Условие задачи о кратчайшем пути}
+		В орграфе $D_n$ отсутствуют контуры отрицательной длины.
+	\end{block}
+	\begin{block}{Определение}
+		Пусть $K(n)  \coloneqq \cone\bigl\{\vec{x}(S) \bigm| \text{$S$ --- контур в орграфе $D_n$}\bigr\}$.\\
+		\alert{Полиэдр кратчайших орпутей} есть сумма Минковского
+		\[
+		\alert{\ShortP(n)} \coloneqq \Dipath(n) + K(n).
+		\]
+	\end{block}
+	\begin{block}{Утверждение (Saigal '69)}
+		Полиэдр $\ShortP(n)$ имеет простое H-описание,\\
+		состоящее из $n(n-1)$ линейных неравенств и $n$ уравнений.
+	\end{block}
+	\begin{alertblock}{Теорема (\Maks '04)}
+		Кликовое число графа полиэдра $\ShortP(n)$ равно $\lfloor n^2 / 4\rfloor$.
+	\end{alertblock}
+\end{frame}
+
 
 \begin{frame}{Основные результаты (кратко)}
 	\begin{enumerate}
@@ -1457,7 +1622,6 @@ $\alert{\bm{x}} = \alert{\bm{x}(S)} \in \{0,1\}^A$ --- \alert{характеристический
 		\hyperlink{hierarchy}{\textcolor{blue}{Вернуться}}
 	\end{block}
 \end{frame}
-
 
 \begin{frame}{Сложность задач и характеристики многогранника}
 	\begin{block}{Примеры характеристик сложности для многогранников}
