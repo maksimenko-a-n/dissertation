@@ -1,3 +1,19 @@
+%
+% Внимание, при компиляции возникает ошибка, 
+% связанная с выбором языка в .toc
+% Проблема решается удалением строки \select@language {russian} из thesis.toc
+% и включением декларации \nofiles.
+% Или же закомментариванием \tableofcontents, как временная мера
+% ПРАВИЛЬНЫЙ способ решения проблемы: \renewcommand\tocsectionfont{}
+%
+% Еще одна проблема -- опция times каким-то чудесным образом отключает пакет cmap
+% Проблема находится в строках 
+% \renewcommand\rmdefault{ftm} и \renewcommand\ttdefault{cmtt}
+% после строки \usepackage{pscyr} в файле disser.cls
+% Решение:
+% \input glyphtounicode.tex 
+% \pdfgentounicode=1
+%
 \documentclass[%
 %draft,
 doctor,         % тип документа
