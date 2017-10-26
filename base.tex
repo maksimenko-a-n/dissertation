@@ -22,7 +22,7 @@
 
 \emph{Симметрической разностью} двух множеств $X$ и $Y$ называется множество
 \[
-X \symdiff Y \coloneq (Y \setminus X) \cup (X \setminus Y).
+X \symdiff Y \coloneqq (Y \setminus X) \cup (X \setminus Y).
 \]
 \begin{property}\label{prop:symdiff}
 Симметрическая разность обладает следующими свойствами:
@@ -134,7 +134,7 @@ M_{ij} =
 
 \emph{Разрезом} в графе $G = (V, E)$ называется множество ребер вида 
 \[
-\delta(U) \coloneq \Set*{\{u,v\} \in E \given u\in U,\ v\in V \setminus U}, \quad \text{где } U \subseteq V. 
+\delta(U) \coloneqq \Set*{\{u,v\} \in E \given u\in U,\ v\in V \setminus U}, \quad \text{где } U \subseteq V. 
 \]
 Из определения следует, что $\delta(U) = \delta(V \setminus U)$.
 Разрез $\delta(U)$ называется \emph{$s$-$t$ разрезом}, если $s \in U$ и $t \in V\setminus U$\label{def:stcut}.
@@ -177,7 +177,7 @@ C = \{(v_1, v_2), (v_2, v_3), \dots, (v_{k-1}, v_k), (v_k, v_1)\},
 
 \emph{Разрезом} в орграфе $D = (V, A)$ называется множество дуг вида 
 \[
-\delta^+(U) \coloneq \Set*{(u,v) \in A \given u\in U,\ v\in V \setminus U}, \quad \text{где } U \subseteq V. 
+\delta^+(U) \coloneqq \Set*{(u,v) \in A \given u\in U,\ v\in V \setminus U}, \quad \text{где } U \subseteq V. 
 \]
 Разрез $\delta^+(U)$ называется \emph{$s$-$t$ разрезом}, если $s \in U$ и $t \in V\setminus U$\label{def:stdicut}.
 
@@ -208,7 +208,7 @@ C = \{(v_1, v_2), (v_2, v_3), \dots, (v_{k-1}, v_k), (v_k, v_1)\},
 
 \emph{Гиперплоскостью} в~$\R^d$ называется множество
 \[
-H(\bm{a},b) \coloneq \Set*{\bm{x}\in\R^d \given \bm{a}^T \bm{x} = b}, 
+H(\bm{a},b) \coloneqq \Set*{\bm{x}\in\R^d \given \bm{a}^T \bm{x} = b}, 
 %\qquad \bm{a}\in\R^d, \ \bm{a} \ne \bm{0}, \ b\in\R,
 \]
 где $\bm{a} \in \R^d$ "--- вектор нормали гиперплоскости, $\bm{a} \ne \bm{0}$, а число $b \in \R$ определяет величину смещения гиперплоскости относительно начала координат,
@@ -232,11 +232,11 @@ $\bm{a}^T \bm{x}$ "--- матричное произведение вектор"=строки $\bm{a}^T$ на векто
 называется \emph{конической комбинацией}.
 \emph{Конической оболочкой} конечного множества $X = \{\bm{x_1}, \dots, \bm{x_n}\} \subset \R^d$ называется множество всех конических комбинаций его точек:
 \[
-\cone(X) \coloneq \Set*{\sum_{i=1}^n \lambda_i \bm{x_i} \given \lambda_i \ge 0}.
+\cone(X) \coloneqq \Set*{\sum_{i=1}^n \lambda_i \bm{x_i} \given \lambda_i \ge 0}.
 \]
 Примером может служить положительный ортант
 \[
-\R^d_+ \coloneq \Set*{\bm{x} \in \R^d \given \bm{x} \ge \bm{0}} = \cone\{\bm{e_1},\dots,\bm{e_d}\}.
+\R^d_+ \coloneqq \Set*{\bm{x} \in \R^d \given \bm{x} \ge \bm{0}} = \cone\{\bm{e_1},\dots,\bm{e_d}\}.
 \]
 
 Аффинная комбинация $\sum_{i\in[n]} \lambda_i \bm{x_i}$
@@ -246,7 +246,7 @@ $\bm{a}^T \bm{x}$ "--- матричное произведение вектор"=строки $\bm{a}^T$ на векто
 %это множество содержит соединяющий их отрезок \([\bm{x}, \bm{y}] = \{\lambda \bm{x} + (1 - \lambda) \bm{y} \mid \lambda \in [0, 1]\}\).
 Простым примером выпуклого множества может служить \emph{замкнутое полупространство} 
 \[
-H^+(\bm{a},b) \coloneq \Set*{\bm{x}\in\R^d \given \bm{a}^T \bm{x} \ge b},
+H^+(\bm{a},b) \coloneqq \Set*{\bm{x}\in\R^d \given \bm{a}^T \bm{x} \ge b},
 \]
 определяемое гиперплоскостью $H(\bm{a},b)$.
 Точка выпуклого множества называется \emph{крайней}, если она не является выпуклой комбинацией никаких двух других точек этого множества.
@@ -254,7 +254,7 @@ H^+(\bm{a},b) \coloneq \Set*{\bm{x}\in\R^d \given \bm{a}^T \bm{x} \ge b},
 \emph{Выпуклой оболочкой} конечного множества $X = \{\bm{x_1}, \dots, \bm{x_n}\}
 \subset \R^d$ называется множество всех выпуклых комбинаций его точек:
 \[
-\conv(X) \coloneq \Set*{ \sum_{i=1}^n \lambda_i \bm{x_i} \given \sum_{i=1}^n \lambda_i = 1, \ \lambda_i \ge 0, \ \lambda_i \in \R}.
+\conv(X) \coloneqq \Set*{ \sum_{i=1}^n \lambda_i \bm{x_i} \given \sum_{i=1}^n \lambda_i = 1, \ \lambda_i \ge 0, \ \lambda_i \in \R}.
 \]
 Выпуклая оболочка (произвольного) множества $X \subseteq \R^d$ представляет собой объединение выпуклых оболочек всех конечных наборов точек из $X$. 
 %Согласно теореме Каратеодори~\cite{Caratheodory:1911}, для всякого $X \subseteq \R^d$,
@@ -264,7 +264,7 @@ H^+(\bm{a},b) \coloneq \Set*{\bm{x}\in\R^d \given \bm{a}^T \bm{x} \ge b},
 
 С понятием выпуклой оболочки тесно связано понятие \emph{суммы Минковского} двух непустых множеств $X\subseteq \R^d$ и $Y\subseteq \R^d$:
 \[
-X+Y \coloneq \Set*{x+y \given x \in X, \ y\in Y}.
+X+Y \coloneqq \Set*{x+y \given x \in X, \ y\in Y}.
 \]
 В частности, для любых $X$ и $Y$
 \[
@@ -350,12 +350,12 @@ $(d-1)$-грани $d$-многогранника называются \emph{гипергранями}.
 Cимплексы и выпуклые многоугольники являются примерами простых и, одновременно, симплициальных многогранников. 
 Примером простого многогранника является $d$-мерный \emph{0/1-гиперкуб} (или, короче, \emph{$d$-куб})~\cite{ZieglerBook}:
 \[
-\Cube_d \coloneq \Set*{\bm{x} \in\R^d \given \bm{0} \le \bm{x} \le \bm{1}} 
+\Cube_d \coloneqq \Set*{\bm{x} \in\R^d \given \bm{0} \le \bm{x} \le \bm{1}} 
 = \conv\left\{\{0,1\}^d\right\}.
 \]
 Примером симплициального многогранника может служить $d$-мерный \emph{кроссполитоп}, в русскоязычной литературе называемый \emph{ортаэдром}~\cite{ZieglerBook}:
 \[
-\Cross_d \coloneq \Bigl\{\bm{x} = (x_1,\dots,x_d)\in\R^d \Bigm| \sum_{i \in [d]} |x_i| \le 1\Bigr\} 
+\Cross_d \coloneqq \Bigl\{\bm{x} = (x_1,\dots,x_d)\in\R^d \Bigm| \sum_{i \in [d]} |x_i| \le 1\Bigr\} 
 = \conv\left\{\bm{e_1},-\bm{e_1},\dots,\bm{e_d},-\bm{e_d}\right\}.
 \]
 
@@ -383,7 +383,7 @@ Cимплексы и выпуклые многоугольники являются примерами простых и, одновременно, 
 Множество вершин \emph{циклического многогранника} определяется следующим образом:
 \label{page:cyclic}
 \[
-\CP_d(T) \coloneq \Set*{(t, t^2, \dots, t^d) \in \R^d \given t \in T},
+\CP_d(T) \coloneqq \Set*{(t, t^2, \dots, t^d) \in \R^d \given t \in T},
 \]
 где множество $T \subset \R$ "--- конечно.
 (Заметим, что $\CP_d(T)$ является симплексом при $|T| \le d+1$.)
@@ -511,7 +511,7 @@ $P$ имеет 8 вершин, 8 гиперграней (одна из них изображена на рис.~\ref{fig:cube7
 Пусть $d$-многогранник $P$ задан в виде $P = \conv(V)$ и $\bm{0}$ является внутренней точкой этого многогранника. (Выполнения последнего условия всегда можно добиться за счет операции смещения $\bm{x} \mapsto \bm{x} + \bm{x_0}$.)
 \emph{Полярой} к $P$ называется многогранник
 \[
-P^* \coloneq \Set*{\bm{x}\in \R^d \given \bm{y}^T \bm{x} \le 1, \ \forall \bm{y} \in V}.
+P^* \coloneqq \Set*{\bm{x}\in \R^d \given \bm{y}^T \bm{x} \le 1, \ \forall \bm{y} \in V}.
 \] 
 Поляра $P^*$ является примером двойственного к $P$ многогранника~\cite{Emelichev:1981,ZieglerBook}.
 

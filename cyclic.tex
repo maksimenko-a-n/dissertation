@@ -31,12 +31,12 @@
 Зафиксируем $d \in \N$, $2 \le d < n$, и введем обозначение
 \begin{equation}
 \label{eq:x(t)}
-\bm{x}(i) \coloneq (t^{\phantom{1}}_i, t^2_i, \dots, t^d_i) \in \R^d, \qquad i\in[n]. 
+\bm{x}(i) \coloneqq (t^{\phantom{1}}_i, t^2_i, \dots, t^d_i) \in \R^d, \qquad i\in[n]. 
 \end{equation}
 Сформулируем определение циклического многогранника (см. с.~\pageref{page:cyclic}) с использованием новых обозначений.
 \emph{Циклическим многогранником} называется выпуклая оболочка множества
 \[
-\CP_d(T) \coloneq \{\bm{x}(1), \dots, \bm{x}(n)\}.
+\CP_d(T) \coloneqq \{\bm{x}(1), \dots, \bm{x}(n)\}.
 \]
 Причем $\CP_d(T)$ "--- множество вершин этого многогранника.
 Число $i\in[n]$ будем называть \emph{номером} вершины $\bm{x}(i)$.
@@ -71,7 +71,7 @@ f(t) = (t - t_1)(t_n - t) \prod_{i \in I} \bigl((t - t_i)(t - t_{i+1})\bigr), \q
 Пусть, как и прежде, $T = \{t_1, \dots, t_n\} \subset \R$, $t_1 < t_2 < \dots < t_n$, $d \in \N$, $2 \le d < n$.
 В этом разделе мы ограничиваемся рассмотрением только тех случаев, когда $t_{i+1} = t_i + 1$ для всех $i\in[n-1]$, и будем пользоваться более подходящим обозначением
 \[
-\CP_{d,n}(t_1) \coloneq \CP_d(T).
+\CP_{d,n}(t_1) \coloneqq \CP_d(T).
 \]
 
 Заметим, что многогранники $\CP_{d,n}(t)$ и $\CP_{d,n}(s)$ аффинно изоморфны для любых $t,s \in \R$. 
@@ -379,28 +379,28 @@ M_{2, 8} & =
 %	\BlankLine
 %	\Fn{\LeftFactor{\n}}{
 		\tcp{Заполняем массив \A}
-		$k \coloneq \n-1$\;
-		$\q \coloneq 0$\;
+		$k \coloneqq \n-1$\;
+		$\q \coloneqq 0$\;
 		\DoWhile{$k > 1$}{
-			$\A{\q} \coloneq k$\;
-			$k \coloneq \lfloor(k+1)/2\rfloor$\;
-			$\q \coloneq \q + 1$\;
+			$\A{\q} \coloneqq k$\;
+			$k \coloneqq \lfloor(k+1)/2\rfloor$\;
+			$\q \coloneqq \q + 1$\;
 		}
 		\tcp{Вычисляем левый множитель \T}
-		\For{$i \coloneq 0$ \KwTo $\n - 1$}{
-			$x \coloneq i$\;
-			\For{$j \coloneq 0$ \KwTo $\q - 1$}{
-				$r \coloneq 2x - \A{j}$\;
+		\For{$i \coloneqq 0$ \KwTo $\n - 1$}{
+			$x \coloneqq i$\;
+			\For{$j \coloneqq 0$ \KwTo $\q - 1$}{
+				$r \coloneqq 2x - \A{j}$\;
 				\eIf {$r > 0$} {
-					$x \coloneq x - r$\;
-					$\T{i, 2j} \coloneq r$\;
-					$\T{i, 2j + 1} \coloneq 0$\;
+					$x \coloneqq x - r$\;
+					$\T{i, 2j} \coloneqq r$\;
+					$\T{i, 2j + 1} \coloneqq 0$\;
 				}{
-					$\T{i, 2j} \coloneq 0$\;
-					$\T{i, 2j + 1} \coloneq -r$\;
+					$\T{i, 2j} \coloneqq 0$\;
+					$\T{i, 2j + 1} \coloneqq -r$\;
 				}
 			}
-			$\T{i, 2\q} \coloneq i \cdot (\n - 1 - i)$ \tcp*[f]{Заполняем 	последний столбец}
+			$\T{i, 2\q} \coloneqq i \cdot (\n - 1 - i)$ \tcp*[f]{Заполняем 	последний столбец}
 		}
 %	}
 \end{algorithm}
@@ -421,26 +421,26 @@ M_{2, 8} & =
 	\Output{ правый множитель факторизации \U}
 	\BlankLine
 %	\Fn{\RightFactor{\n, \A, \q}}{
-		\For{$i \coloneq 0$ \KwTo $\n - 2$}{
-			$x \coloneq i+1$\;
-			\For{$j \coloneq 0$ \KwTo $\q - 1$}{
-				$r \coloneq 2x - \A{j} - 1$\;
+		\For{$i \coloneqq 0$ \KwTo $\n - 2$}{
+			$x \coloneqq i+1$\;
+			\For{$j \coloneqq 0$ \KwTo $\q - 1$}{
+				$r \coloneqq 2x - \A{j} - 1$\;
 				\eIf {$r > 0$} {
-					$x \coloneq x - r$\;
-					$\U{2j, i} \coloneq 0$\;
-					$\U{2j+1, i} \coloneq r$\;
+					$x \coloneqq x - r$\;
+					$\U{2j, i} \coloneqq 0$\;
+					$\U{2j+1, i} \coloneqq r$\;
 				}{
-					$\U{2j, i} \coloneq -r$\;
-					$\U{2j+1, i} \coloneq 0$\;
+					$\U{2j, i} \coloneqq -r$\;
+					$\U{2j+1, i} \coloneqq 0$\;
 				}
 			}
-			$\U{2\q,i} \coloneq 0$ \tcp*[f]{Заполняем последнюю строку}
+			$\U{2\q,i} \coloneqq 0$ \tcp*[f]{Заполняем последнюю строку}
 		}
 		\tcp{Заполняем последний столбец}
-		\For{$j \coloneq 0$ \KwTo $2\q - 1$}{
-			$\U{j, \n-1} \coloneq 0$\;
+		\For{$j \coloneqq 0$ \KwTo $2\q - 1$}{
+			$\U{j, \n-1} \coloneqq 0$\;
 		}    
-		$\U{2\q, \n-1} \coloneq 1$\;
+		$\U{2\q, \n-1} \coloneqq 1$\;
 %	}
 \end{algorithm}
 

@@ -312,11 +312,11 @@ $\Longrightarrow$
 
 ƒл€ каждого $\bm{x}\in \{0, 1\}^d$ определим его номер %$n(\bm{x})$, $0 \le n(\bm{x}) \le 2^d - 1$:
 \[
-n(\bm{x}) \coloneq \sum_{i=1}^d 2^{i-1} x_i. %, \quad 0 \le n(\bm{x}) \le 2^d - 1.
+n(\bm{x}) \coloneqq \sum_{i=1}^d 2^{i-1} x_i. %, \quad 0 \le n(\bm{x}) \le 2^d - 1.
 \]
 –ассмотрим отображение $\eps\colon \{0, 1\}^d \to \N^d$, преобразующее $\bm{x}\in \{0, 1\}^d$ в~$\eps \in \N^d$:
 \[
-\eps_i \coloneq (n(\bm{x}))^i, \quad i\in[d].
+\eps_i \coloneqq (n(\bm{x}))^i, \quad i\in[d].
 \]
 %\begin{align*}
 %\eps_1 &= n(\bm{x}), \\
@@ -326,7 +326,7 @@ n(\bm{x}) \coloneq \sum_{i=1}^d 2^{i-1} x_i. %, \quad 0 \le n(\bm{x}) \le 2^d - 
 %\end{align*}
 ¬ведем в~рассмотрение некоторую <<достаточно большую>> константу
 \[
-K \coloneq 2^{d^3}.
+K \coloneqq 2^{d^3}.
 \]
 «аметим, что дл€ любого $\bm{x}\in \{0, 1\}^d$ величина $\|\eps(\bm{x})\|$ <<очень мала>> по сравнению с $K$:
 \begin{equation}
@@ -338,7 +338,7 @@ K \coloneq 2^{d^3}.
 ѕусть $X\subseteq \{0, 1\}^d$.
 ћножество 
 \[
-Y = \Cpert(X) \coloneq \bigl\{\bm{y}\in\Z^d \mid y = K \bm{x} + \eps(\bm{x}), \ \bm{x}\in X\bigr\} 
+Y = \Cpert(X) \coloneqq \bigl\{\bm{y}\in\Z^d \mid y = K \bm{x} + \eps(\bm{x}), \ \bm{x}\in X\bigr\} 
 \]
 назовем \emph{циклической пертурбацией} $X$.
 ясно, что после такой пертурбации размер чисел в~описании $X$ увеличиваетс€ в~$\log_2 K = d^3$ раз.
@@ -434,7 +434,7 @@ Y = \Cpert(X) \coloneq \bigl\{\bm{y}\in\Z^d \mid y = K \bm{x} + \eps(\bm{x}), \ 
 “еперь мы готовы к построению примера NP-трудной задачи, число пр€моугольного покрыти€ матрицы инциденций вершин"=гиперграней многогранника которой
 полиномиально.
 
-–ассмотрим циклическую пертурбацию $\CBQP(n) \coloneq \Cpert(\BQP(n)) \subset \Z^d$, $d = n(n+1)/2$, вершин булева квадратичного многогранника.
+–ассмотрим циклическую пертурбацию $\CBQP(n) \coloneqq \Cpert(\BQP(n)) \subset \Z^d$, $d = n(n+1)/2$, вершин булева квадратичного многогранника.
 %\footnote{«десь и~далее мы иногда используем одно и~то же обозначение дл€ многогранника и~множества его вершин.}
 %\begin{equation*}
 %\label{eq:BQP}
@@ -521,7 +521,7 @@ Y = \Cpert(X) \coloneq \bigl\{\bm{y}\in\Z^d \mid y = K \bm{x} + \eps(\bm{x}), \ 
 
 ѕо аналогии с формулой~\eqref{eq:x(t)}, дл€ вектора"=столбца $(t, t^2, \dots, t^d)$, $t \in \N$, введем обозначение $\bm{x}(t)$, и рассмотрим множество
 \begin{equation*}
-\CP(d,K,g) \coloneq \Set*{\bm{x}(g(i)) \given i\in[K]},
+\CP(d,K,g) \coloneqq \Set*{\bm{x}(g(i)) \given i\in[K]},
 \end{equation*}
 где $d,K\in\N$, $2 \le d < K$, 
 $g\from \N \to \N$, причем $g(i) < g(i+1)$ дл€ всех $i\in\N$.
@@ -533,7 +533,7 @@ $g\from \N \to \N$, причем $g(i) < g(i+1)$ дл€ всех $i\in\N$.
 
 ѕоложим
 \[
-X^d_n \coloneq \CP(d,2^n,g), \qquad \text{где } g(i) = 2i, \ \forall i \in \N.
+X^d_n \coloneqq \CP(d,2^n,g), \qquad \text{где } g(i) = 2i, \ \forall i \in \N.
 \]
 “огда задача линейной оптимизации вдоль $\bm{c} \in \Z^d$ на $X^d_n$ полиномиально разрешима относительно $n$ и~$\size(\bm{c})$, так как сводитс€ к локализации корней многочлена $\bigl(\bm{c}^T \bm{x}(t)\bigr)'_t = \sum_{k=1}^d c_k k t^{k-1}$, где $t = 2i$, $i \in [2^n]$ (см. комментарий к формуле~\eqref{eq:simpl} выше).
 “о есть полиномиально разрешимыми €вл€ютс€ как задача $\{X^d_n\}$, при фиксированном $d$, так и задача $\{X^n_n\}$.
@@ -547,11 +547,11 @@ X^d_n \coloneq \CP(d,2^n,g), \qquad \text{где } g(i) = 2i, \ \forall i \in \N.
 ѕоложим теперь
 \begin{equation}
 \label{eq:g(n)}
-g_n(i) \coloneq 2i - h_n(b_n(i)), \quad i \in [2^{n}],
+g_n(i) \coloneqq 2i - h_n(b_n(i)), \quad i \in [2^{n}],
 \end{equation}
 и введем обозначение
 \[
-Y^d_n \coloneq \CP(d, 2^n, g_n).
+Y^d_n \coloneqq \CP(d, 2^n, g_n).
 \]
 
 \begin{prop}[\cite{Maksimenko:2016complexity}]
