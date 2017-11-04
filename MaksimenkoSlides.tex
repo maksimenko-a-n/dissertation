@@ -270,14 +270,14 @@
 \begin{block}{Задача о кратчайшем пути в орграфе}
 \begin{description}
 	\item[Дано:] полный орграф $D_n = ([n],A)$, $[n] \coloneqq \{1,\dots,n\}$,\\
-	вектор длин дуг $\vec{c} \in \R^{\lvert A\rvert}$.
+	вектор длин дуг $\vec{c} \in \Z^{\lvert A\rvert}$.
 	\item[Найти:] кратчайший путь в $D_n$ из вершины $1$ в $n$.
 \end{description}
 \end{block}
 
 \begin{block}{Геометрическая интерпретация}
 	\begin{description}
-		\item[\textbf{Дано:}] $n \in \N$ и вектор $\vec{c} \in \R^A$, $\lvert A\rvert = n(n-1)$.
+		\item[\textbf{Дано:}] $n \in \N$ и вектор $\vec{c} \in \Z^A$, $\lvert A\rvert = n(n-1)$.
 		\item[\textbf{Найти:}] $\vec{x} \in \{0,1\}^{\lvert A\rvert}$ такой, что
 		\(\langle\vec{x}, \vec{c}\rangle \to \max\),\\
 		\(\vec{x}\) --- характеристический вектор пути в $D_n$ из $1$ в $n$.
@@ -291,14 +291,14 @@
 \begin{frame}{Пример: булево квадратичное программирование}
 \begin{block}{Булево квадратичное программирование}
 \begin{description}
-	\item[Дано:] число $n$ булевых переменных $x_i \in \{0,1\}$, $i \in [n]$;\\ матрица коэффициентов $\vec{c} = (c_{ij}) \in \R^{n \times n}$.
+	\item[Дано:] число $n$ булевых переменных $x_i \in \{0,1\}$, $i \in [n]$;\\ матрица коэффициентов $\vec{c} = (c_{ij}) \in \Z^{n \times n}$.
 	\item[Найти:] $\max \displaystyle\sum_{i,j \in [n]} c_{ij} x_i x_j$.
 \end{description}
 \end{block}
 
 \begin{block}{Геометрическая интерпретация}
 	\begin{description}
-		\item[\textbf{Дано:}] $n \in \N$ и матрица $\vec{c} \in \R^{n \times n}$.
+		\item[\textbf{Дано:}] $n \in \N$ и матрица $\vec{c} \in \Z^{n \times n}$.
 		\item[\textbf{Найти:}] $\vec{x} = (x_{ij}) \in \{0,1\}^{n \times n}$ такой, что\\
 		\(\langle\vec{x}, \vec{c}\rangle \to \max\), \quad
 		при условии \alert{$x_{ij} = x_{ii} x_{jj}$}.
