@@ -143,29 +143,30 @@
 %\newcommand{\CPO}{\textup{Ц}_{\text{общ}}} % Cyclic polytope
 \newcommand{\BQP}{\textup{BQP}} % Boolean quadric polytope (Correlation polytope)
 \newcommand{\RBQP}{\textup{RBQP}} % Relaxation of Boolean quadric polytope
-\newcommand{\SSP}{\textup{STAB}} % Stable set polytope
-\newcommand{\IP}{\textup{ISP}} % Stable set polytope
+%\newcommand{\SSP}{\textup{}} % Stable set polytope
+%\newcommand{\IP}{\textup{ISP}} % Stable set polytope
 \newcommand{\TSP}{\textup{TSP}} % Travelling salesman polytope
 \newcommand{\ATSP}{\textup{ATSP}} % Travelling salesman polytope
 \newcommand{\PATH}{P_{\textup{path}}} % Path polytope
 \newcommand{\Dipath}{P_{\text{dipath}}} % DiPath polytope
 \newcommand{\HamDipath}{P_{\text{HamDipath}}} % HamiltonianDiPath polytope
 \newcommand{\ShortP}{P_{\textup{shortpath}}} % Short Path polyhedron 
-\newcommand{\KNAP}{P_{\textup{KNAP}}} % Knapsack polytope
+\newcommand{\KNAP}{P_{\textup{knap}}} % Knapsack polytope
 \newcommand{\PRT}{\textup{PRT}} % Numbers partitioning polytope
 \newcommand{\KSAT}[1]{\textup{#1-SAT}} % SAT polytope
 \newcommand{\TREE}{\textup{TREE}} % Spanning tree polytope
-\newcommand{\Match}{P_{\textup{MATCH}}} % Matching polytope
+\newcommand{\Match}{P_{\textup{match}}} % Matching polytope
 \newcommand{\CUT}{\textup{CUT}} % Cut polytope
 \newcommand{\CGP}{\textup{CGP}} % Cubic subgraph polytope
 \newcommand{\QAP}{\textup{QAP}} % Quadratic assignment polytope
 \newcommand{\TAP}{\textup{3AP}} % 3-assignment polytope
 \newcommand{\CAP}{\textup{CAP}} % Constrained assignment polytope
-\newcommand{\Stable}{P_{\textup{stab}}} % Stable set polytope \newcommand{\PACK}{\textup{PACK}} % Set packing polytope
-\newcommand{\COVER}{\textup{COVER}} % Set covering polytope
+\newcommand{\Stable}{P_{\textup{stab}}} % Stable set polytope
+\newcommand{\Pack}{P_\textup{pack}} % Set packing polytope
+\newcommand{\Part}{P_\textup{exact}} % Set partition (exact covering) polytope
+\newcommand{\Cover}{\textup{cover}} % Set covering polytope
 \newcommand{\Matsui}{P_{\textup{Matsui}}} % Matsui polytope
-\newcommand{\PART}{\textup{PART}} % Set partition polytope
-\newcommand{\DCP}{\textup{DCP}} % Double covering polytope
+\newcommand{\DCP}{P_\textup{double}} % Double covering polytope
 \newcommand{\POP}{\textup{POP}} % Partial ordering polytope
 \newcommand{\COLOR}{\textup{COLOR}} % Graph coloring polytope
 
@@ -177,7 +178,7 @@
 
 \title[Многогранники задач]%[Докторская диссертация]
 %{Анализ сложности многогранников \\ задач комбинаторной оптимизации}
-{Комбинаторно-геометрические характеристики\\ сложности задач комбинаторной оптимизации\\ (докторская диссертация)}
+{Комбинаторно-геометрические характеристики\\ сложности задач комбинаторной оптимизации}%\\ (докторская диссертация)}
 %{Характеристики сложности многогранников\\ задач комбинаторной оптимизации\\ (докторская диссертация)}
 \author[А.\,Н. Максименко]
 {\texorpdfstring{\textit{Александр Николаевич Максименко}}{Александр Николаевич Максименко}}
@@ -239,6 +240,14 @@
 \end{block}
 \end{frame}
 
+\begin{frame}{План вводной части}
+	\begin{enumerate}
+		\item Три примера многогранников задач (рюкзак, коммивояжер, булево квадратичное программирование).
+		\item Определение задачи комбинаторной оптимизации с линейной целевой функцией.
+		\item Зачем изучать многогранники задач.
+		\item Наиболее известные характеристики сложности многогранников и почему их изучают: диаметр графа многогранника, кликовое число графа, сложность расширения, число прямоугольного покрытия матрицы инциденций вершин"=гиперграней.
+	\end{enumerate}
+\end{frame}
 
 
 \begin{frame}{Пример: задача о рюкзаке}
@@ -266,12 +275,12 @@
 \end{frame}
 
 
-\begin{frame}{Пример: задача о кратчайшем пути}
-\begin{block}{Задача о кратчайшем пути в орграфе}
+\begin{frame}{Пример: задача коммивояжера}
+\begin{block}{Задача коммивояжера в орграфе}
 \begin{description}
 	\item[Дано:] полный орграф $D_n = ([n],A)$, $[n] \coloneqq \{1,\dots,n\}$,\\
 	вектор длин дуг $\vec{c} \in \Z^{\lvert A\rvert}$.
-	\item[Найти:] кратчайший путь в $D_n$ из вершины $1$ в $n$.
+	\item[Найти:] кратчайший гамильтонов контур в $D_n$.
 \end{description}
 \end{block}
 
@@ -280,11 +289,11 @@
 		\item[\textbf{Дано:}] $n \in \N$ и вектор $\vec{c} \in \Z^A$, $\lvert A\rvert = n(n-1)$.
 		\item[\textbf{Найти:}] $\vec{x} \in \{0,1\}^{\lvert A\rvert}$ такой, что
 		\(\langle\vec{x}, \vec{c}\rangle \to \max\),\\
-		\(\vec{x}\) --- характеристический вектор пути в $D_n$ из $1$ в $n$.
+		\(\vec{x}\) --- характеристический вектор гам. контура в $D_n$.
 	\end{description}
 \end{block}
-\begin{block}{Многогранник орпутей}
-	\(\alert{\Dipath (n)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{\lvert A\rvert} \Bigm| \vec{x} \text{ --- путь в $D_n = ([n],A)$ из 1 в $n$}\Bigr\}\)
+\begin{block}{Многогранник гамильтоновых к\'онтуров}
+	\(\alert{\ATSP (n)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{\lvert A\rvert} \Bigm| \vec{x} \text{ --- гам. контур в $D_n = ([n],A)$}\Bigr\}\)
 \end{block}
 \end{frame}
 
@@ -646,7 +655,7 @@
 		\end{enumerate}
 	\end{block}
 	
-	\begin{exampleblock}{Пример: многогранник гамильтоновых к\'онтуров $\ATSP(n)$}
+	\begin{exampleblock}{Пример: многогранник гамильтоновых контуров $\ATSP(n)$}
 	%\textbf{Размерность} равна $n (n-2)$, \textbf{число вершин} равно $(n-1)!$,
 	%\textbf{число гиперграней} сверхэкспоненциально, 
 	\textbf{Диаметр} равен двум при $n > 5$, 
@@ -696,25 +705,29 @@
 %	\end{center}
 %\end{frame}
 
-\begin{frame}{Пример: кратчайший путь и гамильтонов путь}
-\begin{block}{Многогранник орпутей}
-	\centering
-	\(\alert{\Dipath (n)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{\lvert A\rvert} \Bigm| \vec{x} \text{ --- путь в $D_n = ([n],A)$ из 1 в $n$}\Bigr\}\)
+\begin{frame}{Пример: упаковки и точные покрытия множеств}
+\vspace{-1mm}
+\begin{block}{Задача об упаковке}
+	\begin{description}
+		\item[Дано:] $E = \{e_1, \dots, e_n\}$ и $\{S_1,\dots,S_k\} \subseteq 2^E$.
+		\item[Найти:] $T \subseteq \{S_1,\dots,S_k\}$ такое, что каждый $e_i \in E$ содержится не~более, чем в одном $S_j \in T$, и $|T| \to \max$.
+	\end{description}
 \end{block}
-\begin{block}{Многогранник гамильтоновых орпутей}
+\begin{block}{Многогранник упаковок}
 	\centering
-	\(\alert{\HamDipath (n)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{\lvert A\rvert} \Bigm| \vec{x} \text{ --- гамильтонов путь из 1 в $n$}\Bigr\}\)
+	\(\alert{\Pack (A)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{k} \Bigm| A \vec{x} \le \vec{1}\Bigr\}\),
+	
+	где $A=(a_{ij}) \in \{0,1\}^{n \times k}$ "--- матрица инциденций $e_i$ и $S_j$.
 \end{block}
-\begin{block}{Наблюдение}<2->
-	\begin{enumerate}
-		\item $\HamDipath (n) \subseteq \Dipath (n)$.
-		\item $\langle \vec{x}, \vec{1}\rangle \le n-1$ \quad  $\forall$ $\vec{x} \in \Dipath (n)$.
-		\item $\vec{x} \in \ext (\Dipath (n))$ и $\langle \vec{x}, \vec{1}\rangle = n-1$ $\iff$ $\vec{x} \in \ext(\HamDipath (n))$.
-	\end{enumerate}
-\end{block}
-\begin{block}{Вывод}<3->
+\begin{block}{Многогранник точных покрытий}<2->
 	\centering
-	\(\HamDipath (n) = \bigl\{\vec{x} \in \Dipath (n) \bigm| \langle \vec{x}, \vec{1}\rangle = n-1 \bigr\}\)
+	\(\alert{\Part (A)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{k} \Bigm| A \vec{x} = \vec{1}\Bigr\}\)
+\end{block}
+\begin{block}{Наблюдение}<3->
+	\centering
+	$A \vec{x} \le \vec{1}$ $\iff$ $A \vec{x} + \vec{y} = \vec{1}$, $\vec{y} \in \{0,1\}^n$.
+%	
+%	или,  другими словами, $\vec{y} = \vec{1} - A \vec{x}$.
 \end{block}
 \end{frame}
 
@@ -857,7 +870,10 @@
 
 \begin{frame}{Грань с NP-полным критерием несмежности}
 	\begin{myresult}{'12}%<2->
-		Все вышеперечисленные многогранники содержат в~качестве граней\\ многогранники двойных покрытий $\Matsui$,\\
+		Ко всем вышеперечисленным многогранникам аффинно сводятся%содержат в~качестве граней
+		
+		многогранники двойных покрытий $\Matsui$,
+		
 		для которых задача проверки на~несмежность NP-полна.
 	\end{myresult}
 	\begin{block}{}
@@ -958,8 +974,8 @@
 	\label{hierarchy}
 	\tikzstyle{every node}=[rounded corners,text centered,draw=black,minimum size=17pt]
 	
-	\node[fill=lightpink] (Cut) at (-4.1, 1.3) {Разрезы};
-	\node[fill=lightpink] (BQuadr) at (0, 1.3) {Булево квадр. прогр.};
+	\node[fill=lightpink] (Cut) at (-4.5, 1.3) {Разрезы};
+	\node[fill=lightpink] (BQuadr) at (-0.5, 1.3) {Булево квадратич. прогр.};
 	\node[fill=lightpink] (QAss) at (4.1, 1.3) {Квадр. назначения};
 	\draw[<->] (Cut) to (BQuadr);
 	\draw[->] (QAss) to[bend right = 5] (BQuadr);
@@ -989,7 +1005,7 @@
 	\draw[->,green] (SS) to (Steiner);
 	
 	\node (LOP) at (-4.6, 0) {Лин. упоряд.};
-	\draw[->,green] (BQuadr) to[out=-173,in=30] (LOP);
+	\draw[->,green] (BQuadr) to[out=-173,in=33] (LOP);
 	\draw[->] (LOP) to node[cross]{} (BQuadr);
 	
 	%\tikzstyle{every node}=[rounded corners,text centered,draw=black,fill=lightgreen]
@@ -1461,89 +1477,20 @@
 		Число прямоугольного покрытия \alert{во~всех известных случаях}\\
 		отражает реальную вычислительную сложность задачи.
 	\end{block}
-	\begin{block}{Вопрос 1}
-		Существует~ли (универсальный) алгоритм для линейных задач комбинаторной оптимизации, сложность которого 
+	\begin{block}{Вопросы}
+		\begin{enumerate}
+		\item Существует~ли (универсальный) алгоритм для линейных задач комбинаторной оптимизации, сложность которого 
 		
 		оценивается \textbf{сверху} числом прямоугольного покрытия $\rc()$?
-	\end{block}
-	\begin{block}{Вопрос 2}
-		Существует ли пример NP-трудной задачи, 
+		\item Существует ли пример NP-трудной задачи, 
 		
 		многогранники которой обладали бы полиномиальным $\rc()$?
-	\end{block}
-%	\begin{myresult}{'16}<2->
-%		Имеется пример NP-трудной задачи, для многогранников которой \\
-%		число прямоугольного покрытия полиномиально.
-%	\end{myresult}
-\end{frame}
-
-\begin{frame}{NP-трудная задача с полиномиальным $\rc()$}
-	\begin{block}{Идея}
-		\begin{enumerate}
-			\item Известно, что число прямоугольного покрытия для $d$-мерного
-			
-			\alert{симплициального} многогранника на $N$ вершинах равно $O(d^2 \log N)$
-			
-			(Fiorini, Kaibel, Pashkovich, Theis '13).
-			\item Рассмотрим семейство многогранников NP-трудной задачи.
-			\item Немного пошевелим вершины так, чтобы они оказались в общем положении. Тогда многогранник станет симплициальным.
 		\end{enumerate}
 	\end{block}
-	\begin{block}{Проблема}
-		Алгоритм шевеления вершин должен давать возможность идентификации новых вершин многогранника за полиномиальное время. При этом все они должны быть в общем положении.
-	\end{block}
-\end{frame}
-
-
-\begin{frame}{Циклическая пертурбация (\Maks '16)}
-%\begin{block}{}
-%Рассмотрим задачу линейной оптимизации на множестве $X \subseteq \{0,1\}^d$.
-%  вдоль вектора $\vec{c} \in \{-1,1\}^d$ 
-%\end{block}
-	
-%\visible<2->{
-%В частности, $\BQP_n \subset \{0,1\}^{n(n+1)/2}$ с таким вектором NP-полна.}
-
-\begin{block}{Циклическая пертурбация множества $X \subseteq \{0,1\}^d$}
-	\begin{enumerate}
-		\item
-		Двоичное число $\alert{N(\vec{x})} \coloneqq \text{``}x_1 x_2 \dots x_d\text{''}$ --- номер вектора $\vec{x} \in X$.
-		
-		\item
-		$\alert{\xi(\vec{x})} \coloneqq \Bigl(N(\vec{x}), (N(\vec{x}))^2, \dots, (N(\vec{x}))^d\Bigr) \in \Z^d$ --- пертурбация.
-		
-		\item
-		\(\alert{K} \coloneqq 2^{d^3}\)~--- очень большое число,
-		\(\|\xi(\vec{x})\| \le K \cdot 2^{-d^2(d-1)}\).
-	\end{enumerate}
-%	\visible<5->{
-%		\textbf{} множества $X \subseteq \{0,1\}^d$:
-%		\smallskip
-		%\centerline{
-		\(\alert{\Pert(X)} \coloneqq \{K \vec{x} + \xi(\vec{x}) \mid \vec{x}\in X\}\) "--- 
-		\alert{циклическая пертурбация.}
-%	}
-\end{block}
-\begin{block}{Свойства}<2->
-	\begin{enumerate}
-		\item
-		%$\Size(\Pert(X)) = \log_2 K = d^3$.
-		Если идентификация $\vec{x} \in X$ полиномиально вычислима,\\
-		то $\vec{x} \in \Pert(X)$ тоже полиномиально вычислима.
-		%\item<2->
-		%	Множество $\Pert(X)$ совпадает с множеством вершин многогранника $\conv(\Pert(X))$.
-		\item
-		Многогранник $\conv(\Pert(X))$ симплициален. 
-		
-		Следовательно,
-		\(\alert{\rc(\conv(\Pert(X))) = {}} \bigO(d^2 \log |X|) = \alert{\bigO(d^3).}\)
-%		(Fiorini et al. '13).
-%		(Fiorini, Kaibel, Pashkovich, Theis '13).
-		\item
-		Задача оптимизации вдоль $\vec{c} \in \{-1,1\}^d$ на $\Pert(X)$ \\
-		не проще аналогичной задачи на $X$.
-	\end{enumerate}
-\end{block}
+	\begin{myresult}{'16}<2->
+		Имеется пример NP-трудной задачи, для многогранников которой \\
+		число прямоугольного покрытия полиномиально.
+	\end{myresult}
 \end{frame}
 
 \begin{frame}{Комбинаторика многогранника VS сложность задачи}
@@ -1576,12 +1523,12 @@
 	
 	эквивалентна оптимизации $c_1 t + c_2 t^2 \to \max$ при условии $t \in T_n$.
 \end{block}
-\begin{block}{Задача (простая)}
+\begin{block}{Пример простой задачи}
 	Положим $T_n = \bigl\{2i \bigm|  i \in [2^n]\bigr\}$. 
 	
 	Тогда оптимизация на $X(T_n)$ полиномиально разрешима.
 \end{block}
-\begin{block}{Задача (сложная)}
+\begin{block}{Пример сложной задачи}
 	\begin{enumerate}
 		\item
 		%Пусть функция $b\colon \{1, \dots, 2^n\} \to \{0,1\}^n$ 
@@ -1599,20 +1546,7 @@
 \end{block}
 \end{frame}
 
-\begin{frame}{Основные результаты (очень кратко)}
-\begin{enumerate}
-	\item Понятие аффинной сводимости,\\
-	помогающее структурировать множество известных ранее \\
-	результатов о свойствах многогранников задач.
-	\item Особая роль семейства булевых квадратичных многогранников.
-	\item Аналог теоремы Кука для многогранников.
-	\item Компактная расширенная формулировка\\ для циклических многогранников.
-	\item Коллекция контрпримеров для различных\\ характеристик сложности многогранников.
-\end{enumerate}
-\end{frame}
-
-
-\begin{frame}{Заключение}
+\begin{frame}{Выводы}
 \begin{enumerate}
 \item  Чисто комбинаторных свойств многогранника недостаточно 
 	
@@ -1640,6 +1574,19 @@
 Многогранники любой ЛЗКО с предикатом допустимости из класса NP расширенно аффинно сводятся к булевым квадратичным многогранникам.
 \end{enumerate}
 \end{frame}
+
+\begin{frame}{Основные результаты (очень кратко)}
+\begin{enumerate}
+	\item Понятие аффинной сводимости,\\
+	помогающее структурировать множество известных ранее \\
+	результатов о свойствах многогранников задач.
+	\item Особая роль семейства булевых квадратичных многогранников.
+	\item Аналог теоремы Кука для многогранников.
+	\item Компактная расширенная формулировка\\ для циклических многогранников.
+	\item Коллекция контрпримеров для различных\\ характеристик сложности многогранников.
+\end{enumerate}
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
@@ -1758,6 +1705,75 @@ $\alert{\vec{x}} = \alert{\vec{x}(S)} \in \{0,1\}^A$ --- \alert{характеристическ
 % число вершин $x^k\in Y$, для которых $i<k<j$, четно.
 \end{frame}
 
+
+\begin{frame}{NP-трудная задача с полиномиальным $\rc()$}
+\begin{block}{Идея}
+	\begin{enumerate}
+		\item Известно, что число прямоугольного покрытия для $d$-мерного
+		
+		\alert{симплициального} многогранника на $N$ вершинах равно $O(d^2 \log N)$
+		
+		(Fiorini, Kaibel, Pashkovich, Theis '13).
+		\item Рассмотрим семейство многогранников NP-трудной задачи.
+		\item Немного пошевелим вершины так, чтобы они оказались в общем положении. Тогда многогранник станет симплициальным.
+	\end{enumerate}
+\end{block}
+\begin{block}{Проблема}
+	Алгоритм шевеления вершин должен давать возможность идентификации новых вершин многогранника за полиномиальное время. При этом все они должны быть в общем положении.
+\end{block}
+\end{frame}
+
+
+\begin{frame}{Циклическая пертурбация (\Maks '16)}
+%\begin{block}{}
+%Рассмотрим задачу линейной оптимизации на множестве $X \subseteq \{0,1\}^d$.
+%  вдоль вектора $\vec{c} \in \{-1,1\}^d$ 
+%\end{block}
+
+%\visible<2->{
+%В частности, $\BQP_n \subset \{0,1\}^{n(n+1)/2}$ с таким вектором NP-полна.}
+
+\begin{block}{Циклическая пертурбация множества $X \subseteq \{0,1\}^d$}
+\begin{enumerate}
+	\item
+	Двоичное число $\alert{N(\vec{x})} \coloneqq \text{``}x_1 x_2 \dots x_d\text{''}$ --- номер вектора $\vec{x} \in X$.
+	
+	\item
+	$\alert{\xi(\vec{x})} \coloneqq \Bigl(N(\vec{x}), (N(\vec{x}))^2, \dots, (N(\vec{x}))^d\Bigr) \in \Z^d$ --- пертурбация.
+	
+	\item
+	\(\alert{K} \coloneqq 2^{d^3}\)~--- очень большое число,
+	\(\|\xi(\vec{x})\| \le K \cdot 2^{-d^2(d-1)}\).
+\end{enumerate}
+%	\visible<5->{
+%		\textbf{} множества $X \subseteq \{0,1\}^d$:
+%		\smallskip
+%\centerline{
+\(\alert{\Pert(X)} \coloneqq \{K \vec{x} + \xi(\vec{x}) \mid \vec{x}\in X\}\) "--- 
+\alert{циклическая пертурбация.}
+%	}
+\end{block}
+\begin{block}{Свойства}<2->
+\begin{enumerate}
+	\item
+	%$\Size(\Pert(X)) = \log_2 K = d^3$.
+	Если идентификация $\vec{x} \in X$ полиномиально вычислима,\\
+	то $\vec{x} \in \Pert(X)$ тоже полиномиально вычислима.
+	%\item<2->
+	%	Множество $\Pert(X)$ совпадает с множеством вершин многогранника $\conv(\Pert(X))$.
+	\item
+	Многогранник $\conv(\Pert(X))$ симплициален. 
+	
+	Следовательно,
+	\(\alert{\rc(\conv(\Pert(X))) = {}} \bigO(d^2 \log |X|) = \alert{\bigO(d^3).}\)
+	%		(Fiorini et al. '13).
+	%		(Fiorini, Kaibel, Pashkovich, Theis '13).
+	\item
+	Задача оптимизации вдоль $\vec{c} \in \{-1,1\}^d$ на $\Pert(X)$ \\
+	не проще аналогичной задачи на $X$.
+\end{enumerate}
+\end{block}
+\end{frame}
 
 \begin{frame}{Оптимизация на циклическом многограннике}
 \vspace{-1mm}
@@ -1974,5 +1990,28 @@ $\alert{\vec{x}} = \alert{\vec{x}(S)} \in \{0,1\}^A$ --- \alert{характеристическ
 		\hyperlink{CliqueNum}{\beamerbutton{Кликовые числа}}%{\textcolor{blue}{Вернуться}}
 \end{frame}
 
+
+
+\begin{frame}{Пример: кратчайший путь и гамильтонов путь}
+\begin{block}{Многогранник орпутей}
+	\centering
+	\(\alert{\Dipath (n)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{\lvert A\rvert} \Bigm| \vec{x} \text{ --- путь в $D_n = ([n],A)$ из 1 в $n$}\Bigr\}\)
+\end{block}
+\begin{block}{Многогранник гамильтоновых орпутей}
+	\centering
+	\(\alert{\HamDipath (n)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{\lvert A\rvert} \Bigm| \vec{x} \text{ --- гамильтонов путь из 1 в $n$}\Bigr\}\)
+\end{block}
+\begin{block}{Наблюдение}<2->
+	\begin{enumerate}
+		\item $\HamDipath (n) \subseteq \Dipath (n)$.
+		\item $\langle \vec{x}, \vec{1}\rangle \le n-1$ \quad  $\forall$ $\vec{x} \in \Dipath (n)$.
+		\item $\vec{x} \in \ext (\Dipath (n))$ и $\langle \vec{x}, \vec{1}\rangle = n-1$ $\iff$ $\vec{x} \in \ext(\HamDipath (n))$.
+	\end{enumerate}
+\end{block}
+\begin{block}{Вывод}<3->
+	\centering
+	\(\HamDipath (n) = \bigl\{\vec{x} \in \Dipath (n) \bigm| \langle \vec{x}, \vec{1}\rangle = n-1 \bigr\}\)
+\end{block}
+\end{frame}
 
 
