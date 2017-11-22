@@ -747,7 +747,7 @@ $1\le i \le m$, $1\le j \le n$.
 	\node[small circle] (s2) at (4,-1) {};	
 	\draw (t) node[above] {$t_{ij}$} -- (s4) node[above] {$s_{j4}$} -- (s1) node[above] {$s_{j1}$} -- (s2) node[below] {$s_{j2}$} -- (s3) node[below] {$s_{j3}$} -- (t);
 	\draw (s4) -- (s2) (s1) -- (s3);
-	\draw[dashed] (u) node[above] {$u_{ij}$} -- (t);
+	\draw[dashed] (u) node[above] {$u_{i}$} -- (t);
 	\draw (-4,1) node[above] {à)};
 	\begin{scope}[xshift=14cm]
 	\node[small circle,densely dotted] (u1) at (-2,1) {};	
@@ -758,7 +758,7 @@ $1\le i \le m$, $1\le j \le n$.
 	\node[small circle] (s2) at (2,-1) {};	
 	\draw (t1) node[above] {$t_{i_1 j}$} -- (s1) node[above] {$s_{j1}$} -- (s2) node[below] {$s_{j2}$} -- (t2) node[below] {$t_{i_2 j}$};
 	\draw (t1) -- (s2) (s1) -- (t2);
-	\draw[dashed] (u1) node[above] {$u_{i_1 j}$} -- (t1) (u2) node[above] {$u_{i_2 j}$} -- (t2);
+	\draw[dashed] (u1) node[above] {$u_{i_1}$} -- (t1) (u2) node[above] {$u_{i_2}$} -- (t2);
 	\draw (-4,1) node[above] {á)};
 	\end{scope}
 	\end{tikzpicture}
