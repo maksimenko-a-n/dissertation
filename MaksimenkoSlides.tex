@@ -156,7 +156,7 @@
 \newcommand{\KSAT}[1]{\textup{#1-SAT}} % SAT polytope
 \newcommand{\TREE}{\textup{TREE}} % Spanning tree polytope
 \newcommand{\Match}{P_{\textup{match}}} % Matching polytope
-\newcommand{\CUT}{\textup{CUT}} % Cut polytope
+\newcommand{\CUT}{P_\textup{cut}} % Cut polytope
 \newcommand{\CGP}{\textup{CGP}} % Cubic subgraph polytope
 \newcommand{\QAP}{\textup{QAP}} % Quadratic assignment polytope
 \newcommand{\TAP}{\textup{3AP}} % 3-assignment polytope
@@ -403,7 +403,7 @@
 \begin{frame}{Пример: характеристики многогранника\\ гамильтоновых контуров $\ATSP(n)$}
 %\begin{block}{}
 	\begin{enumerate}
-	\item \textbf{Размерность} равна $n (n-3) + 1$.
+	\item \textbf{Размерность} равна $n^2 - 3n + 1$.
 	\item \textbf{Число вершин} равно $(n-1)!$
 	\item \textbf{Число гиперграней} сверхэкспоненциально.
 	\item \textbf{Диаметр графа} равен двум при $n > 5$ [Padberg\&Rao~'74].
@@ -413,6 +413,18 @@
 	\item \textbf{Число прямоугольного покрытия} $\rc(\ATSP(n)) = 2^{\Omega(\sqrt{n})}$\\{} [Fiorini, Massar, Pokutta, Tiwary, De Wolf '12].
 	\end{enumerate}
 %\end{block}
+
+%Nodes in STSP | # of facets
+%--------------+--------------
+%     6        |         100
+%     7        |        3437
+%     8        |      194187
+%     9        |    42104442
+%    10        | 51043900866
+
+%В работе M.W. Padberg 2013 Facets and Rank of Integer Polyhedra
+%приводится подробный подсчет числа гиперграней для STSP при числе вершин графа не более 10.
+%Там же приводится страшная формула для числа comb inequalities: V^C(n) (page 48).
 \end{frame}
 
 
@@ -431,7 +443,8 @@
 	
 	\begin{block}{Справка}
 	С~постановки гипотезы до~настоящего времени
-	опубликованы десятки %высокорейтинговых 
+	опубликованы \\
+	десятки %высокорейтинговых 
 	работ с оценками диаметров графов многогранников.
 	\end{block}
 \end{frame}
@@ -539,7 +552,12 @@
 		Известен целый ряд примеров семейств многогранников задач, %полиномиально разрешимых задач,
 		исходное описание которых имеет экспоненциальный размер,
 		а~расширенное описание полиномиально
-		[Martin~'87, Barahona '93, Ben-Tal\&Nemirovski '01, Faenza\&Kaibel '09, Goemans~'10, \dots]
+		[Martin~'87, Barahona~'93, Ben-Tal\&Nemirovski~'01, Faenza\&Kaibel~'09, Goemans~'10, \dots]
+		% Martin~'87 формулировка размера $O(n^3)$ для многогранника остовных деревьев
+		% Barahona~'93 задача о максимальном разрезе в графе, не стягиваемом к (contractible to) $K_5$  $O(n^3)$ и многогранник совершенных паросочетаний для планарных графов. (A connected graph G is said to be contractible to a graph H if H can be obtained from G by a sequence of elementary contractions, in which a pair of adjacent vertices is identified and all other adjacencies between vertices are preserved (multiple edges arising from the identification being replaced by single edges).)
+		%Ben-Tal\&Nemirovski~'01 компактная формулировка для правильного n-угольника
+		%Goemans~'10 асимптотически минимальная формулировка для перестановочного многогранника $\Theta(n \log n)$
+		% Faenza\&Kaibel~'09 Орбитоп упаковок и орбитоп разбиений являются выпуклыми оболочками 0/1-матриц размера $p\times q$, чьи столбцы упорядочены лексикографически (по уменьшению) и имеют не более, или, соответственно, ровно одну единицу в строке. Размер формулировки асимптотически равен размеру матрицы: $O(pq)$.
 	\end{block}
 \end{frame}
 
@@ -695,9 +713,9 @@
 	\centering
 	\(\alert{\Part (A)} \coloneqq \conv \Bigl\{\vec{x} \in \{0,1\}^{k} \Bigm| A \vec{x} = \vec{1}\Bigr\}\)
 \end{block}
-\begin{block}{Наблюдение}<3->
+\begin{block}{Замечание}<3->
 	\centering
-	$A \vec{x} \le \vec{1}$ $\iff$ $A \vec{x} + \vec{y} = \vec{1}$, $\vec{y} \in \{0,1\}^n$.
+	$A \vec{x} \le \vec{1}$ $\iff$ $A \vec{x} + \vec{y} = \vec{1}$, \qquad $\vec{x} \in \{0,1\}^k$, $\vec{y} \in \{0,1\}^n$.
 %	
 %	или,  другими словами, $\vec{y} = \vec{1} - A \vec{x}$.
 \end{block}
@@ -817,8 +835,9 @@
 	\end{block}
 	\begin{block}{Таким же свойством обладают многогранники:}<2->
 		\begin{enumerate}
-			\item задачи о рюкзаке [Geist\&Rodin~'92]
-			\item покрытий и двойных покрытий множества [Matsui~'95]
+			\item задачи о рюкзаке [Chung '80, Geist\&Rodin~'92, Matsui~'95]
+			\item покрытий множества [Chung '80, Matsui~'95]
+			\item двойных покрытий множества [Matsui~'95]
 			\item кубических подграфов [Бондаренко\&Юров~'96]
 			\item задачи о~назначениях с~ограничением [Alfakih\&Murty~'98]
 			\item задачи о 3-выполнимости [Fiorini~'03]
@@ -844,15 +863,21 @@
 	\begin{myresult}{'12}%<2->
 		Ко всем вышеперечисленным многогранникам аффинно сводятся%содержат в~качестве граней
 		
-		многогранники двойных покрытий $\Matsui$,
+		многогранники двойных покрытий $\alert{\Matsui}$,
 		
 		для которых задача проверки на~несмежность NP-полна.
 	\end{myresult}
 	\begin{block}{}
 		Не для всех многогранников NP-трудных задач это верно!
 	\end{block}
-	\begin{block}{Теорема (Бондаренко '85)}<2-> %Грешнев '84, Белошевский '86, Barahona\&Mahjoub '86
-		Все вершины булева квадратичного многогранника попарно смежны.
+%	\begin{block}{Теорема (Грешнев '84, Бондаренко '85)}<2->
+%		Все вершины многогранника клик (полного) графа попарно смежны.
+%	\end{block}
+%	\begin{block}{Теорема (Белошевский '86, Barahona\&Mahjoub '86)}<2->
+%	Все вершины многогранника разрезов $\CUT(n)$ попарно смежны.
+%	\end{block}
+	\begin{block}{Теорема (Бондаренко '87, Padberg '89)}<2->
+		Граф булева квадратичного многогранника $\BQP(n)$ \alert{полный}.
 	\end{block}
 	\begin{block}{Следствие}<2->
 		Аффинная сводимость $\Matsui \propto_A \BQP$ невозможна,
@@ -865,7 +890,7 @@
 \begin{frame}{Многогранники независимых множеств}
 	\begin{block}{Определение}
 	Пусть $G=([n],E)$ --- неполный граф.\\
-	\alert{Многогранником независимых множеств} называется
+	Многогранником независимых множеств называется
 	\centerline{\(
 		\alert{\Stable(G)} \coloneqq \conv\bigl\{\vec{x}\in\{0,1\}^n \bigm| x_i + x_j \le 1 \quad \forall \{i,j\} \in E\bigr\}.
 		\)}
@@ -901,7 +926,7 @@
 \begin{frame}{Особая роль булевых квадратичных многогранников}
 	\vspace{-1mm}
 	\begin{myresult}{'11-17}
-	Семейство булевых квадратичных многогранников $\{\BQP_n\}$\\
+	Семейство булевых квадратичных многогранников $\BQP$\\
 	аффинно сводится к каждому из перечисленных выше\\
 	семейств многогранников труднорешаемых задач,
 	а также к~многогранникам следующих задач: линейное упорядочивание,\\
@@ -917,7 +942,7 @@
 	для~булева квадратичного многогранника экспоненциальны.
 	\end{block}
 	\begin{block}{Теорема (Deza, Laurent, Poljak '92)}<3->
-	Булев квадратичный многогранник $\BQP_n$ 3-смежностен.\\
+	Булев квадратичный многогранник $\BQP(n)$ 3-смежностен.\\
 	В частности, кликовое число графа совпадает с числом вершин $2^n$.
 	\end{block}
 \end{frame}
@@ -928,7 +953,7 @@
 		Для каких $k\in \N$ булевы квадратичные многогранники содержат\\ $k$-смежностные грани со сверхполиномиальным числом вершин?
 	\end{block}
 	\begin{myresult}{'14}<2->
-		Для каждого $k\ge 4$ булевы квадратичные многогранники\\ 
+		Для каждого $k\ge 4$ булевы квадратичные многогранники $\BQP$\\ 
 		(а вместе с ними и все остальные, перечисленные выше семейства)\\
 		содержат $k$-смежностные грани со~сверхполиномиальным \\
 		(относительно размерности многогранника) числом вершин.
@@ -1237,10 +1262,10 @@
 	является необходимым условием труднорешаемости задачи.
 	%Существуют ли примеры трудных задач с маленьким кликовым числом?
 	\end{block}
-	\begin{myresult}{'16}
+	\begin{block}{Утверждение (\Maks\ '16)}
 		Для любого $d$-мерного симплекса можно построить\\
 		$(d+1)$-мерное расширение с кликовым числом~2.
-	\end{myresult}
+	\end{block}
 	\vspace{-1mm}
 	\visible<2->{		
 		\begin{block}{Доказательство для $d=2$}
@@ -1491,12 +1516,12 @@
 \begin{block}{}
 	Пусть $T_n \subset \N$ и $\lvert T_n\rvert = 2^n$.
 	
-	Задача оптимизации вдоль $\vec{c} \in \Z^2$ на $X(T_n) \coloneqq \bigl\{(t, t^2) \bigm|  t \in T_n\bigr\}$
+	Задача оптимизации вдоль $\vec{c} \in \Z^2$ на $\alert{X(T_n)} \coloneqq \bigl\{(t, t^2) \bigm|  t \in T_n\bigr\}$
 	
 	эквивалентна оптимизации $c_1 t + c_2 t^2 \to \max$ при условии $t \in T_n$.
 \end{block}
 \begin{block}{Пример простой задачи}
-	Положим $T_n = \bigl\{2i \bigm|  i \in [2^n]\bigr\}$. 
+	Положим $\alert{T_n} \coloneqq \bigl\{2i \bigm|  i \in [2^n]\bigr\}$. 
 	
 	Тогда оптимизация на $X(T_n)$ полиномиально разрешима.
 \end{block}
@@ -1511,7 +1536,7 @@
 		(Shannon '49).
 		%(Согласно теореме Шэннона почти все булевы функции имеют такую сложность.)
 		\item
-		Положим $T_n = \bigl\{2i - h_n(b(i)) \bigm|  i \in [2^n]\bigr\}$.
+		Положим $\alert{T_n} \coloneqq \bigl\{2i - h_n(b(i)) \bigm|  i \in [2^n]\bigr\}$.
 		%\item
 	\end{enumerate}
 	Тогда сложность задачи оптимизации на $X(T_n)$ экспоненциальна по~$n$.
