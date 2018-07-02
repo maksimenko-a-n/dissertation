@@ -77,6 +77,9 @@ href,           % использовать пакет hyperref для создания гиперссылок
 
 % Шрифт Times в тексте как основной
 \usepackage{tempora}
+% Команда \textsc{} НЕ РАБОТАЕТ
+\newcommand{\problem}[1]{\emph{#1}}
+\renewcommand{\textsc}[1]{\textbf{#1}}
 % альтернативный пакет из дистрибутива TeX Live
 %\usepackage{cyrtimes}
 
@@ -129,6 +132,7 @@ href,           % использовать пакет hyperref для создания гиперссылок
 на соискание ученой степени\\
 доктора физико-математических наук}
 
+\def\specskip{0pt} % Верт. отступ между специальностями
 \maketitle
 
 %%
