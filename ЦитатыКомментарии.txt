@@ -1,4 +1,68 @@
-﻿
+﻿https://en.wikipedia.org/wiki/EXPTIME
+https://books.google.ru/books?id=KMwOBAAAQBAJ&pg=PT203&redir_esc=y#v=onepage&q&f=false
+Du, Ding-Zhu; Ko, Ker-I (2014), Theory of Computational Complexity:
+In computability theory, one of the basic undecidable problems is the halting problem: 
+deciding whether a deterministic Turing machine (DTM) halts. 
+One of the most fundamental EXPTIME-complete problems is a simpler version of this, 
+which asks if a DTM halts in at most k steps. 
+It is in EXPTIME because a trivial simulation requires O(k) time, 
+and the input k is encoded using O(log k) bits which causes exponential number of simulations. 
+It is EXPTIME-complete because, roughly speaking, we can use it to determine 
+if a machine solving an EXPTIME problem accepts in an exponential number of steps; it will not use more.[4] 
+
+New Lower Bounds on Circuit Size of Multi-output Functions
+Evgeny Demenkov, Alexander S. Kulikov, Olga Melanich, Ivan Mihajlin:
+By a counting argument, Muller [11] showed that the circuit complexity (over
+both B2 and U2) of almost all functions from Bn is Ω(2n/n). 
+For explicit functions, the following lower bounds are known 
+(под явными функциями обычно понимается последовательность функций, проверяющая язык из NP).
+
+CS 221: Computational Complexity Prof. Salil Vadhan
+Lecture Notes 10 March 3, 2010 Scribe: Jonathan Ullman
+Examining the proof further, we can actually conclude that almost every boolean function requires
+exponential-sized circuits, but we do not know any such function in NP. In fact, the best known
+lower bounds for circuit complexity of functions in NP is cn + o(n) where c = 5 or 6 depending on
+whether you count the inputs. (Our definition does count the input nodes in the size.)
+
+https://www.researchgate.net/publication/321507343_Completeness_and_Reduction_in_Algebraic_Complexity_Theory
+Burgisser Completeness and Reduction in Algebraic Complexity Theory.
+One of the most important and successful theories in computational complexity is that of NP-completeness. This discrete theory is based on the Turing machine model and achieves a classification of discrete computational prob­ lems according to their algorithmic difficulty. Turing machines formalize al­ gorithms which operate on finite strings of symbols over a finite alphabet. By contrast, in algebraic models of computation, the basic computational step is an arithmetic operation (or comparison) of elements of a fixed field, for in­ stance of real numbers. Hereby one assumes exact arithmetic. In 1989, Blum, Shub, and Smale [12] combined existing algebraic models of computation with the concept of uniformity and developed a theory of NP-completeness over the reals (BSS-model). Their paper created a renewed interest in the field of algebraic complexity and initiated new research directions. The ultimate goal of the BSS-model (and its future extensions) is to unite classical dis­ crete complexity theory with numerical analysis and thus to provide a deeper foundation of scientific computation (cf. [11, 101]). Already ten years before the BSS-paper, Valiant [107, 110] had proposed an analogue of the theory of NP-completeness in an entirely algebraic frame­ work, in connection with his famous hardness result for the permanent [108]. While the part of his theory based on the Turing approach (#P-completeness) is now standard and well-known among the theoretical computer science com­ munity, his algebraic completeness result for the permanents received much less attention.
+
+Traveling Salesman Problem: An Overview of Applications, Formulations, and Solution Approaches
+Rajesh Matai, Surya Prakash Singh and Murari Lal Mittal:
+
+Many TSP formulations are available in literature. Recent surveys by (Orman & Williams,
+2006; O¨ncan et al., 2009) can be referred for detailed analysis. Among these, the (Dantzig et
+al., 1954) formulation is one of the most cited mathematical formulation for TSP.
+Incidentally, an early description of Concorde, which is recognized as the most performing
+exact algorithm currently available, was published under the title ‘Implementing the
+Dantzig–Fulkerson–Johnson algorithm for large traveling salesman problems’ (Applegate et
+al., 2003).
+
+В работе M.W. Padberg 2013 Facets and Rank of Integer Polyhedra
+приводится подробный подсчет числа гиперграней для STSP при числе вершин графа не более 10.
+Там же приводится страшная формула для числа comb inequalities: V^C(n) (page 48).
+
+
+Nodes in STSP | # of facets
+--------------+--------------
+     6        |         100
+     7        |        3437
+     8        |      194187
+     9        |    42104442
+    10        | 51043900866
+
+Complete linear descriptions of small asymmetric traveling salesman polytopes.
+R. Euler, H. Le Verge. 1995
+Using a refined version of Chernikova’s algorithm we determined a complete and irredundant
+linear description of small asymmetric traveling salesman polytopes. 
+We present such a description for the monotone polytope on 5 nodes consisting of 7615 facet-defining inequalities,
+and we present 319 015 facet-defining inequalities which, together with 11 equations, 
+fully describe the (non-monotone) asymmetric polytope for 6 nodes. 
+
+
+
+
 @inproceedings{goos2016extension,
   title={Extension complexity of independent set polytopes},
   author={G{\"o}{\"o}s, Mika and Jain, Rahul and Watson, Thomas},
