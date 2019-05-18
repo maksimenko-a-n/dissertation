@@ -1,18 +1,18 @@
-% !TeX encoding = windows-1251
-% LaTeX команды
+% !TeX encoding = UTF-8 Unicode
+% LaTeX РєРѕРјР°РЅРґС‹
 
 % New theorems
-\theoremseparator{.} % Точка после заголовка теоремы
+\theoremseparator{.} % РўРѕС‡РєР° РїРѕСЃР»Рµ Р·Р°РіРѕР»РѕРІРєР° С‚РµРѕСЂРµРјС‹
 \theoremstyle{plain}
-%\newtheorem{theorem}[equation]{Теорема} % Для единой нумерации формул и теорем
-%\newtheorem{lemma}[equation]{Лемма}
-\newtheorem{theorem}{Теорема}[chapter]
-\newtheorem{lemma}[theorem]{Лемма}
-\newtheorem{prop}[theorem]{Утверждение}
-\newtheorem{corollary}[theorem]{Следствие}
-\newtheorem{conjecture}[theorem]{Гипотеза}
-\newtheorem{property}[theorem]{Свойство}
-\newtheorem{question}[theorem]{Вопрос}
+%\newtheorem{theorem}[equation]{РўРµРѕСЂРµРјР°} % Р”Р»СЏ РµРґРёРЅРѕР№ РЅСѓРјРµСЂР°С†РёРё С„РѕСЂРјСѓР» Рё С‚РµРѕСЂРµРј
+%\newtheorem{lemma}[equation]{Р›РµРјРјР°}
+\newtheorem{theorem}{РўРµРѕСЂРµРјР°}[chapter]
+\newtheorem{lemma}[theorem]{Р›РµРјРјР°}
+\newtheorem{prop}[theorem]{РЈС‚РІРµСЂР¶РґРµРЅРёРµ}
+\newtheorem{corollary}[theorem]{РЎР»РµРґСЃС‚РІРёРµ}
+\newtheorem{conjecture}[theorem]{Р“РёРїРѕС‚РµР·Р°}
+\newtheorem{property}[theorem]{РЎРІРѕР№СЃС‚РІРѕ}
+\newtheorem{question}[theorem]{Р’РѕРїСЂРѕСЃ}
 \newcommand{\thm}[2]{% Propositions for intro
 	\begin{trivlist}
 		\item[]\textbf{#1} \emph{#2}
@@ -21,14 +21,14 @@
 
 %\theoremstyle{definition}
 \theorembodyfont{\upshape}
-\newtheorem{definition}{Определение}[chapter]
-\newtheorem{remark}{Замечание}[chapter]
-\newtheorem{example}{Пример}[chapter]
+\newtheorem{definition}{РћРїСЂРµРґРµР»РµРЅРёРµ}[chapter]
+\newtheorem{remark}{Р—Р°РјРµС‡Р°РЅРёРµ}[chapter]
+\newtheorem{example}{РџСЂРёРјРµСЂ}[chapter]
 
 \theoremstyle{nonumberplain}
 %\theoremseparator{}
 \theoremsymbol{\rule{1ex}{1ex}}
-\newtheorem{proof}{Доказательство}
+\newtheorem{proof}{Р”РѕРєР°Р·Р°С‚РµР»СЊСЃС‚РІРѕ}
 
 % New commands
 \newcommand{\Sum}{\sum\limits}
@@ -87,16 +87,16 @@
 \newcommand{\tz}{\tilde z}
 
 
-\newcommand{\cC}{{\mathcal C}}  %КНФ
-\newcommand{\K}{{\mathcal K}}  % Конусное разбиение
-\newcommand{\Pf}{{\mathcal P}}  % Семейство многогранников
-\newcommand{\Qf}{{\mathcal Q}}  % Семейство многогранников 2
+\newcommand{\cC}{{\mathcal C}}  %РљРќР¤
+\newcommand{\K}{{\mathcal K}}  % РљРѕРЅСѓСЃРЅРѕРµ СЂР°Р·Р±РёРµРЅРёРµ
+\newcommand{\Pf}{{\mathcal P}}  % РЎРµРјРµР№СЃС‚РІРѕ РјРЅРѕРіРѕРіСЂР°РЅРЅРёРєРѕРІ
+\newcommand{\Qf}{{\mathcal Q}}  % РЎРµРјРµР№СЃС‚РІРѕ РјРЅРѕРіРѕРіСЂР°РЅРЅРёРєРѕРІ 2
 
 \newcommand{\Cube}{\textup{Cube}} 
 \newcommand{\Cross}{\textup{Cross}} 
-\newcommand{\EP}{\textup{Э}} % Difficult problem
+\newcommand{\EP}{\textup{Р­}} % Difficult problem
 \newcommand{\CP}{{\mathcal C}} % Cyclic polytope
-\newcommand{\CPO}{\textup{Ц}_{\textup{общ}}} % Cyclic polytope
+\newcommand{\CPO}{\textup{Р¦}_{\textup{РѕР±С‰}}} % Cyclic polytope
 \newcommand{\BQP}{P_{\textup{BQP}}} % Boolean quadric polytope (Correlation polytope)
 \newcommand{\Cpert}{\textup{CP}} % Cyclic perturbation
 \DeclareMathOperator{\M}{\eps} % perturbation 
@@ -153,7 +153,7 @@
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Заплатка для правильной работы неразрывного дефиса "~ и короткого тире "--
+%% Р—Р°РїР»Р°С‚РєР° РґР»СЏ РїСЂР°РІРёР»СЊРЅРѕР№ СЂР°Р±РѕС‚С‹ РЅРµСЂР°Р·СЂС‹РІРЅРѕРіРѕ РґРµС„РёСЃР° "~ Рё РєРѕСЂРѕС‚РєРѕРіРѕ С‚РёСЂРµ "--
 %% russianb.ldf        begin
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \makeatletter
@@ -181,12 +181,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\usepackage{mathtools} % Разного рода тюнинг для мат формул
-%\mathtoolsset{showonlyrefs} % Нумеровать только цитируемые уравнения
-% ,showmanualtags} % для нумерации в ручном режиме
-%\RequirePackage{mathtools} % Дополнительные возможности для набора формул
-\providecommand\given{} % Для вертикальной черты, определяющей начало условия
-% Создаем команду для оформления множеств
+\usepackage{mathtools} % Р Р°Р·РЅРѕРіРѕ СЂРѕРґР° С‚СЋРЅРёРЅРі РґР»СЏ РјР°С‚ С„РѕСЂРјСѓР»
+%\mathtoolsset{showonlyrefs} % РќСѓРјРµСЂРѕРІР°С‚СЊ С‚РѕР»СЊРєРѕ С†РёС‚РёСЂСѓРµРјС‹Рµ СѓСЂР°РІРЅРµРЅРёСЏ
+% ,showmanualtags} % РґР»СЏ РЅСѓРјРµСЂР°С†РёРё РІ СЂСѓС‡РЅРѕРј СЂРµР¶РёРјРµ
+%\RequirePackage{mathtools} % Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Рµ РІРѕР·РјРѕР¶РЅРѕСЃС‚Рё РґР»СЏ РЅР°Р±РѕСЂР° С„РѕСЂРјСѓР»
+\providecommand\given{} % Р”Р»СЏ РІРµСЂС‚РёРєР°Р»СЊРЅРѕР№ С‡РµСЂС‚С‹, РѕРїСЂРµРґРµР»СЏСЋС‰РµР№ РЅР°С‡Р°Р»Рѕ СѓСЃР»РѕРІРёСЏ
+% РЎРѕР·РґР°РµРј РєРѕРјР°РЅРґСѓ РґР»СЏ РѕС„РѕСЂРјР»РµРЅРёСЏ РјРЅРѕР¶РµСЃС‚РІ
 \newcommand\SetSymbol[1][]{%
 	\nonscript\:#1\vert
 	\allowbreak \nonscript\:	\mathopen{}}
