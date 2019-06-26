@@ -1,0 +1,183 @@
+% !TeX encoding = windows-1251
+% !TEX root = autoref.tex
+
+%\renewcommand{\refname}{Список публикаций соискателя}
+\begin{thebibliography}{15}
+%\thispagestyle{plain}
+
+\def\selectlanguageifdefined#1{
+	\expandafter\ifx\csname date#1\endcsname\relax
+	\else\selectlanguage{#1}\fi}
+\providecommand*{\href}[2]{{\small #2}}
+\providecommand*{\url}[1]{{\small #1}}
+\providecommand*{\BibUrl}[1]{\url{#1}}
+\providecommand{\BibAnnote}[1]{}
+\providecommand*{\BibEmph}[1]{#1}
+\ProvideTextCommandDefault{\cyrdash}{\iflanguage{russian}{\hbox
+		to.8em{--\hss--}}{\textemdash}}
+\providecommand*{\BibDash}{\ifdim\lastskip>0pt\unskip\nobreak\hskip.2em plus
+	0.1em\fi
+	\cyrdash\hskip.2em plus 0.1em\ignorespaces}
+\renewcommand{\newblock}{\ignorespaces}
+%\providecommand{\natexlab}[1]{#1}
+\providecommand{\natexlab}[1]{}
+
+
+\item[] \textbf{В изданиях, рекомендованных ВАК}\\[-1em]
+\addtocounter{enumiv}{-1}
+
+\bibitem{Maksimenko:2011}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Многогранники задачи о выполнимости являются гранями
+многогранника задачи коммивояжёра~// \BibEmph{Дискретный анализ и
+	исследование операций}. \BibDash
+\newblock 2011. \BibDash
+\newblock \CYRT.~18, {\cyr\textnumero}~3. \BibDash
+\newblock {\cyr\CYRS.}~76--83. 
+%\newblock (ВАК)
+
+\bibitem{Maksimenko:2014MAIS}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Характеристики сложности: кликовое число графа
+многогранника и число прямоугольного покрытия~// \BibEmph{Моделирование и
+	анализ информационных систем}. \BibDash
+\newblock 2014. \BibDash
+\newblock \CYRT.~21, {\cyr\textnumero}~5. \BibDash
+\newblock {\cyr\CYRS.}~116--130. 
+%\newblock (ВАК)
+
+\bibitem{Maksimenko:2016bool}\selectlanguageifdefined{russian}
+\BibEmph{Maksimenko~A.~N.} A special role of~{B}oolean quadratic polytopes
+among other combinatorial polytopes~// \BibEmph{Моделирование и анализ
+	информационных систем}. \BibDash
+\newblock 2016. \BibDash
+\newblock \CYRT.~23, {\cyr\textnumero}~1. \BibDash
+\newblock {\cyr\CYRS.}~23--40. 
+%\newblock (ВАК)
+
+
+\medskip
+\item[] \textbf{В изданиях, индексируемых Scopus и/или Web of Science}\\[-1em]
+\addtocounter{enumiv}{-1}
+
+\bibitem{Maksimenko:2004}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Комбинаторные свойства многогранника задачи о
+  кратчайшем пути~// \BibEmph{Журнал вычислительной математики и математической
+  физики}. \BibDash
+\newblock 2004{\natexlab{b}}. \BibDash
+\newblock \CYRT.~44, {\cyr\textnumero}~9. \BibDash
+\newblock {\cyr\CYRS.}~1693--1696. 
+%\newblock (ВАК, Scopus, WoS)
+
+\bibitem{Maksimenko:2009}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Диаметр ридж-графа циклического многогранника~//
+  \BibEmph{Дискретная математика}. \BibDash
+\newblock 2009. \BibDash
+\newblock \CYRT.~21, {\cyr\textnumero}~2. \BibDash
+\newblock {\cyr\CYRS.}~146--152. 
+%\newblock (ВАК, Scopus)
+
+\bibitem{Maksimenko:2012Cook}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Аналог теоремы {К}ука для многогранников~//
+  \BibEmph{Известия вузов. Математика}. \BibDash
+\newblock 2012{\natexlab{a}}. \BibDash
+\newblock \CYRT.~56, {\cyr\textnumero}~8. \BibDash
+\newblock {\cyr\CYRS.}~34--42. 
+%\newblock (ВАК, Scopus)
+
+\bibitem{Maksimenko:2012DAN}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Об аффинной сводимости комбинаторных
+  многогранников~// \BibEmph{Доклады Академии наук}. \BibDash
+\newblock 2012{\natexlab{b}}. \BibDash
+\newblock \CYRT. 443, {\cyr\textnumero}~6. \BibDash
+\newblock {\cyr\CYRS.}~661--663. 
+%\newblock (ВАК, Scopus, WoS)
+
+\bibitem{Maksimenko:2013TSP}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Многогранники коммивояжера и разрезов. аффинная
+  сводимость~// \BibEmph{Дискретная математика}. \BibDash
+\newblock 2013. \BibDash
+\newblock \CYRT.~25, {\cyr\textnumero}~2. \BibDash
+\newblock {\cyr\CYRS.}~31--38. 
+%\newblock (ВАК, Scopus)
+
+\bibitem{Maksimenko:2013NP}\selectlanguageifdefined{english}
+\BibEmph{Maksimenko~A.} The common face of~some 0/1-polytopes with
+{NP}-complete nonadjacency relation~// \BibEmph{Journal of~Mathematical
+	Sciences}. \BibDash
+\newblock 2014{\natexlab{a}}. \BibDash
+\newblock Vol. 203, no.~6. \BibDash
+\newblock P.~823--832. 
+\selectlanguageifdefined{russian}
+%\newblock (ВАК, Scopus)
+
+\bibitem{Maksimenko:2013k}\selectlanguageifdefined{english}
+\BibEmph{Maksimenko~A.} k-{N}eighborly faces of~the~{B}oolean quadric
+polytopes~//
+\href{http://dx.doi.org/10.1007/s10958-014-2171-x}{\BibEmph{Journal
+		of~Mathematical Sciences}}. \BibDash
+\newblock 2014{\natexlab{b}}. \BibDash
+\newblock Vol. 203, no.~6. \BibDash
+\newblock P.~816--822. 
+\selectlanguageifdefined{russian}
+%\newblock (ВАК, Scopus)
+
+\bibitem{BogomolovFMP:2015}\selectlanguageifdefined{english}
+Small extended formulations for cyclic polytopes~/ Yu.~Bogomolov, S.~Fiorini,
+A.~Maksimenko, K.~Pashkovich~// \BibEmph{Discrete {\&} Computational
+	Geometry}. \BibDash
+\newblock 2015. \BibDash
+\newblock Vol.~53, no.~4. \BibDash
+\newblock P.~809--816. 
+\selectlanguageifdefined{russian}
+%\newblock (ВАК, Scopus, WoS)
+
+\bibitem{Maksimenko:2015DAN}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Наиболее простые семейства многогранников,
+  ассоциированных с {NP}-трудными задачами~// \BibEmph{Доклады Академии наук}.
+  \BibDash
+\newblock 2015. \BibDash
+\newblock \CYRT. 460, {\cyr\textnumero}~3. \BibDash
+\newblock {\cyr\CYRS.}~272--274. 
+%\newblock (ВАК, Scopus, WoS)
+
+\bibitem{Maksimenko:2016complexity}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Сложность задач комбинаторной оптимизации в терминах
+  решёток граней ассоциированных многогранников~// \BibEmph{Дискретный анализ и
+  исследование операций}. \BibDash
+\newblock 2016. \BibDash
+\newblock \CYRT.~23, {\cyr\textnumero}~3. \BibDash
+\newblock {\cyr\CYRS.}~61--80. 
+%\newblock (ВАК, Scopus)
+
+\bibitem{Maksimenko:2017LOP}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Булев квадратичный многогранник является гранью
+  многогранника линейных порядков~// \BibEmph{Сибирские электронные
+  математические известия}. \BibDash
+\newblock 2017{\natexlab{a}}. \BibDash
+\newblock \CYRT.~14. \BibDash
+\newblock {\cyr\CYRS.}~640--646. 
+%\newblock (ВАК, Scopus)
+
+\bibitem{Maksimenko:2017}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Об одном семействе 0/1-многогранников с {NP}-полным
+  критерием несмежности вершин~// \BibEmph{Дискретная математика}. \BibDash
+\newblock 2017{\natexlab{b}}. \BibDash
+\newblock \CYRT.~29, {\cyr\textnumero}~2. \BibDash
+\newblock {\cyr\CYRS.}~29--39. 
+%\newblock (ВАК, Scopus, WoS)
+
+\medskip
+\item[] \textbf{Прочие работы}\\[-1em]
+\addtocounter{enumiv}{-1}
+
+\bibitem{BondBook:2008}\selectlanguageifdefined{russian}
+\BibEmph{Бондаренко~В.~А., Максименко~А.~Н.} Геометрические конструкции и
+сложность в комбинаторной оптимизации. \BibDash
+\newblock URSS М., 2008. 
+
+\bibitem{MaksimenkoDiss:2004}\selectlanguageifdefined{russian}
+\BibEmph{Максименко~А.~Н.} Графы многогранников и сводимость задач
+комбинаторной оптимизации~: дис.~\ldots\ канд. ф.-м. наук~/ А~Н~Максименко~;
+Ярославский гос. ун-т им.~П.Г.~Демидова. \BibDash
+\newblock 2004{\natexlab{a}}.
+\end{thebibliography}
+	

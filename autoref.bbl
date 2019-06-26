@@ -1,0 +1,414 @@
+\begin{thebibliography}{10}
+\def\selectlanguageifdefined#1{
+\expandafter\ifx\csname date#1\endcsname\relax
+\else\selectlanguage{#1}\fi}
+\providecommand*{\href}[2]{{\small #2}}
+\providecommand*{\url}[1]{{\small #1}}
+\providecommand*{\BibUrl}[1]{\url{#1}}
+\providecommand{\BibAnnote}[1]{}
+\providecommand*{\BibEmph}[1]{#1}
+\ProvideTextCommandDefault{\cyrdash}{\iflanguage{russian}{\hbox
+  to.8em{--\hss--}}{\textemdash}}
+\providecommand*{\BibDash}{\ifdim\lastskip>0pt\unskip\nobreak\hskip.2em plus
+  0.1em\fi
+\cyrdash\hskip.2em plus 0.1em\ignorespaces}
+\renewcommand{\newblock}{\ignorespaces}
+
+\bibitem{Paschos:2014}
+\selectlanguageifdefined{english}
+Applications of~combinatorial optimization~/ Ed.\ by\ V.~Th.~Paschos. \BibDash
+\newblock Wiley-ISTE, 2014.
+
+\bibitem{Braun:2015}
+\selectlanguageifdefined{english}
+Approximation limits of~linear programs (beyond hierarchies)~/ G.~Braun,
+  S.~Fiorini, S.~Pokutta, D.~Steurer~// \BibEmph{Math. of~Operations Research}.
+  \BibDash
+\newblock 2015. \BibDash
+\newblock Vol.~40, no.~3. \BibDash
+\newblock P.~756--772.
+
+\bibitem{Barahona:1986}
+\selectlanguageifdefined{english}
+\BibEmph{Barahona~F., Mahjoub~A.~R.} On the~cut polytope~// \BibEmph{Math.
+  Program.} \BibDash
+\newblock 1986. \BibDash
+\newblock Vol.~36, no.~2. \BibDash
+\newblock P.~157--173.
+
+\bibitem{Billera:1996}
+\selectlanguageifdefined{english}
+\BibEmph{Billera~L.~J., Sarangarajan~A.} All 0-1 polytopes are traveling
+  salesman polytopes~// \BibEmph{Combinatorica}. \BibDash
+\newblock 1996. \BibDash
+\newblock Vol.~16, no.~2. \BibDash
+\newblock P.~175--188.
+
+\bibitem{Nikolaev:2016}
+\selectlanguageifdefined{english}
+\BibEmph{Bondarenko~V., Nikolaev~A.} On graphs of~the~cone decompositions for
+  the~min-cut and max-cut problems~// \BibEmph{Internat. J. of~Math. and Math.
+  Sciences}. \BibDash
+\newblock 2016. \BibDash
+\newblock Vol. 2016.
+
+\bibitem{Nikolaev:2017}
+\selectlanguageifdefined{english}
+\BibEmph{Bondarenko~V.~A., Nikolaev~A.~V.} On the skeleton of the polytope of
+  pyramidal tours~// \BibEmph{Journal of Applied and Industrial Mathematics}.
+  \BibDash
+\newblock 2018. \BibDash
+\newblock Vol.~12, no.~1. \BibDash
+\newblock P.~9--18.
+
+\bibitem{Burer:2009}
+\selectlanguageifdefined{english}
+\BibEmph{Burer~S.} On the copositive representation of binary and continuous
+  nonconvex quadratic programs~// \BibEmph{Math. Program.} \BibDash
+\newblock 2009. \BibDash
+\newblock Vol. 120, no.~2. \BibDash
+\newblock P.~479--495.
+
+\bibitem{Chvatal:1975}
+\selectlanguageifdefined{english}
+\BibEmph{Chv{\'a}tal~V.} On certain polytopes associated with graphs~//
+  \BibEmph{Journal of~Combinatorial Theory, Series B}. \BibDash
+\newblock 1975. \BibDash
+\newblock Vol.~18, no.~2. \BibDash
+\newblock P.~138--154.
+
+\bibitem{Cobham:1964}
+\selectlanguageifdefined{english}
+\BibEmph{Cobham~A.} The intrinsic computational difficulty of~functions~//
+  Proc. 1964 Internat. Congress for Logic, Methodology and Philosophy
+  of~Science. \BibDash
+\newblock 1964. \BibDash
+\newblock P.~24--30.
+
+\bibitem{FioriniKPT:13}
+\selectlanguageifdefined{english}
+Combinatorial bounds on nonnegative rank and extended formulations~/
+  S.~Fiorini, V.~Kaibel, K.~Pashkovich, D.~O.~Theis~// \BibEmph{Discrete Math.}
+  \BibDash
+\newblock 2013. \BibDash
+\newblock Vol. 313, no.~1. \BibDash
+\newblock P.~67--83.
+
+\bibitem{Conforti:2010}
+\selectlanguageifdefined{english}
+\BibEmph{Conforti~M., Cornu{\'e}jols~G., Zambelli~G.} Extended formulations in
+  combinatorial optimization~// \BibEmph{4OR: A Quarterly Journal of~Operations
+  Research}. \BibDash
+\newblock 2010. \BibDash
+\newblock Vol.~8, no.~1. \BibDash
+\newblock P.~1--48.
+
+\bibitem{Cook:1971}
+\selectlanguageifdefined{english}
+\BibEmph{Cook~S.~A.} The complexity of~theorem proving procedures~// Proc. 3rd
+  Ann. ACM Symp. on Theory of~Computing. \BibDash
+\newblock 1971. \BibDash
+\newblock P.~151--158.
+
+\bibitem{DantzigFJ:1954}
+\selectlanguageifdefined{english}
+\BibEmph{Dantzig~G., Fulkerson~R., Johnson~S.} Solution of~a~large-scale
+  traveling-salesman problem~// \BibEmph{Journal of~the~Operations Research
+  Society of~America}. \BibDash
+\newblock 1954. \BibDash
+\newblock Vol.~2, no.~4. \BibDash
+\newblock P.~393--410.
+
+\bibitem{Edmonds:1965b}
+\selectlanguageifdefined{english}
+\BibEmph{Edmonds~J.} Minimum partition of~a~matroid into independent subsets~//
+  \BibEmph{J.~Res. Nat. Bur. Standards Sect. B}. \BibDash
+\newblock 1965. \BibDash
+\newblock Vol.~69. \BibDash
+\newblock P.~67--72.
+
+\bibitem{Edmonds:1965}
+\selectlanguageifdefined{english}
+\BibEmph{Edmonds~J.} Paths, trees, and flowers~// \BibEmph{Canadian Journal
+  of~mathematics}. \BibDash
+\newblock 1965. \BibDash
+\newblock Vol.~17, no.~3. \BibDash
+\newblock P.~449--467.
+
+\bibitem{Fiorini:2003}
+\selectlanguageifdefined{english}
+\BibEmph{Fiorini~S.} A combinatorial study of~partial order polytopes~//
+  \BibEmph{European Journal of~Combinatorics}. \BibDash
+\newblock 2003. \BibDash
+\newblock Vol.~24, no.~2. \BibDash
+\newblock P.~149--159.
+
+\bibitem{Fiorini:2012polygons}
+\selectlanguageifdefined{english}
+\BibEmph{Fiorini~S., Rothvo{\ss}~T., Tiwary~H.~R.} Extended formulations for
+  polygons~// \BibEmph{Discrete \& computational geometry}. \BibDash
+\newblock 2012. \BibDash
+\newblock Vol.~48, no.~3. \BibDash
+\newblock P.~658--668.
+
+\bibitem{Gale:1963}
+\selectlanguageifdefined{english}
+\BibEmph{Gale~D.} Neighborly and cyclic polytopes~// Proc. Sympos. Pure Math.
+  \BibDash
+\newblock Vol.~7. \BibDash
+\newblock 1963. \BibDash
+\newblock P.~225--232.
+
+\bibitem{Fiorini:2014}
+\selectlanguageifdefined{english}
+Generalized probabilistic theories and conic extensions of polytopes~/
+  Samuel~Fiorini, Serge~Massar, Manas~K~Patra, Hans~Raj~Tiwary~//
+  \BibEmph{Journal of Physics A: Mathematical and Theoretical}. \BibDash
+\newblock 2014. \BibDash
+\newblock Vol.~48, no.~2. \BibDash
+\newblock P.~025302.
+
+\bibitem{GrotschelCO:1995}
+\selectlanguageifdefined{english}
+\BibEmph{Gr\"{o}tschel~M., Lov\'{a}sz~L.} Combinatorial optimization~//
+  Handbook of~Combinatorics (Vol. 2)~/ Ed.\ by\ R.~L.~Graham, M.~Gr\"{o}tschel,
+  L.~Lov\'{a}sz. \BibDash
+\newblock Cambridge, MA, USA~: MIT Press, 1995. \BibDash
+\newblock P.~1541--1597.
+
+\bibitem{Ikura:1985}
+\selectlanguageifdefined{english}
+\BibEmph{Ikura~Y., Nemhauser~G.~L.} Simplex pivots on the~set packing
+  polytope~// \BibEmph{Math. Program.} \BibDash
+\newblock 1985. \BibDash
+\newblock Vol.~33, no.~2. \BibDash
+\newblock P.~123--138.
+
+\bibitem{Applegate:2003}
+\selectlanguageifdefined{english}
+Implementing the {D}antzig--{F}ulkerson--{J}ohnson algorithm for large
+  traveling salesman problems~/ David~Applegate, Robert~Bixby,
+  Va{\v{s}}ek~Chv{\'a}tal, William~Cook~// \BibEmph{Mathematical programming}.
+  \BibDash
+\newblock 2003. \BibDash
+\newblock Vol.~97, no. 1--2. \BibDash
+\newblock P.~91--153.
+
+\bibitem{Kaibel:2011}
+\selectlanguageifdefined{english}
+\BibEmph{Kaibel~V.} Extended formulations in combinatorial optimization~//
+  Optima~85. \BibDash
+\newblock 2011. \BibDash
+\newblock P.~2--7.
+
+\bibitem{KaibelPT:12}
+\selectlanguageifdefined{english}
+\BibEmph{Kaibel~V., Pashkovich~K., Theis~D.~O.} Symmetry matters for sizes
+  of~extended formulations~// \BibEmph{{SIAM} J.~Discrete Math.} \BibDash
+\newblock 2012. \BibDash
+\newblock Vol.~26, no.~3. \BibDash
+\newblock P.~1361--1382.
+
+\bibitem{KaibelW:15}
+\selectlanguageifdefined{english}
+\BibEmph{Kaibel~V., Weltge~S.} A short proof that the~extension complexity
+  of~the~correlation polytope grows exponentially~// \BibEmph{Discrete {\&}
+  Computational Geometry}. \BibDash
+\newblock 2015. \BibDash
+\newblock Vol.~53, no.~2. \BibDash
+\newblock P.~397--401.
+
+\bibitem{Karp:1972}
+\selectlanguageifdefined{english}
+\BibEmph{Karp~R.~M.} Reducibility among combinatorial problems~// Complexity
+  of~computer computations. \BibDash
+\newblock Plenum Press, 1972. \BibDash
+\newblock P.~85--103.
+
+\bibitem{Klee:1964}
+\selectlanguageifdefined{english}
+\BibEmph{Klee~V.} Diameters of~polyhedral graphs~// \BibEmph{Canad. J.~Math.}
+  \BibDash
+\newblock 1964. \BibDash
+\newblock Vol.~16. \BibDash
+\newblock P.~602--614.
+
+\bibitem{Klee:1967}
+\selectlanguageifdefined{english}
+\BibEmph{Klee~V., Walkup~D.~W.} The $d$-step conjecture for polyhedra
+  of~dimension $d < 6$~// \BibEmph{Acta Mathematica}. \BibDash
+\newblock 1967. \BibDash
+\newblock Vol. 117, no.~1. \BibDash
+\newblock P.~53--78.
+
+\bibitem{FioriniPokutta:2012}
+\selectlanguageifdefined{english}
+Linear vs. semidefinite extended formulations: exponential separation and
+  strong lower bounds~/ S.~Fiorini, S.~Massar, S.~Pokutta et~al.~// Proc.
+  of~the~44th annual ACM symposium on Theory of~computing~/ ACM. \BibDash
+\newblock 2012. \BibDash
+\newblock P.~95--106.
+
+\bibitem{Matsui:1995}
+\selectlanguageifdefined{english}
+\BibEmph{Matsui~T.} {NP}-completeness of~non-adjacency relations on some
+  0-1-polytopes~// \BibEmph{Lecture Notes in Operations Research}. \BibDash
+\newblock 1995. \BibDash
+\newblock Vol.~1. \BibDash
+\newblock P.~249--258.
+
+\bibitem{McMullen:1970}
+\selectlanguageifdefined{english}
+\BibEmph{McMullen~P.} The maximum numbers of~faces of~a~convex polytope~//
+  \BibEmph{Mathematika}. \BibDash
+\newblock 1970. \BibDash
+\newblock Vol.~17, no.~2. \BibDash
+\newblock P.~179--184.
+
+\bibitem{Padberg:1989}
+\selectlanguageifdefined{english}
+\BibEmph{Padberg~M.} The boolean quadric polytope: some characteristics, facets
+  and relatives~// \BibEmph{Math. Program.} \BibDash
+\newblock 1989. \BibDash
+\newblock Vol.~45, no. 1-3. \BibDash
+\newblock P.~139--172.
+
+\bibitem{Papadimitriou:1978}
+\selectlanguageifdefined{english}
+\BibEmph{Papadimitriou~C.~H.} The adjacency relation on the~traveling salesman
+  polytope is {NP}-complete~// \BibEmph{Math. Program.} \BibDash
+\newblock 1978. \BibDash
+\newblock Vol.~14, no.~1. \BibDash
+\newblock P.~312--324.
+
+\bibitem{Rothvoss:2013}
+\selectlanguageifdefined{english}
+\BibEmph{Rothvo{\ss}~T.} Some 0/1 polytopes need exponential size extended
+  formulations~// \BibEmph{Math. Program.} \BibDash
+\newblock 2013. \BibDash
+\newblock Vol. 142, no. 1-2. \BibDash
+\newblock P.~255--268.
+
+\bibitem{Rothvoss:2014}
+\selectlanguageifdefined{english}
+\BibEmph{Rothvo{\ss}~T.} The matching polytope has exponential extension
+  complexity~// Proceedings of~the~46th annual ACM symposium on theory
+  of~computing~/ ACM. \BibDash
+\newblock 2014. \BibDash
+\newblock P.~263--272.
+
+\bibitem{Santos:2012}
+\selectlanguageifdefined{english}
+\BibEmph{Santos~F.} A counterexample to the~{H}irsch conjecture~//
+  \BibEmph{Annals of~Math.} \BibDash
+\newblock 2012. \BibDash
+\newblock Vol. 176, no.~1. \BibDash
+\newblock P.~383--412.
+
+\bibitem{SchrijverCO:2003}
+\selectlanguageifdefined{english}
+\BibEmph{Schrijver~A.} Combinatorial optimization: polyhedra and efficiency.
+  \BibDash
+\newblock Springer, 2003.
+
+\bibitem{SchrijverHistory:2005}
+\selectlanguageifdefined{english}
+\BibEmph{Schrijver~A.} On the~history of~combinatorial optimization (till
+  1960)~// Discrete Optimization~/ Ed.\ by\ K.~Aardal, G.L.~Nemhauser,
+  R.~Weismantel. \BibDash
+\newblock Elsevier, 2005. \BibDash
+\newblock P.~1--68.
+
+\bibitem{Yannakakis:1988}
+\selectlanguageifdefined{english}
+\BibEmph{Yannakakis~M.} Expressing combinatorial optimization problems by
+  linear programs~// Proceedings of~the~twentieth annual ACM symposium on
+  Theory of~computing~/ ACM. \BibDash
+\newblock 1988. \BibDash
+\newblock P.~223--228.
+
+\bibitem{ZieglerHirsch:2012}
+\selectlanguageifdefined{english}
+\BibEmph{Ziegler~G.~M.} Who solved the~{H}irsch conjecture?~//
+  \BibEmph{Documenta Mathematica Extra Volume: Optimization Stories}. \BibDash
+\newblock 2012. \BibDash
+\newblock P.~75--85.
+
+\bibitem{Beloshevskii:1986}
+\selectlanguageifdefined{russian}
+\BibEmph{Белошевский~М.~И.} Многогранник задачи о максимальном разрезе~//
+  Модели и алгоритмы мат. обеспечения ЭВМ. \BibDash
+\newblock Ярославль: ЯрГУ, 1986. \BibDash
+\newblock {\cyr\CYRS.}~12--20.
+
+\bibitem{Bondarenko:1987}
+\selectlanguageifdefined{russian}
+\BibEmph{Бондаренко~В.~А.} Об одном комбинаторном многограннике~//
+  \BibEmph{Моделирование и анализ выч. систем}. \BibDash
+\newblock 1987. \BibDash
+\newblock \CYRT. 1987. \BibDash
+\newblock {\cyr\CYRS.}~133--134.
+
+\bibitem{Bondarenko:1993SW3A}
+\selectlanguageifdefined{russian}
+\BibEmph{Бондаренко~В.~А.} О плотности полиэдральных графов задач комбинаторной
+  оптимизации~// \BibEmph{Автоматика и телемеханика}. \BibDash
+\newblock 1993. \BibDash
+\newblock {\cyr\textnumero}~6. \BibDash
+\newblock {\cyr\CYRS.}~60--66.
+
+\bibitem{BondBook:1995}
+\selectlanguageifdefined{russian}
+\BibEmph{Бондаренко~В.~А.} Полиэдральные графы и сложность в комбинаторной
+  оптимизации. \BibDash
+\newblock Ярославль, 1995.
+
+\bibitem{Shovgenov:2017}
+\selectlanguageifdefined{russian}
+\BibEmph{Бондаренко~В.~А., Николаев~А.~В., Шовгенов~Д.~А.} Полиэдральные
+  характеристики задач о сбалансированном и несбалансированном двудольных
+  подграфах~// \BibEmph{Моделирование и анализ информационных систем}. \BibDash
+\newblock 2017. \BibDash
+\newblock \CYRT.~24, {\cyr\textnumero}~2. \BibDash
+\newblock {\cyr\CYRS.}~141--154.
+
+\bibitem{Greshnev:1984}
+\selectlanguageifdefined{russian}
+\BibEmph{Грешнев~С.~Н.} Многогранник задачи о $m$-вершинном подграфе полного
+  графа~// \BibEmph{Журнал вычислительной математики и математической физики}.
+  \BibDash
+\newblock 1984. \BibDash
+\newblock \CYRT.~24, {\cyr\textnumero}~5. \BibDash
+\newblock {\cyr\CYRS.}~790--793.
+
+\bibitem{Emelichev:1981}
+\selectlanguageifdefined{russian}
+\BibEmph{Емеличев~В.~А., Ковалев~М.~М., Кравцов~М.~К.} Многогранники, графы,
+  оптимизация. \BibDash
+\newblock М.: Наука, 1981.
+
+\bibitem{Levin:1973}
+\selectlanguageifdefined{russian}
+\BibEmph{Левин~Л.~А.} Универсальные задачи перебора~// \BibEmph{Проблемы
+  передачи информации}. \BibDash
+\newblock 1973. \BibDash
+\newblock \CYRT.~9, {\cyr\textnumero}~3. \BibDash
+\newblock {\cyr\CYRS.}~115--116.
+
+\bibitem{Khachiyan:1979}
+\selectlanguageifdefined{russian}
+\BibEmph{Хачиян~Л.~Г.} Полиномиальный алгоритм в линейном программировании~//
+  \BibEmph{Доклады АН СССР}. \BibDash
+\newblock 1979. \BibDash
+\newblock \CYRT. 244, {\cyr\textnumero}~5. \BibDash
+\newblock {\cyr\CYRS.}~1093--1096.
+
+\bibitem{Shevchenko:2004}
+\selectlanguageifdefined{russian}
+\BibEmph{Шевченко~В.~Н., Золотых~Н.~Ю.} Линейное и целочисленное линейное
+  программирование. \BibDash
+\newblock Нижний Новгород: Изд-во Нижегородского госуниверситета им. Н.И.
+  Лобачевского, 2004. \BibDash
+\newblock {\cyr\CYRS.}~154.
+
+\end{thebibliography}
